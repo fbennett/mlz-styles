@@ -1,0 +1,37 @@
+#!/usr/bin/python
+
+import MySQLdb,sys,os,re
+from datetime import datetime
+import cgi
+
+fs = cgi.FieldStorage()
+if not fs.getvalue('last'):
+    lastdate = 0
+else:
+    lastdate = int(fs.getvalue('last'))
+now = datetime.now()
+currentdate = now.strftime("%s")
+
+db = MySQLdb.connect(host="localhost", user="fbennett_admin", passwd="cu4Quelph", port=3306)
+cur = db.cursor()
+cur.execute("USE fbennett_translators")
+
+
+def getTranslators (lastdate):
+    translators = []
+    cur.execute("SELECT xmlstring FROM translators WHERE lastUpdated > %s", [lastdate])
+    res = cur.fetchall()
+    for row in res:
+        translators.append(row[0])
+    return "\n".join(translators)
+
+if __name__ == "__main__":
+
+    ## Formalities to complete the transaction ##
+    page = '''Content-type: text/xml
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<xml><currentTime>%s</currentTime>%s</xml>
+''' % (currentdate,getTranslators(lastdate))
+    print page
+

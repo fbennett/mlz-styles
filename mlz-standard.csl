@@ -1,0 +1,192 @@
+<style xmlns="http://purl.org/net/xbiblio/csl">
+  <macro name="start-dummy">
+    <text value="start-dummy"/>
+  </macro>
+  <macro name="std-collection-number">
+	<number variable="collection-number"/>
+  </macro>
+  <macro name="std-locator-label">
+    <group delimiter=" ">
+      <label form="short" variable="locator"/>
+      <number variable="locator"/>
+    </group>
+  </macro>
+  <macro name="std-locator-paragraph-bracket-at">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page paragraph" match="none">
+          <label form="short" variable="locator"/>
+        </if>
+        <else-if locator="page paragraph">
+          <text term="at"/>
+        </else-if>
+      </choose>
+      <choose>
+        <if locator="paragraph">
+          <number prefix="[" suffix="]" variable="locator"/>
+        </if>
+        <else>
+          <number variable="locator"/>
+        </else>
+      </choose>
+    </group>
+  </macro>
+  <macro name="std-locator-paragraph-bracket">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page paragraph" match="none">
+          <label form="short" variable="locator"/>
+        </if>
+      </choose>
+      <choose>
+        <if locator="paragraph">
+          <number prefix="[" suffix="]" variable="locator"/>
+        </if>
+        <else>
+          <number variable="locator"/>
+        </else>
+      </choose>
+    </group>
+  </macro>
+  <macro name="std-locator-non-page-label-at">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page">
+          <text term="at"/>
+        </if>
+        <else>
+          <label form="short" variable="locator"/>
+        </else>
+      </choose>
+      <number variable="locator"/>
+    </group>
+  </macro>
+  <macro name="std-locator-non-page-label">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page" match="none">
+          <label form="short" variable="locator"/>
+        </if>
+      </choose>
+      <number variable="locator"/>
+    </group>
+  </macro>
+  <macro name="std-authority-key">
+    <names variable="authority">
+      <name/>
+      <institution form="short"/>
+    </names>
+  </macro>
+  <macro name="std-authority-full">
+    <group delimiter=" ">
+      <choose>
+        <if subjurisdictions="2">
+          <text macro="std-authority-child"/>
+          <text form="short" variable="jurisdiction"/>
+        </if>
+        <else>
+          <text form="short" variable="jurisdiction"/>
+          <text macro="std-authority-child"/>
+        </else>
+      </choose>
+    </group>
+  </macro>
+  <macro name="std-authority-parent">
+    <names variable="authority">
+      <name/>
+      <institution institution-parts="short" use-last="1"/>
+    </names>
+  </macro>
+  <macro name="std-authority-child-shy">
+    <names variable="authority">
+      <name/>
+      <institution institution-parts="short" use-first="1" stop-last="1"/>
+    </names>
+  </macro>
+  <macro name="std-authority-child">
+    <names variable="authority">
+      <name/>
+      <institution institution-parts="short" use-first="1"/>
+    </names>
+  </macro>
+  <macro name="std-authority-description">
+    <names variable="authority">
+      <name/>
+      <institution form="short" institution-parts="short" part-separator=" " reverse-order="true">
+        <institution-part name="short"/>
+      </institution>
+    </names>
+  </macro>
+  <macro name="std-patent-first">
+    <group delimiter=", ">
+      <group delimiter="; ">
+        <group delimiter=" ">
+          <names variable="author">
+            <name/>
+          </names>
+          <text macro="std-inventor-label" prefix="(" suffix=")"/>
+        </group>
+        <group delimiter=" ">
+          <names variable="recipient">
+            <name/>
+          </names>
+          <text macro="std-assignee-label" prefix="(" suffix=")"/>
+        </group>
+      </group>
+      <group delimiter=", ">
+        <text macro="std-patent-detail"/>
+        <group delimiter=", " prefix="(" suffix=")">
+          <group delimiter=" ">
+            <text value="filed"/>
+            <date form="text" variable="original-date"/>
+          </group>
+          <group delimiter=" ">
+            <text value="issued"/>
+            <date form="text" variable="issued"/>
+          </group>
+        </group>
+      </group>
+    </group>
+  </macro>
+  <macro name="std-patent-detail">
+    <group delimiter=", ">
+      <text variable="title"/>
+      <group delimiter=" ">
+        <text form="short" variable="jurisdiction"/>
+        <choose>
+          <if variable="genre">
+            <text variable="genre"/>
+            <text value="no."/>
+          </if>
+          <else>
+            <text value="Patent No."/>
+          </else>
+        </choose>
+        <number variable="number"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="std-inventor-label">
+    <choose>
+      <if is-plural="author">
+        <text value="inventors"/>
+      </if>
+      <else>
+        <text value="inventor"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="std-assignee-label">
+    <choose>
+      <if is-plural="recipient">
+        <text value="assignees"/>
+      </if>
+      <else>
+        <text value="assignee"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="end-dummy">
+    <text value="end-dummy"/>
+  </macro>
+</style>

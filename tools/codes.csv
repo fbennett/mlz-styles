@@ -1,0 +1,153 @@
+Alaska,Alaska,ak,0,,Alaska,us;ak
+Alabama,Ala.,al,0,,Ala.,us;al
+Arkansas,Ark.,ar,0,,Ark.,us;ar
+Arizona,Ariz.,az,0,,Ariz.,us;az
+California,Cal.,ca,0,,Cal.,us;ca
+Colorado,Colo.,co,0,,Colo.,us;co
+Connecticut,Conn.,ct,0,,Conn.,us;ct
+Delaware,Del.,de,0,,Del.,us;de
+Florida,Fla.,fl,0,,Fla.,us;fl
+Georgia,Geor.,ga,0,,Geor.,us;ga
+Hawaii,Haw.,hi,0,,Haw.,us;hi
+Iowa,Iowa,ia,0,,Iowa,us;ia
+Idaho,Idaho,id,0,,Idaho,us;id
+Illinois,Ill.,il,0,,Ill.,us;il
+Indiana,Ind.,in,0,,Ind.,us;in
+Kansas,Kan.,ks,0,,Kan.,us;ks
+Kentucky,Ky.,ky,0,,Ky.,us;ky
+Louisiana,La.,la,0,,La.,us;la
+Massachusetts,Mass.,ma,0,,Mass.,us;ma
+Maryland,Md.,md,0,,Md.,us;md
+Maine,Me.,me,0,,Me.,us;me
+Michigan,Mich.,mi,0,,Mich.,us;mi
+Minnesota,Minn.,mn,0,,Minn.,us;mn
+Missouri,Mo.,mo,0,,Mo.,us;mo
+Mississippi,Miss.,ms,0,,Miss.,us;ms
+Montana,Mont.,mt,0,,Mont.,us;mt
+North Carolina,N.C.,nc,0,,N.C.,us;nc
+North Dakota,N.D.,nd,0,,N.D.,us;nd
+Nebraska,Neb.,ne,0,,Neb.,us;ne
+New Hampshire,N.H.,nh,0,,N.H.,us;nh
+New Jersey,N.J.,nj,0,,N.J.,us;nj
+New Mexico,N.M.,nm,0,,N.M.,us;nm
+Nevada,Nev.,nv,0,,Nev.,us;nv
+New York,N.Y.,ny,0,,N.Y.,us;ny
+Ohio,Ohio,oh,0,,Ohio,us;oh
+Oklahoma,Okla.,ok,0,,Okla.,us;ok
+Oregon,Or.,or,0,,Or.,us;or
+Pennsylvania,Pa.,pa,0,,Pa.,us;pa
+Puerto Rico,Puerto Rico,pr,0,,Puerto Rico,us;pr
+Rhode Island,R.I.,ri,0,,R.I.,us;ri
+South Carolina,S.C.,sc,0,,S.C.,us;sc
+South Dakota,S.D.,sd,0,,S.D.,us;sd
+Tennessee,Tenn.,tn,0,,Tenn.,us;tn
+Texas,Tex.,tx,0,,Tex.,us;tx
+Utah,Utah,ut,0,,Utah,us;ut
+Virginia,Va.,va,0,,Va.,us;va
+Vermont,Vt.,vt,0,,Vt.,us;vt
+Washington,Wash.,wa,0,,Wash.,us;wa
+Wisconsin,Wis.,wi,0,,Wis.,us;wi
+West Virginia,W.Va.,wv,0,,W.Va.,us;wv
+Wyoming,Wyo.,wy,0,,Wyo.,us;wy
+Tenth Circuit,,,0,,10th Cir.,us;federal;10th.circuit
+Eleventh Circuit,,,0,,11th Cir.,us;federal;11th.circuit
+First Circuit,,,0,,1st Cir.,us;federal;1st.circuit
+Second Circuit,,,0,,2nd Cir.,us;federal;2nd.circuit
+Third Circuit,,,0,,3rd Cir.,us;federal;3rd.circuit
+Fourth Circuit,,,0,,4th Cir.,us;federal;4th.circuit
+Fifth Circuit,,,0,,5th Cir.,us;federal;5th.circuit
+Sixth Circuit,,,0,,6th Cir.,us;federal;6th.circuit
+Seventh Circuit,,,0,,7th Cir.,us;federal;7th.circuit
+Eighth Circuit,,,0,,8th Cir.,us;federal;8th.circuit
+Ninth Circuit,,,0,,9th Cir.,us;federal;9th.circuit
+Alaska,Alaska,ak,1,,D. Alaska,us;federal;ak
+Alabama,Ala.,al,3,Middle District,M.D. Ala.,us;federal;al.middle.district
+Alabama,Ala.,al,3,Northern District,N.D. Ala.,us;federal;al.northern.district
+Alabama,Ala.,al,3,Southern District,S.D. Ala.,us;federal;al.southern.district
+Arkansas,Ark.,ar,2,Eastern District,E.D. Ark.,us;federal;ar.eastern.district
+Arkansas,Ark.,ar,2,Western District,W.D. Ark.,us;federal;ar.western.district
+Arizona,Ariz.,az,1,,D. Ariz.,us;federal;az
+California,Cal.,ca,4,Central District,C.D. Cal.,us;federal;ca.central.district
+California,Cal.,ca,4,Eastern District,E.D. Cal.,us;federal;ca.eastern.district
+California,Cal.,ca,4,Northern District,N.D. Cal.,us;federal;ca.northern.district
+California,Cal.,ca,4,Southern District,S.D. Cal.,us;federal;ca.southern.district
+Colorado,Colo.,co,1,,D. Colo.,us;federal;co
+Connecticut,Conn.,ct,1,,D. Conn.,us;federal;ct
+District of Columbia,D.C.,dc,1,,D.D.C.,us;federal;dc
+Delaware,Del.,de,1,,D. Del.,us;federal;de
+Florida,Fla.,fl,3,Middle District,M.D. Fla.,us;federal;fl.middle.district
+Florida,Fla.,fl,3,Northern District,N.D. Fla.,us;federal;fl.northern.district
+Florida,Fla.,fl,3,Southern District,S.D. Fla.,us;federal;fl.southern.district
+Georgia,Geor.,ga,3,Middle District,M.D. Geor.,us;federal;ga.middle.district
+Georgia,Geor.,ga,3,Northern District,N.D. Geor.,us;federal;ga.northern.district
+Georgia,Geor.,ga,3,Southern District,S.D. Geor.,us;federal;ga.southern.district
+Hawaii,Haw.,hi,1,,D. Haw.,us;federal;hi
+Iowa,Iowa,ia,2,Northern District,N.D. Iowa,us;federal;ia.northern.district
+Iowa,Iowa,ia,2,Southern District,S.D. Iowa,us;federal;ia.southern.district
+Idaho,Idaho,id,1,,D. Idaho,us;federal;id
+Illinois,Ill.,il,3,Central District,C.D. Ill.,us;federal;il.central.district
+Illinois,Ill.,il,3,Northern District,N.D. Ill.,us;federal;il.northern.district
+Illinois,Ill.,il,3,Southern District,S.D. Ill.,us;federal;il.southern.district
+Indiana,Ind.,in,2,Northern District,N.D. Ind.,us;federal;in.northern.district
+Indiana,Ind.,in,2,Southern District,S.D. Ind.,us;federal;in.southern.district
+Kansas,Kan.,ks,1,,D. Kan.,us;federal;ks
+Kentucky,Ky.,ky,2,Eastern District,E.D. Ky.,us;federal;ky.eastern.district
+Kentucky,Ky.,ky,2,Western District,W.D. Ky.,us;federal;ky.western.district
+Louisiana,La.,la,3,Eastern District,E.D. La.,us;federal;la.eastern.district
+Louisiana,La.,la,3,Middle District,M.D. La.,us;federal;la.middle.district
+Louisiana,La.,la,3,Western District,W.D. La.,us;federal;la.western.district
+Massachusetts,Mass.,ma,1,,D. Mass.,us;federal;ma
+Maryland,Md.,md,1,,D. Md.,us;federal;md
+Maine,Me.,me,1,,D. Me.,us;federal;me
+Michigan,Mich.,mi,2,Eastern District,E.D. Mich.,us;federal;mi.eastern.district
+Michigan,Mich.,mi,2,Western District,W.D. Mich.,us;federal;mi.western.district
+Minnesota,Minn.,mn,1,,D. Minn.,us;federal;mn
+Missouri,Mo.,mo,2,Eastern District,E.D. Mo.,us;federal;mo.eastern.district
+Missouri,Mo.,mo,2,Western District,W.D. Mo.,us;federal;mo.western.district
+Mississippi,Miss.,ms,2,Northern District,N.D. Miss.,us;federal;ms.northern.district
+Mississippi,Miss.,ms,2,Southern District,S.D. Miss.,us;federal;ms.southern.district
+Montana,Mont.,mt,1,,D. Mont.,us;federal;mt
+North Carolina,N.C.,nc,3,Eastern District,E.D.N.C.,us;federal;nc.eastern.district
+North Carolina,N.C.,nc,3,Middle District,M.D.N.C.,us;federal;nc.middle.district
+North Carolina,N.C.,nc,3,Western District,W.D.N.C.,us;federal;nc.western.district
+North Dakota,N.D.,nd,1,,D.N.D.,us;federal;nd
+Nebraska,Neb.,ne,1,,D. Neb.,us;federal;ne
+New Hampshire,N.H.,nh,1,,D.N.H.,us;federal;nh
+New Jersey,N.J.,nj,1,,D.N.J.,us;federal;nj
+New Mexico,N.M.,nm,1,,D.N.M.,us;federal;nm
+Nevada,Nev.,nv,1,,D. Nev.,us;federal;nv
+New York,N.Y.,ny,4,Eastern District,E.D.N.Y.,us;federal;ny.eastern.district
+New York,N.Y.,ny,4,Northern District,N.D.N.Y.,us;federal;ny.northern.district
+New York,N.Y.,ny,4,Southern District,S.D.N.Y.,us;federal;ny.southern.district
+New York,N.Y.,ny,4,Western District,W.D.N.Y.,us;federal;ny.western.district
+Ohio,Ohio,oh,2,Northern District,N.D. Ohio,us;federal;oh.northern.district
+Ohio,Ohio,oh,2,Southern District,S.D. Ohio,us;federal;oh.southern.district
+Oklahoma,Okla.,ok,3,Eastern District,E.D. Okla.,us;federal;ok.eastern.district
+Oklahoma,Okla.,ok,3,Northern District,N.D. Okla.,us;federal;ok.northern.district
+Oklahoma,Okla.,ok,3,Western District,W.D. Okla.,us;federal;ok.western.district
+Oregon,Or.,or,1,,D. Or.,us;federal;or
+Pennsylvania,Pa.,pa,3,Eastern District,E.D. Pa.,us;federal;pa.eastern.district
+Pennsylvania,Pa.,pa,3,Middle District,M.D. Pa.,us;federal;pa.middle.district
+Pennsylvania,Pa.,pa,3,Western District,W.D. Pa.,us;federal;pa.western.district
+Puerto Rico,Puerto Rico,pr,1,,D. Puerto Rico,us;federal;pr
+Rhode Island,R.I.,ri,1,,D.R.I.,us;federal;ri
+South Carolina,S.C.,sc,1,,D.S.C.,us;federal;sc
+South Dakota,S.D.,sd,1,,D.S.D.,us;federal;sd
+Tennessee,Tenn.,tn,3,Eastern District,E.D. Tenn.,us;federal;tn.eastern.district
+Tennessee,Tenn.,tn,3,Middle District,M.D. Tenn.,us;federal;tn.middle.district
+Tennessee,Tenn.,tn,3,Western District,W.D. Tenn.,us;federal;tn.western.district
+Texas,Tex.,tx,4,Eastern District,E.D. Tex.,us;federal;tx.eastern.district
+Texas,Tex.,tx,4,Northern District,N.D. Tex.,us;federal;tx.northern.district
+Texas,Tex.,tx,4,Southern District,S.D. Tex.,us;federal;tx.southern.district
+Texas,Tex.,tx,4,Western District,W.D. Tex.,us;federal;tx.western.district
+Utah,Utah,ut,1,,D. Utah,us;federal;ut
+Virginia,Va.,va,2,Eastern District,E.D. Va.,us;federal;va.eastern.district
+Virginia,Va.,va,2,Western District,W.D. Va.,us;federal;va.western.district
+Vermont,Vt.,vt,1,,D. Vt.,us;federal;vt
+Washington,Wash.,wa,2,Eastern District,E.D. Wash.,us;federal;wa.eastern.district
+Washington,Wash.,wa,2,Western District,W.D. Wash.,us;federal;wa.western.district
+Wisconsin,Wis.,wi,2,Eastern District,E.D. Wis.,us;federal;wi.eastern.district
+Wisconsin,Wis.,wi,2,Western District,W.D. Wis.,us;federal;wi.western.district
+West Virginia,W. Va.,wv,2,Northern District,N.D. W.Va.,us;federal;wv.northern.district
+West Virginia,W. Va.,wv,2,Southern District,S.D. W.Va.,us;federal;wv.southern.district
+Wyoming,Wyo.,wy,1,,D. Wyo.,us;federal;wy
