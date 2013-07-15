@@ -1516,7 +1516,6 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "": "WY", 
             "A. 2d": "A.2d", 
             "A. 3d": "A.3d", 
             "Atlantic Reporter": "A.", 
@@ -1556,10 +1555,12 @@
             "N.E. 2d": "N.E.2d", 
             "N.W. 2d": "N.W.2d", 
             "NE 2d": "N.E.2d", 
+            "NW 2d": "N.W.2d", 
             "North Eastern Reporter": "N.E.", 
             "North Eastern Reporter 2d": "N.E.2d", 
             "North Western Reporter": "N.W.", 
             "Northwest Reporter Second": "N.W.2d", 
+            "Ohio St.3d": "Ohio St. 3d", 
             "P. 2d": "P.2d", 
             "P. 3d": "P.3d", 
             "Pacific Reporter": "P.", 
@@ -1578,6 +1579,8 @@
             "S.E. 2d": "S.E.2d", 
             "S.W. 2d": "S.W.2d", 
             "S.W. 3d": "S.W.3d", 
+            "SE 2d": "S.E.2d", 
+            "SW 3d": "S.W.3d", 
             "So.2d": "So. 2d", 
             "So.3d": "So. 3d", 
             "South Eastern Reporter": "S.E.", 
@@ -1599,7 +1602,9 @@
             "Vet.App.": "Vet. App.", 
             "West's Military Justice Reporter": "M.J.", 
             "West's Veterans Appeals Reporter": "Vet. App.", 
-            "Wisconsin Reporter Second": "!jurisdiction,authority>>>Wisc.2d"
+            "Wis.2d": "Wis. 2d", 
+            "Wisconsin Reporter Second": "!jurisdiction,authority>>>Wisc.2d", 
+            "Wn. Terr.": "Wash. Terr."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1721,6 +1726,8 @@
             "Cal.Rptr.": "Cal. Rptr.", 
             "Cal.Rptr. 2d": "Cal. Rptr. 2d", 
             "Cal.Rptr. 3d": "Cal. Rptr. 3d", 
+            "Cal.Rptr.2d": "Cal. Rptr. 2d", 
+            "Cal.Rptr.3d": "Cal. Rptr. 3d", 
             "California Appellate Reports": "Cal. App.", 
             "California Appellate Reports 2d": "Cal. App. 2d", 
             "California Appellate Reports 3d": "Cal. App. 3d", 
@@ -1859,6 +1866,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Georgia Appeals Reports": "Ga. App.", 
             "Georgia Reports": "Ga."
         }, 
         "hereinafter": {}, 
@@ -2014,6 +2022,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Massachusetts Appeals Court Reports": "Mass. App. Ct.", 
             "Massachusetts Reports": "Mass."
         }, 
         "hereinafter": {}, 
@@ -2063,6 +2072,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Michigan Appeals Reports": "Mich. App.", 
             "Michigan Reports": "Mich."
         }, 
         "hereinafter": {}, 
@@ -2143,6 +2153,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "North Carolina Court of Appeals Reports": "N.C. App.", 
             "North Carolina Reports": "N.C."
         }, 
         "hereinafter": {}, 
@@ -2162,7 +2173,10 @@
             "North Dakota Reports": "N.D."
         }, 
         "hereinafter": {}, 
-        "institution-entire": {}, 
+        "institution-entire": {
+            "Court of Appeals": "ND App", 
+            "Supreme Court": "ND"
+        }, 
         "institution-part": {}, 
         "nickname": {}, 
         "number": {}, 
@@ -2175,6 +2189,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Nebraska Court of Appeals Reports": "Neb. App.", 
             "Nebraska Reports": "Neb."
         }, 
         "hereinafter": {}, 
@@ -2300,10 +2315,13 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Ohio Reports": "Ohio"
+            "Ohio Reports": "Ohio", 
+            "Ohio State Reports 3d": "Ohio St. 3d"
         }, 
         "hereinafter": {}, 
-        "institution-entire": {}, 
+        "institution-entire": {
+            "Ohio": "Ohio"
+        }, 
         "institution-part": {}, 
         "nickname": {}, 
         "number": {}, 
@@ -2348,6 +2366,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Pa. Commonwealth Ct.": "Pa. Commw.", 
+            "Pa. Superior Ct.": "Pa. Super.", 
             "Pennsylvania Commonwealth Court Reports": "Pa. Commw.", 
             "Pennsylvania State Reports": "Pa.", 
             "Pennsylvania Superior Court Reports": "Pa. Super."
@@ -2366,6 +2386,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Puerto Rico": "P.R.", 
             "Puerto Rico Reports": "P.R."
         }, 
         "hereinafter": {}, 
@@ -2478,6 +2499,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Virginia Court of Appeals Reports": "Va. App.", 
             "Virginia Reports": "Va."
         }, 
         "hereinafter": {}, 
@@ -2513,6 +2535,10 @@
             "Washington Appellate Reports": "Wash. App.", 
             "Washington Reports": "Wash.", 
             "Washington Reports 2d": "Wash. 2d", 
+            "Washington Territory Reports": "Wash. Terr.", 
+            "Wn": "Wash.", 
+            "Wn. 2d": "Wash. 2d", 
+            "Wn. App.": "Wash. App.", 
             "Wn.2d": "Wash. 2d", 
             "Wn.App.": "Wash. App."
         }, 
@@ -2530,10 +2556,14 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Wisconsin Reports": "Wis."
+            "Wisconsin Reports": "Wis.", 
+            "Wisconsin Reports 2d": "Wis. 2d"
         }, 
         "hereinafter": {}, 
-        "institution-entire": {}, 
+        "institution-entire": {
+            "Court of Appeals": "WI App", 
+            "Supreme Court": "WI"
+        }, 
         "institution-part": {}, 
         "nickname": {}, 
         "number": {}, 
