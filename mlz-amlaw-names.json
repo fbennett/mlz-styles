@@ -1524,9 +1524,20 @@
             "B. R.": "B.R.", 
             "BR": "B.R.", 
             "Bankruptcy Reporter": "B.R.", 
-            "Court of International Trade Reports": "Ct. Int'l Trade", 
+            "Black": "Black", 
+            "Board of Tax Appeals Memorandum Decisions": "B.T.A.M. (P-H)", 
+            "Court Martial Reports": "C.M.R.", 
+            "Court of Claims Reports": "Ct. Cl.", 
+            "Court of Customs Appeals Reports": "Ct. Cust.", 
+            "Court of Customs and Patent Appeals Reports": "C.C.P.A.", 
+            "Court of International Trade Reports": "Ct. Int\u2019l Trade", 
+            "Cranch": "Cranch", 
             "Ct.Cl.": "Ct. Cl.", 
             "Ct.Int'l Trade": "Ct. Int'l Trade", 
+            "Customs Bulletin and Decisions": "Cust. B. & Dec.", 
+            "Customs Court Reports": "Cust. Ct.", 
+            "Dallas": "Dall.", 
+            "Decisions of the United States Court of Military Appeals": "C.M.A.", 
             "F. 2d": "!jurisdiction>>>F.2d", 
             "F. 3d": "!jurisdiction>>>F.3d", 
             "F. Supp.2d": "F. Supp. 2d", 
@@ -1536,9 +1547,20 @@
             "F.Supp. 2d": "F. Supp. 2d", 
             "F.Supp.2d": "F. Supp. 2d", 
             "Fed.Cl.": "Fed. Cl.", 
+            "Federal Appendix": "F. App\u2019x", 
+            "Federal Cases": "F. Cas.", 
             "Federal Claims Reporter": "Fed. Cl.", 
+            "Federal Reporter": "F.", 
+            "Federal Reporter 2d": "F.2d", 
+            "Federal Reporter 3d": "F.3d", 
+            "Federal Rules Decisions": "F.R.D.", 
+            "Federal Rules Service": "Fed. R. Serv. (Callaghan)", 
+            "Federal Rules Service 2d": "Fed. R. Serv. 2d (Callaghan)", 
+            "Federal Rules Service 3d": "Fed. R. Serv. 3d (West)", 
             "Federal Supplement": "F. Supp.", 
             "Federal Supplement 2d": "F. Supp. 2d", 
+            "Howard": "How.", 
+            "International Trade Reporter Decisions": "I.T.R.D. (BNA)", 
             "Kan.App.": "Kan. App.", 
             "Kansas Court of Appeals Reports": "Kan. App.", 
             "L. Ed.2d": "L. Ed. 2d", 
@@ -1559,6 +1581,7 @@
             "North Eastern Reporter": "N.E.", 
             "North Eastern Reporter 2d": "N.E.2d", 
             "North Western Reporter": "N.W.", 
+            "North Western Reporter 2d": "N.W.2d", 
             "Northwest Reporter Second": "N.W.2d", 
             "Ohio St.3d": "Ohio St. 3d", 
             "P. 2d": "P.2d", 
@@ -1567,6 +1590,8 @@
             "Pacific Reporter 2d": "P.2d", 
             "Pacific Reporter 3d": "P.3d", 
             "Pennsylvania Statutes Annotated": "Pa. Stat. Ann.", 
+            "Peters": "Pet.", 
+            "Reports of the United States Board of Tax Appeals": "B.T.A.", 
             "S. E.": "S.E.", 
             "S. E. 2d": "S.E.2d", 
             "S. E.2d": "S.E.2d", 
@@ -1585,23 +1610,36 @@
             "So.3d": "So. 3d", 
             "South Eastern Reporter": "S.E.", 
             "South Eastern Reporter 2d": "S.E.2d", 
-            "South Western": "S.W.", 
-            "South Western 2d": "S.W.2d", 
-            "South Western 3d": "S.W.3d", 
+            "South Eastern Reporter.": "S.E.", 
+            "South Eastern Reporter. 2d": "S.E.2d", 
+            "South Western Reporter": "S.W.", 
+            "South Western Reporter 2d": "S.W.2d", 
+            "South Western Reporter 3d": "S.W.3d", 
             "Southern Reporter": "So.", 
             "Southern Reporter 2d": "So. 2d", 
             "Southern Reporter 3d": "So. 3d", 
             "Statutes at Large": "Stat.", 
-            "Supreme Court": "Wall.", 
+            "Supreme Court Reporter": "S. Ct", 
             "T. C.": "T.C.", 
-            "U. S.": "!jurisdiction,authority>>>U.S.", 
+            "Tax Court Memorandum Decisions": "T.C.M. (CCH)T.C.M. (P-H)T.C.M. (RIA)", 
             "US Code": "U.S.C.", 
+            "United States Claims Court Reporter": "Cl. Ct.", 
             "United States Claims Reporter": "Ct. Cl.", 
-            "United States Reports": "!jurisdiction,authority>>>U.S.", 
+            "United States Law Week": "U.S.LW.", 
+            "United States Reports": "U.S.", 
+            "United States Supreme Court Reports, Lawyer's Edition": "L. Ed.", 
+            "United States Supreme Court Reports, Lawyer's Edition 2d": "L. Ed. 2d", 
+            "United States Supreme Court Reports, Lawyers\u2019 Edition": "L. Ed.", 
+            "United States Supreme Court Reports, Lawyers\u2019 Edition 2d": "L. Ed. 2d", 
             "United States Tax Court Reports": "T.C.", 
             "Vet.App.": "Vet. App.", 
+            "Wallace": "Wall.", 
             "West's Military Justice Reporter": "M.J.", 
             "West's Veterans Appeals Reporter": "Vet. App.", 
+            "West\u2019s Bankruptcy Reporter": "B.R.", 
+            "West\u2019s Military Justice Reporter": "M.J.", 
+            "West\u2019s Veterans Appeals Reporter": "Vet. App.", 
+            "Wheaton": "Wheat.", 
             "Wis.2d": "Wis. 2d", 
             "Wisconsin Reporter Second": "!jurisdiction,authority>>>Wisc.2d", 
             "Wn. Terr.": "Wash. Terr."
@@ -1634,7 +1672,9 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Alaska Reports": "Alaska"
+            "Alaska Federal Reports": "Alaska Fed.", 
+            "Alaska Reports": "Alaska", 
+            "Federal Cases": "F. Cas."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1650,6 +1690,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Alabama Appellate Courts Reports": "Ala. App.", 
             "Alabama Reports": "Ala."
         }, 
         "hereinafter": {}, 
@@ -1666,6 +1707,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Arkansas Appellate Reports": "Ark. App.", 
             "Arkansas Reports": "Ark."
         }, 
         "hereinafter": {}, 
@@ -1733,12 +1775,14 @@
             "California Appellate Reports 3d": "Cal. App. 3d", 
             "California Appellate Reports 4th": "Cal. App. 4th", 
             "California Appellate Reports Supplement": "Cal. App. Supp.", 
-            "California Appellate Reports Supplement 2d": "Cal. App. Supp. 2d", 
-            "California Appellate Reports Supplement 3d": "Cal. App. Supp. 3d", 
+            "California Appellate Reports Supplement 2d": "Cal. App. 2d Supp.", 
+            "California Appellate Reports Supplement 3d": "Cal. App. 3d Supp.", 
+            "California Appellate Reports Supplement 4th": "Cal. App. 4th Supp.", 
             "California Reports": "Cal.", 
             "California Reports 2d": "Cal. 2d", 
             "California Reports 3d": "Cal. 3d", 
             "California Reports 4th": "Cal. 4th", 
+            "California Unreported Cases": "Cal. Unrep.", 
             "West\u2019s California Reporter": "Cal. Rptr.", 
             "West\u2019s California Reporter 2d": "Cal. Rptr. 2d", 
             "West\u2019s California Reporter 3d": "Cal. Rptr. 3d"
@@ -1757,7 +1801,12 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Colorado Reports": "Colo."
+            "Brief Times Reporter": "Brief Times Rptr.", 
+            "Colorado Court of Appeals Reports": "Colo. App.", 
+            "Colorado Journal": "Colo. J.", 
+            "Colorado Lawyer": "Colo. Law.", 
+            "Colorado Reports": "Colo.", 
+            "Law Week Colorado": "L. Week Colo."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1774,7 +1823,29 @@
         "container-phrase": {}, 
         "container-title": {
             "Connecticut Appellate Reports": "Conn. App.", 
-            "Connecticut Reports": "Conn."
+            "Connecticut Circuit Court Reports": "Conn. Cir. Ct.", 
+            "Connecticut Law Reporter": "Conn. L. Rptr.", 
+            "Connecticut Reports": "Conn.", 
+            "Connecticut Superior Court Reports": "Conn. Super. Ct.", 
+            "Connecticut Supplement": "Conn. Supp."
+        }, 
+        "hereinafter": {}, 
+        "institution-entire": {}, 
+        "institution-part": {}, 
+        "nickname": {}, 
+        "number": {}, 
+        "place": {}, 
+        "title": {}, 
+        "title-phrase": {}
+    }, 
+    "us;dc": {
+        "classic": {}, 
+        "collection-title": {}, 
+        "container-phrase": {}, 
+        "container-title": {
+            "Appeal Cases, District of Columbia": "App. D.C.", 
+            "Federal Reporter 3d": "F.3d", 
+            "United States Court of Appeals Reports": "U.S. App. D.C."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1790,6 +1861,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Delaware Cases": "Del. Cas.", 
+            "Delaware Chancery Reports": "Del. Ch.", 
             "Delaware Reports": "Del."
         }, 
         "hereinafter": {}, 
@@ -1850,7 +1923,11 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Florida Reports": "Fla."
+            "Florida Law Weekly": "Fla. L. Weekly", 
+            "Florida Law Weekly Supplement": "Fla. L. Weekly Supp.", 
+            "Florida Reports": "Fla.", 
+            "Florida Supplement": "Fla. Supp.", 
+            "Florida Supplement 2d": "Fla. Supp. 2d"
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1878,12 +1955,32 @@
         "title": {}, 
         "title-phrase": {}
     }, 
+    "us;gu": {
+        "classic": {}, 
+        "collection-title": {}, 
+        "container-phrase": {}, 
+        "container-title": {
+            "Federal Supplement 2d": "F. Supp. 2d", 
+            "Guam Reports": "Guam"
+        }, 
+        "hereinafter": {}, 
+        "institution-entire": {}, 
+        "institution-part": {}, 
+        "nickname": {}, 
+        "number": {}, 
+        "place": {}, 
+        "title": {}, 
+        "title-phrase": {}
+    }, 
     "us;hi": {
         "classic": {}, 
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "West\u2019s Hawaii Reports": "Haw."
+            "Hawaii Appellate Reports": "Haw. App.", 
+            "Hawaii Reports(ends with vol. 75)": "Haw.", 
+            "West\u2019s Hawaii Reports": "Haw.", 
+            "West\u2019s Hawaii Reports (begins with vol. 76)": "Haw."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1899,7 +1996,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Iowa Reports": "Iowa"
+            "Iowa Reports": "Iowa", 
+            "Iowa Reports (Cite to edition published by Clarke for vols. 1-8.)": "Iowa"
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -1934,10 +2032,11 @@
             "Ill. App.2d": "Ill. App. 2d", 
             "Ill. App.3d": "Ill. App. 3d", 
             "Ill.Dec.": "Ill. Dec.", 
+            "Illinois Court of Claims Reports": "Ill. Ct. Cl.", 
             "West\u2019s Illinois Decisions": "Ill. Dec.", 
             "lllinois Appellate Court Reports": "Ill. App.", 
             "lllinois Appellate Court Reports 2d": "Ill. App. 2d", 
-            "lllinois Appellate Court Reports 3d": "Ill. App. 3d", 
+            "lllinois Appellate Court Reports 3d": "Ill. APP. 3d", 
             "lllinois Reports": "Ill."
         }, 
         "hereinafter": {}, 
@@ -1954,6 +2053,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Indiana Court of Appeals Reports (prior to 1972, Indiana Appellate Court Reports)": "Ind. App.", 
             "Indiana Reports": "Ind."
         }, 
         "hereinafter": {}, 
@@ -1973,6 +2073,7 @@
             "Kan. App.2d": "Kan. App. 2d", 
             "Kan.App. 2d": "Kan. App. 2d", 
             "Kan.App.2d": "Kan. App. 2d", 
+            "Kansas Court of Appeals Reports": "Kan. App.", 
             "Kansas Court of Appeals Reports 2d": "Kan. App. 2d", 
             "Kansas Reports": "Kan."
         }, 
@@ -1990,6 +2091,11 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Kentucky Appellate Reporter": "Ky. App.", 
+            "Kentucky Attorney's Memo": "Ky. Att'y Memo", 
+            "Kentucky Law Reporter": "Ky. L. Rptr.", 
+            "Kentucky Law Summary": "Ky. L. Summ.", 
+            "Kentucky Opinions": "Ky. Op.", 
             "Kentucky Reports": "Ky."
         }, 
         "hereinafter": {}, 
@@ -2006,7 +2112,12 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Louisiana Reports": "La."
+            "Gunby\u2019s Reports": "Gunby", 
+            "Louisiana Annual Reports": "La. Ann.", 
+            "Louisiana Court of Appeals Reports": "La. App.", 
+            "Louisiana Reports": "La.", 
+            "Peltier\u2019s Decisions, Parish at Orleans": "Pelt.", 
+            "Teissier, Orleans Court of Appeals": "Teiss."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2022,8 +2133,12 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Appellate Division Advance Sheets": "Mass. App. Div. Adv. Sh.", 
             "Massachusetts Appeals Court Reports": "Mass. App. Ct.", 
-            "Massachusetts Reports": "Mass."
+            "Massachusetts Appellate Decisions": "Mass. App. Dec.", 
+            "Massachusetts Reports": "Mass.", 
+            "Massachusetts Reports Supplement": "Mass. Supp. 246", 
+            "Reports of MassachusettsAppellate Division": "Mass. App. Div."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2073,6 +2188,7 @@
         "container-phrase": {}, 
         "container-title": {
             "Michigan Appeals Reports": "Mich. App.", 
+            "Michigan Court of Claims Reports": "Mich. Ct. CL", 
             "Michigan Reports": "Mich."
         }, 
         "hereinafter": {}, 
@@ -2105,6 +2221,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Missouri Appeals Reports": "Mo. App.", 
             "Missouri Reports": "Mo."
         }, 
         "hereinafter": {}, 
@@ -2137,7 +2254,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Montana Reports": "Mont."
+            "Montana Reports": "Mont.", 
+            "State Reporter": "State Rptr."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2154,7 +2272,8 @@
         "container-phrase": {}, 
         "container-title": {
             "North Carolina Court of Appeals Reports": "N.C. App.", 
-            "North Carolina Reports": "N.C."
+            "North Carolina Reports": "N.C.", 
+            "North Carolina Reports (63 N.C. to date)": "N.C."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2170,7 +2289,9 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "North Dakota Reports": "N.D."
+            "Dakota Reports": "Dakota", 
+            "North Dakota Reports": "N.D.", 
+            "Northwestern Reporter 2d": "N.W.2d"
         }, 
         "hereinafter": {}, 
         "institution-entire": {
@@ -2222,6 +2343,11 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "New Jersey Administrative Reports": "N.J. Admin.", 
+            "New Jersey Administrative Reports 2d": "N.J. Admin. 2d", 
+            "New Jersey Equity Reports": "N.J. Eq.", 
+            "New Jersey Law Reports": "N.J.L.", 
+            "New Jersey Miscellaneous Reports": "N.J. Misc.", 
             "New Jersey Reports": "N.J.", 
             "New Jersey Superior Court Reports": "N.J. Super.", 
             "New Jersey Tax Court Reports": "N.J. Tax"
@@ -2256,7 +2382,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Nevada Report": "Nev."
+            "Nevada Report": "Nev.", 
+            "Nevada Reports": "Nev."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2276,8 +2403,34 @@
             "A.D. 3d": "A.D.3d", 
             "AD 2d": "A.D.2d", 
             "AD 3d": "A.D.3d", 
-            "Appellate Division Reports 2d": "A.D.", 
+            "Abbott\u2019s New Cases": "Abb. N. Cas.", 
+            "Abbott\u2019s Practice Reports": "Abb. Pr.", 
+            "Anthon\u2019s Nisi Prius Cases": "Ant. N.P. Cas.", 
+            "Appellate Division Reports": "A.D.", 
+            "Appellate Division Reports 2d": "A.D.2d", 
             "Appellate Division Reports 3d": "A.D.3d", 
+            "Barbour\u2019s Chancery Reports": "Barb. Ch.", 
+            "Barbour\u2019s Supreme Court Reports": "Barb.", 
+            "Caines\u2019 Cases": "Cai. Cas.", 
+            "Caines\u2019 Reports": "Cai.", 
+            "Clarke\u2019s Chancery Reports": "Cl. Ch.", 
+            "Coleman & Caines\u2019 Cases": "Cole. & Cai. Cas.", 
+            "Coleman\u2019s Cases": "Cole. Cas.", 
+            "Cowen\u2019s Reports": "Cow.", 
+            "Denio\u2019s Reports": "Denio", 
+            "Edmond\u2019s Select Cases": "Edm. Sel. Cas.", 
+            "Edwards\u2019 Chancery Reports": "Edw. Ch.", 
+            "Hill and Denio Supplement (Lalor)": "Hill & Den.", 
+            "Hill\u2019s Reports": "Hill", 
+            "Hoffman\u2019s Chancery Reports": "Hoff. Ch.", 
+            "Hopkins\u2019 Chancery Reports": "Hopk. Ch.", 
+            "Howard\u2019s Practice Reports": "How. Pr.", 
+            "Johnson\u2019s Cases": "Johns. Cas.", 
+            "Johnson\u2019s Chancery Reports": "Johns. Ch.", 
+            "Johnson\u2019s Reports": "Johns.", 
+            "Lansing\u2019s Chancery Reports": "Lans. Ch.", 
+            "Lansing\u2019s Reports": "Lans.", 
+            "Lockwood\u2019s Reversed Cases": "Lock. Rev. Cas.", 
             "Misc 2d": "Misc. 2d", 
             "Misc 3d": "Misc. 3d", 
             "Misc.2d": "Misc. 2d", 
@@ -2291,15 +2444,22 @@
             "NY 3d": "N.Y.3d", 
             "NYS 2d": "N.Y.S.2d", 
             "NYS 3d": "N.Y.S.3d", 
+            "New York Chancery Reports Annotated": "N.Y. Ch. Ann.", 
             "New York Miscellaneous Reports": "Misc.", 
             "New York Miscellaneous Reports 2d": "Misc. 2d", 
             "New York Miscellaneous Reports 3d": "Misc. 3d", 
             "New York Reports": "N.Y.", 
             "New York Reports 2d": "N.Y.2d", 
             "New York Reports 3d": "N.Y.3d", 
+            "Paige\u2019s Chancery Reports": "Paige Ch.", 
+            "Sandford\u2019s Chancery Reports": "Sand. Ch.", 
+            "Saratoga Chancery Sentinel": "Sarat. Ch. Sent.", 
+            "Supreme Court Reports": "N.Y. Sup. Ct.", 
+            "Wendell\u2019s Reports": "Wend.", 
             "West\u2019s New York Supplement": "N.Y.S.", 
             "West\u2019s New York Supplement 2d": "N.Y.S.2d", 
-            "West\u2019s New York Supplement 3d": "N.Y.S.3d"
+            "West\u2019s New York Supplement 3d": "N.Y.S.3d", 
+            "Yates\u2019 Select Cases": "Yates Sel. Cas."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2315,8 +2475,37 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Anderson\u2019s Unreported Ohio Appellate Cases": "Ohio App. Unrep.", 
+            "Baldwin\u2019s Ohio Monthly Record": "Ohio Monthly Rec.", 
+            "Ohio Appellate Reports": "Ohio App.", 
+            "Ohio Appellate Reports 2d": "Ohio App. 2d", 
+            "Ohio Appellate Reports 3d": "Ohio App. 3d", 
+            "Ohio Bar Reports": "Ohio B.", 
+            "Ohio Circuit Court Decisions": "13-23 Ohio C.C. Dec.", 
+            "Ohio Circuit Court Reports": "Ohio C.C.", 
+            "Ohio Circuit Court Reports, New Series": "Ohio C.C. (n.s.)", 
+            "Ohio Circuit Decisions": "Ohio Cir. Dec.", 
+            "Ohio Courts of Appeals Reports": "Ohio Ct. App.", 
+            "Ohio Decisions": "Ohio Dec.", 
+            "Ohio Decisions, Reprint": "Ohio Dec. Reprint", 
+            "Ohio Department Reports": "Ohio Dep\u2019t", 
+            "Ohio Government Reports": "Ohio Gov\u2019t", 
+            "Ohio Law Abstract": "Ohio Law Abs.", 
+            "Ohio Law Bulletin": "Ohio L. Bull.", 
+            "Ohio Law Reporter": "Ohio L.R.", 
+            "Ohio Miscellaneous": "Ohio Misc.", 
+            "Ohio Miscellaneous 2d": "Ohio Misc. 2d", 
+            "Ohio Nisi Prius Reports": "Ohio N.P.", 
+            "Ohio Opinions": "Ohio Op.", 
+            "Ohio Opinions 2d": "Ohio Op. 2d", 
+            "Ohio Opinions 3d": "Ohio Op. 3d", 
             "Ohio Reports": "Ohio", 
-            "Ohio State Reports 3d": "Ohio St. 3d"
+            "Ohio State Reports": "Ohio St.", 
+            "Ohio State Reports 2d": "Ohio St. 2d", 
+            "Ohio State Reports 3d": "Ohio St. 3d", 
+            "Ohio Unreported Cases": "Ohio Unrep. Cas.", 
+            "Tappen\u2019s Reports": "Tapp. Rep.", 
+            "Wilcox\u2019s Condensed Reports": "Wilc. Cond. Rep."
         }, 
         "hereinafter": {}, 
         "institution-entire": {
@@ -2334,6 +2523,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Indian Territory Reports": "Indian Terr.", 
+            "Oklahoma Criminal Reports": "Okla. Crim.", 
             "Oklahoma Reports": "Okla."
         }, 
         "hereinafter": {}, 
@@ -2350,7 +2541,9 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Oregon Reports": "Or."
+            "Oregon Reports": "Or.", 
+            "Oregon Reports, Court of Appeals": "Or. App.", 
+            "Oregon Tax Reports": "Or. Tax"
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2369,6 +2562,11 @@
             "Pa. Commonwealth Ct.": "Pa. Commw.", 
             "Pa. Superior Ct.": "Pa. Super.", 
             "Pennsylvania Commonwealth Court Reports": "Pa. Commw.", 
+            "Pennsylvania County Court Reports": "Pa. C.", 
+            "Pennsylvania District Reports": "Pa. D.", 
+            "Pennsylvania District and County Reports": "Pa. D. & C", 
+            "Pennsylvania District and County Reports 2d": "Pa. D. & C.2d", 
+            "Pennsylvania District and County Reports 3d": "Pa. D. & C.3d", 
             "Pennsylvania State Reports": "Pa.", 
             "Pennsylvania Superior Court Reports": "Pa. Super."
         }, 
@@ -2386,8 +2584,12 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Decisiones de Puerto Rico": "P.R. Dec.", 
+            "Decisiones del Tribunal de Circuito de Apelaciones de Puerto Rico": "T.C.A.", 
+            "Official Translations of the Opinions of the Supreme Court of Puerto Rico": "P.R. Offic. Trans.", 
             "Puerto Rico": "P.R.", 
-            "Puerto Rico Reports": "P.R."
+            "Puerto Rico Reports": "P.R.", 
+            "Sentencias del Tribunal Supremo de Puerto Rico": "P.R. Sent."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2451,6 +2653,8 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Tennessee Appeals Reports": "Tenn. App.", 
+            "Tennessee Criminal Appeals Reports": "Tenn. Crim. App.", 
             "Tennessee Reports": "Tenn."
         }, 
         "hereinafter": {}, 
@@ -2467,7 +2671,18 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Texas Reports": "Tex."
+            "Condensed Reports of Decisions in Civil Causes in the Court of Appeals (White & Willson)": "White & W. Willson", 
+            "Condensed Reports of Decisions in Civil Causes in the Court of Appeals (Willson)": "White & W. Willson", 
+            "Dallam\u2019s Opinions": "Dallam", 
+            "Digest of the Laws of Texas": "Dallam", 
+            "Robards": "Robards", 
+            "Synopses of the Decisions of the Supreme Court of Texas Arising from Restraints by Conscript and Other Military Authorities": "Robards", 
+            "Texas Civil Appeals Reports": "Tex. Civ. App.", 
+            "Texas Court of Appeals Reports": "Tex. Ct. App.", 
+            "Texas Criminal Reports": "Tex. Crim.", 
+            "Texas Reports": "Tex.", 
+            "Texas Supreme Court Journal": "Tex. Sup. Ct. J.", 
+            "Texas Unreported Cases (Posey)": "Posey"
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2483,7 +2698,9 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "Utah Reports": "Utah"
+            "Utah Reports": "Utah", 
+            "Utah Reports 2d": "Utah 2d", 
+            "Vermont Reports": "Vt."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2499,8 +2716,25 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
+            "Virginia Circuit Court Opinions": "Va. Cir.", 
             "Virginia Court of Appeals Reports": "Va. App.", 
             "Virginia Reports": "Va."
+        }, 
+        "hereinafter": {}, 
+        "institution-entire": {}, 
+        "institution-part": {}, 
+        "nickname": {}, 
+        "number": {}, 
+        "place": {}, 
+        "title": {}, 
+        "title-phrase": {}
+    }, 
+    "us;vi": {
+        "classic": {}, 
+        "collection-title": {}, 
+        "container-phrase": {}, 
+        "container-title": {
+            "Virgin Islands Reports": "V.1."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
@@ -2576,7 +2810,7 @@
         "collection-title": {}, 
         "container-phrase": {}, 
         "container-title": {
-            "West Virginia Reports": "W.Va."
+            "West Virginia Reports": "W. Va."
         }, 
         "hereinafter": {}, 
         "institution-entire": {}, 
