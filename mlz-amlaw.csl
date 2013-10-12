@@ -94,7 +94,7 @@
         <multiple>supps.</multiple>
       </term>
       <term name="ibid">id.</term>
-      <term form="verb" name="interview">interview</term>
+      <term form="verb" name="interview">interview by</term>
       <term form="short" name="translator">trans.</term>
       
       <term name="ordinal">th</term>
@@ -492,30 +492,48 @@
       <text macro="wisconsin-supra-stub"/>
     </group>
   </macro>
+
+  <macro name="us-interview-author">
+    <choose>
+      <if type="interview">
+        <group delimiter=" ">
+          <choose>
+            <if match="all" variable="medium title">
+              <group delimiter=" ">
+                <text variable="medium"/>
+                <text form="verb" term="interview"/>
+              </group>
+            </if>
+            <else-if match="all" variable="medium">
+              <group delimiter=" ">
+                <text text-case="capitalize-first" variable="medium"/>
+                <text form="verb" term="interview"/>
+              </group>
+            </else-if>
+            <else-if match="all" variable="title">
+              <text form="verb" term="interview"/>
+            </else-if>
+            <else>
+              <text form="verb" term="interview" text-case="capitalize-first"/>
+            </else>
+          </choose>
+          <names variable="interviewer">
+            <name/>
+          </names>
+          <group delimiter=" ">
+            <text value="with"/>
+            <text macro="us-author"/>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
   
   <macro name="us-default-author">
     <group delimiter=" ">
       <choose>
-        <if type="interview">
-          <choose>
-            <if match="all" variable="genre interviewer">
-              <text text-case="title" variable="genre"/>
-            </if>
-            <else>
-              <text form="verb" term="interview"/>
-            </else>
-          </choose>
-          <group delimiter=" ">
-            <text term="by"/>
-            <names variable="interviewer">
-              <name/>
-            </names>
-          </group>
-          <text value="with"/>
-        </if>
-      </choose>
-      <choose>
-        <if match="any" type="book song">
+        <if type="interview"/>
+        <else-if match="any" type="book song">
           <choose>
             <if variable="version">
               <text macro="us-author"/>
@@ -524,7 +542,7 @@
               <text font-variant="small-caps" macro="us-author"/>
             </else>
           </choose>
-        </if>
+        </else-if>
         <else-if match="any" type="chapter">
           <choose>
             <if match="all" variable="author container-author">
@@ -790,6 +808,7 @@
           <condition type="post" variable="container-title URL" match="all"/>
           <condition type="post-weblog" variable="container-title URL" match="all"/>
           <condition type="webpage" variable="container-title URL" match="all"/>
+          <condition type="interview"/>
         </conditions>
         <choose>
           <if position="first" disambiguate="true" match="any">
@@ -882,7 +901,11 @@
               <text macro="us-issued-content"/>
             </group>
             <choose>
-              <if has-day="issued" type="report" match="all">
+              <if>
+                <conditions match="all">
+                  <condition has-day="issued" has-to-month-or-season="issued" match="any"/>
+                  <condition type="report"/>
+                </conditions>
                 <date form="text" variable="issued" date-parts="year-month-day"/>
               </if>
             </choose>
@@ -966,7 +989,12 @@
           </group>
         </group>
         <choose>
-          <if match="all" type="report" has-day="issued"/>
+          <if>
+            <conditions match="all">
+              <condition has-day="issued" has-to-month-or-season="issued" match="any"/>
+              <condition type="report"/>
+            </conditions> 
+          </if>
           <else-if variable="locator-revision" match="none">
             <text macro="us-issued-date"/>
           </else-if>
@@ -2379,6 +2407,7 @@
                 <text macro="amlaw-title"/>
               </if>
             </choose>
+            <text macro="us-interview-author"/>
             <text macro="us-collection-title-podcast"/>
             <text macro="opus-number"/>
             <text macro="us-default-presentation-description"/>
