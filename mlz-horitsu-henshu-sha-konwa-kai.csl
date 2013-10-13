@@ -193,25 +193,44 @@
     </choose>
   </macro>
   <macro name="hhkk-secondary-subsequent">
-    <group delimiter="・">
-      <text macro="hhkk-author-first"/>
-      <group delimiter=" ">
-        <text value="前掲注"/>
-        <text variable="first-reference-note-number" prefix="(" suffix=")"/>
-      </group>
-    </group>
-    <text macro="hhkk-title"/>
-    <group>
-      <number variable="locator"/>
-      <label variable="locator"/>
-    </group>
+    <choose>
+      <if type="legal_case legislation regulation gazette">
+        <text macro="hhkk-secondary-first"/>
+      </if>
+      <else>
+        <group delimiter="・">
+          <text macro="hhkk-author-first"/>
+          <group delimiter=" ">
+            <text value="前掲注"/>
+            <text variable="first-reference-note-number" prefix="(" suffix=")"/>
+          </group>
+        </group>
+        <text macro="hhkk-title"/>
+        <group>
+          <number variable="locator"/>
+          <label variable="locator"/>
+        </group>
+      </else>
+    </choose>
   </macro>
   <citation et-al-min="3">
     <layout>
       <choose>
-        <if position="subsequent">
-          <text macro="hhkk-secondary-subsequent"/>
+        <if position="ibid-with-locator">
+          <group delimiter=" ">
+            <text value="同"/>
+            <group>
+              <text variable="locator"/>
+              <label variable="locator"/>
+            </group>
+          </group>
         </if>
+        <else-if position="ibid">
+          <text value="同上"/>
+        </else-if>
+        <else-if position="subsequent">
+          <text macro="hhkk-secondary-subsequent"/>
+        </else-if>
         <else>
           <text macro="hhkk-secondary-first"/>
         </else>
