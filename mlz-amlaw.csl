@@ -692,7 +692,7 @@
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="all"/>
-          <condition disambiguate="true" position="first" match="any"/>
+          <condition disambiguate="true" position="first" context="bibliography" match="any"/>
           <condition is-numeric="version" match="all"/>
         </conditions>
         <group delimiter=", ">
@@ -708,7 +708,7 @@
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="all"/>
-          <condition disambiguate="true" position="first" match="any"/>
+          <condition disambiguate="true" position="first" context="bibliography" match="any"/>
           <condition is-numeric="version" match="none"/>
         </conditions>
         <group delimiter=", ">
@@ -725,7 +725,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
               <condition variable="author container-author" match="none"/>
             </conditions>
             <text form="short" text-case="title" variable="title"/>
@@ -753,7 +753,7 @@
           </else-if>
           <else-if>
             <conditions match="any">
-              <condition position="first" match="any"/>
+              <condition position="first" context="bibliography" match="any"/>
               <condition disambiguate="true" match="any"/>
               <condition variable="author composer" match="none"/>
             </conditions>
@@ -770,7 +770,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
               <condition variable="author" match="none"/>
             </conditions>
             <group delimiter=" ">
@@ -786,7 +786,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
             </conditions>
             <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
           </if>
@@ -811,7 +811,7 @@
           <condition type="interview"/>
         </conditions>
         <choose>
-          <if position="first" disambiguate="true" match="any">
+          <if position="first" context="bibliography" disambiguate="true" match="any">
             <text font-style="italic" form="short" variable="title"/>
           </if>
         </choose>
@@ -832,7 +832,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
               <condition variable="author container-author" match="none"/>
             </conditions>
             <text font-style="italic" form="short" text-case="title" variable="title"/>
@@ -851,7 +851,7 @@
       </else-if>
       <else-if type="legal_case">
         <choose>
-          <if position="first">
+          <if position="first" context="bibliography" match="any">
             <text form="short" variable="title"/>
           </if>
           <else-if variable="title-short">
@@ -864,7 +864,7 @@
       </else-if>
       <else-if>
         <conditions match="any">
-          <condition position="first" disambiguate="true" match="any"/>
+          <condition position="first" context="bibliography" disambiguate="true" match="any"/>
           <condition variable="author container-author" match="none"/> 
         </conditions>
         <choose>
@@ -2611,7 +2611,7 @@
         <else-if position="ibid">
           <text font-style="italic" term="ibid"/>
         </else-if>
-        <else-if match="none" position="first" type="classic">
+        <else-if match="none" position="first" context="bibliography" type="classic">
           <text macro="wisconsin-secondary-subsequent"/>
         </else-if>
         <else>
@@ -2628,12 +2628,9 @@
     </sort>
     <layout suffix=".">
       <choose>
-        <if type="periodical">
-          <text macro="wisconsin-secondary-first"/>
-        </if>
-        <else-if match="any" type="treaty" variable="jurisdiction">
+        <if match="any" type="treaty legal_case legislation gazette regulation" variable="jurisdiction">
           <text macro="jurisdiction-filter"/>
-        </else-if>
+        </if>
         <else>
           <text macro="wisconsin-secondary-first"/>
         </else>
