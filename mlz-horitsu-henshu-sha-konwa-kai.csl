@@ -18,6 +18,13 @@
     <updated>2010-04-24T04:49:00+09:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
+  <locale>
+    <date form="imperial">
+      <date-part form="imperial" name="year" suffix="年"/>
+      <date-part form="numeric" name="month" suffix="月"/>
+      <date-part form="numeric" name="day" suffix="日"/>
+    </date>
+  </locale>
   <locale xml:lang="en">
     <terms>
       <term form="long" name="rule">rule</term>
