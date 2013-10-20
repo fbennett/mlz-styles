@@ -9,7 +9,11 @@
       <name>Frank Bennett</name>
       <email>biercenator@gmail.com</email>
     </author>
-    <summary>A style for Japanese legal publishing compiled by the Japan Legal Editors Group.</summary>
+    <summary>
+      The style of the Nagoya University Journal of Law and Politics, based
+      on Chicago Full Note and the style for Japanese legal publishing
+      compiled by the Japan Legal Editors Group.
+    </summary>
     <category field="law"/>
     <category citation-format="note"/>
     <updated>2010-04-24T04:49:00+09:00</updated>
@@ -213,8 +217,16 @@
       </else>
     </choose>
   </macro>
-  <citation et-al-min="3">
-    <layout>
+  <macro name="hhkk-ibid">
+    <choose>
+    </choose>
+  </macro>
+  <macro name="legal-types-filter"/>
+  <macro name="ibid-with-locator"/>
+  <macro name="cms-secondary-subsequent"/>
+  <macro name="cms-secondary-first"/>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-names="true">
+    <layout locale="zh ja kr" delimiter="。" suffix="。">
       <choose>
         <if position="ibid-with-locator">
           <group delimiter=" ">
@@ -233,6 +245,33 @@
         </else-if>
         <else>
           <text macro="hhkk-secondary-first"/>
+        </else>
+      </choose>
+    </layout>
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if>
+          <conditions match="any">
+            <condition match="any" type="treaty legal_case regulation legislation bill hearing gazette patent"/>
+            <condition match="all" type="report" variable="jurisdiction"/>
+          </conditions>
+          <text macro="legal-types-filter"/>
+        </if>
+        <else-if position="ibid-with-locator">
+          <text macro="ibid-with-locator"/>
+        </else-if>
+        <else-if position="ibid">
+          <text term="ibid"/>
+        </else-if>
+        <else-if>
+          <conditions match="all">
+            <condition position="subsequent" match="all"/>
+            <condition type="classic" match="none"/>
+          </conditions>
+          <text macro="cms-secondary-subsequent"/>
+        </else-if>
+        <else>
+          <text macro="cms-secondary-first"/>
         </else>
       </choose>
     </layout>
