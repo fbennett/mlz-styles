@@ -1,4 +1,4 @@
-<style xmlns="http://purl.org/net/xbiblio/csl" class="note" default-locale="ja-x-translit-ja-hrkt" version="1.1mlz1" year-range-format="expanded">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.1mlz1" year-range-format="expanded">
   <info>
     <title>MLZ 法律編集者懇話会</title>
     <id>http://citationstylist.org/styles/mlz-horitsu-henshu-sha-konwa-kai</id>
@@ -18,8 +18,70 @@
     <updated>2010-04-24T04:49:00+09:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="rule" form="long">rule</term>
+      <term name="rule" form="short">r.</term>
+      <term name="presented at">presented at</term>
+      <term name="article">article</term>
+      <term name="director">director</term>
+      <term form="verb" name="director">directed by</term>
+      <term form="verb-short" name="director">dir.</term>
+      <term form="short" name="director">dir.</term>
+      <term form="long" name="article">
+        <single>article</single>
+        <multiple>articles</multiple>
+      </term>
+      <term form="short" name="article">
+        <single>art.</single>
+        <multiple>arts.</multiple>
+      </term>
+      <term form="long" name="Section">
+        <single>section</single>
+        <multiple>sections</multiple>
+      </term>
+      <term form="short" name="Section">
+        <single>sec.</single>
+        <multiple>secs.</multiple>
+      </term>
+      <term form="long" name="Chapter">
+        <single>chapter</single>
+        <multiple>chapters</multiple>
+      </term>
+      <term form="short" name="Chapter">
+        <single>ch.</single>
+        <multiple>chs.</multiple>
+      </term>
+      <term form="symbol" name="Chapter">
+        <single>c.</single>
+        <multiple>cc.</multiple>
+      </term>
+      <term name="title">title</term>
+      <term form="short" name="title">tit.</term>
+      <term form="short" name="section">sec.</term>
+      <term form="symbol" name="section">
+        <single>&#167;</single>
+        <multiple>&#167;&#167;</multiple>
+      </term>
+      <term form="verb-short" name="editortranslator">
+        <single>trans. and ed.</single>
+        <multiple>trans. and ed.</multiple>
+      </term>
+
+      <term name="director" form="verb-short">dir.</term>
+      <term name="editor" form="verb-short">ed.</term>
+      <term name="editorial-director" form="verb-short">ed.</term>
+      <term name="illustrator" form="verb-short">illus.</term>
+      <term name="translator" form="verb-short">trans.</term>
+      <term name="editortranslator" form="verb-short">ed. &amp; trans.</term>
+
+      <term form="verb" name="editortranslator">
+        <single> Translated and edited by</single>
+        <multiple> Translated and edited by</multiple>
+      </term>
+    </terms>
+  </locale>
   <locale xml:lang="ja">
-    <style-options skip-words="but or yet so for and nor a an the at by from in into of on to with up down as via onto over till is this that within"/>
     <terms>
       <term name="page">頁</term>
       <term name="et-al">ほか</term>
@@ -42,6 +104,7 @@
         <conditions match="any">
           <condition variable="container-title"/>
           <condition match="all" variable="volume-title collection-title"/>
+          <condition type="legislation regulation gazette"/>
         </conditions>
         <text prefix="「" suffix="」" variable="title"/>
       </else-if>
@@ -94,6 +157,11 @@
   <macro name="hhkk-secondary-first">
     <text macro="hhkk-author-first"/>
     <choose>
+      <if type="legislation regulation gazette">
+        <text macro="hhkk-title"/>
+      </if>
+    </choose>
+    <choose>
       <if type="legal_case legislation regulation gazette">
         <choose>
           <if subjurisdictions="1">
@@ -106,7 +174,14 @@
             </names>
           </else>
         </choose>
-        <date date-parts="year-month-day" form="imperial" variable="issued"/>
+        <choose>
+          <if jurisdiction="jp">
+            <date date-parts="year-month-day" form="imperial" variable="issued"/>
+          </if>
+          <else>
+            <date date-parts="year-month-day" form="text" variable="issued"/>
+          </else>
+        </choose>
         <text macro="hhkk-volume-chain"/>
       </if>
       <else-if type="book chapter">
