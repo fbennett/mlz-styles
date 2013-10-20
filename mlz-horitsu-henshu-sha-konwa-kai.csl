@@ -1,6 +1,6 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="note" default-locale="ja-x-translit-ja-hrkt" version="1.1mlz1" year-range-format="expanded">
   <info>
-    <title>MLZ &#27861;&#24459;&#32232;&#38598;&#32773;&#25031;&#35441;&#20250;</title>
+    <title>MLZ 法律編集者懇話会</title>
     <id>http://citationstylist.org/styles/mlz-horitsu-henshu-sha-konwa-kai</id>
     <link href="http://citationstylist.org/uploads/mlz-horitsu-henshu-sha-konwa-kai" rel="self"/>
     <link href="http://www.houkyouikushien.or.jp/katsudo/pdf/horitsu.pdf" rel="documentation"/>
@@ -18,41 +18,41 @@
     <updated>2010-04-24T04:49:00+09:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
-  <locale>
+  <locale xml:lang="ja">
     <style-options skip-words="but or yet so for and nor a an the at by from in into of on to with up down as via onto over till is this that within"/>
     <terms>
-      <term name="page">&#38913;</term>
-      <term name="et-al">&#12411;&#12363;</term>
-      <term name="editor">&#32232;</term>
-      <term name="volume">&#24059;</term>
-      <term name="issue">&#21495;</term>
+      <term name="page">頁</term>
+      <term name="et-al">ほか</term>
+      <term name="editor">編</term>
+      <term name="volume">巻</term>
+      <term name="issue">号</term>
     </terms>
     <date form="imperial">
-      <date-part form="imperial" name="year" suffix="&#24180;"/>
-      <date-part form="numeric" name="month" suffix="&#26376;"/>
-      <date-part form="numeric" name="day" suffix="&#26085;"/>
+      <date-part form="imperial" name="year" suffix="年"/>
+      <date-part form="numeric" name="month" suffix="月"/>
+      <date-part form="numeric" name="day" suffix="日"/>
     </date>
   </locale>
   <macro name="hhkk-title">
     <choose>
       <if match="all" type="article-journal" variable="jurisdiction">
-        <text prefix="&#12300;" suffix="&#12301;" value="&#21028;&#25209;"/>
+        <text prefix="「" suffix="」" value="判批"/>
       </if>
       <else-if>
         <conditions match="any">
           <condition variable="container-title"/>
           <condition match="all" variable="volume-title collection-title"/>
         </conditions>
-        <text prefix="&#12300;" suffix="&#12301;" variable="title"/>
+        <text prefix="「" suffix="」" variable="title"/>
       </else-if>
       <else-if match="none" variable="container-title volume-title collection-title">
-        <group delimiter=" " prefix="&#12302;" suffix="&#12303;">
+        <group delimiter=" " prefix="『" suffix="』">
           <text variable="title"/>
           <number prefix="(" suffix=")" variable="volume"/>
         </group>
       </else-if>
       <else>
-        <text prefix="&#12302;" suffix="&#12303;" variable="title"/>
+        <text prefix="『" suffix="』" variable="title"/>
       </else>
     </choose>
   </macro>
@@ -72,7 +72,7 @@
         <label variable="page"/>
       </group>
     </group>
-    <group prefix="&#12308;" suffix="&#12309;">
+    <group prefix="〔" suffix="〕">
       <text variable="locator"/>
       <label variable="locator"/>
     </group>
@@ -113,17 +113,17 @@
         <text macro="hhkk-title"/>
         <choose>
           <if match="any" variable="container-title volume-title collection-title">
-            <names delimiter="&#12289;" variable="container-author editor recipient">
+            <names delimiter="、" variable="container-author editor recipient">
               <name/>
               <label/>
             </names>
             <choose>
               <if variable="recipient">
-                <text value="&#20808;&#29983;"/>
+                <text value="先生"/>
                 <number variable="edition"/>
               </if>
             </choose>
-            <group delimiter=" " prefix="&#12302;" suffix="&#12303;">
+            <group delimiter=" " prefix="『" suffix="』">
               <text variable="container-title"/>
               <choose>
                 <if match="none" variable="volume-title collection-title">
@@ -133,7 +133,7 @@
             </group>
           </if>
         </choose>
-        <group prefix="&#12302;" suffix="&#12303;">
+        <group prefix="『" suffix="』">
           <choose>
             <if match="all" variable="volume-title collection-title collection-number">
               <text variable="collection-title"/>
@@ -142,7 +142,7 @@
             </if>
             <else-if match="any" variable="volume-title collection-title">
               <group delimiter=" ">
-                <group delimiter="&#12539;">
+                <group delimiter="・">
                   <text variable="collection-title"/>
                   <text variable="volume-title"/>
                 </group>
@@ -157,26 +157,26 @@
         </group>
         <choose>
           <if match="none" variable="title">
-            <names prefix="&#12308;" suffix="&#12309;" variable="author editor">
+            <names prefix="〔" suffix="〕" variable="author editor">
               <name form="short"/>
               <label/>
             </names>
           </if>
           <else-if match="none" variable="container-title volume-title collection-title">
-            <names prefix="&#12308;" suffix="&#12309;" variable="author editor">
+            <names prefix="〔" suffix="〕" variable="author editor">
               <name/>
               <label/>
             </names>
           </else-if>
         </choose>
-        <group delimiter="&#12289;" prefix="&#65288;" suffix="&#65289;">
+        <group delimiter="、" prefix="（" suffix="）">
           <text variable="publisher"/>
           <group>
             <choose>
               <if match="none" variable="recipient">
-                <text value="&#31532;"/>
+                <text value="第"/>
                 <number variable="edition"/>
-                <text value="&#29256;"/>
+                <text value="版"/>
               </if>
             </choose>
           </group>
@@ -188,7 +188,7 @@
           <group delimiter=" ">
             <group>
               <text macro="hhkk-volume-chain"/>
-              <text prefix="&#12308;" suffix="&#12309;" variable="event-place"/>
+              <text prefix="〔" suffix="〕" variable="event-place"/>
             </group>
             <date date-parts="year" form="text" prefix="(" suffix=")" variable="issued"/>
           </group>
@@ -201,10 +201,10 @@
         <text macro="hhkk-secondary-first"/>
       </if>
       <else>
-        <group delimiter="&#12539;">
+        <group delimiter="・">
           <text macro="hhkk-author-first"/>
           <group delimiter=" ">
-            <text value="&#21069;&#25522;&#27880;"/>
+            <text value="前掲注"/>
             <text prefix="(" suffix=")" variable="first-reference-note-number"/>
           </group>
         </group>
@@ -288,7 +288,7 @@
         <if disambiguate="true">
           <names variable="author">
             <name/>
-            <institution and="none" delimiter="&#8211;" institution-parts="short"/>
+            <institution and="none" delimiter="–" institution-parts="short"/>
           </names>
         </if>
       </choose>
@@ -2741,11 +2741,11 @@
     </group>
   </macro>
   <citation disambiguate-add-names="true" et-al-min="3" et-al-use-first="1">
-    <layout delimiter="&#12290;" locale="zh ja kr" suffix="&#12290;">
+    <layout delimiter="。" locale="zh ja kr" suffix="。">
       <choose>
         <if position="ibid-with-locator">
           <group delimiter=" ">
-            <text value="&#21516;"/>
+            <text value="同"/>
             <group>
               <text variable="locator"/>
               <label variable="locator"/>
@@ -2753,7 +2753,7 @@
           </group>
         </if>
         <else-if position="ibid">
-          <text value="&#21516;&#19978;"/>
+          <text value="同上"/>
         </else-if>
         <else-if position="subsequent">
           <text macro="hhkk-secondary-subsequent"/>
@@ -2797,3 +2797,4 @@
     </layout>
   </bibliography>
 </style>
+
