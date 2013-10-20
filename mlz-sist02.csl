@@ -355,6 +355,50 @@
       <institution use-first="1" use-last="1" reverse-order="true"/>
     </names>
   </macro>
+  <macro name="sist02-patent">
+    <group delimiter=". ">
+      <text variable="title"/>
+      <group delimiter=". ">
+        <group delimiter=", ">
+          <choose>
+            <if jurisdiction="jp">
+              <group>
+                <text value="特開"/>
+                <number variable="publication-number"/>
+              </group>
+            </if>
+            <else-if variable="publication-number">
+              <group delimiter=" ">
+                <text form="short" variable="jurisdiction"/>
+                <text value="Patent Pub."/>
+                <number variable="publication-number"/>
+              </group>
+            </else-if>
+          </choose>
+        </group>
+        <date date-parts="year-month-day" form="numeric" variable="publication-date"/>
+        <group delimiter=", ">
+          <choose>
+            <if jurisdiction="jp">
+              <group>
+                <text value="特許第"/>
+                <text variable="number"/>
+                <text value="号"/>
+              </group>
+            </if>
+            <else>
+              <group delimiter=" ">
+                <text form="short" variable="jurisdiction"/>
+                <text value="Patent"/>
+                <text variable="number"/>
+              </group>
+            </else>
+          </choose>
+        </group>
+        <date date-parts="year-month-day" form="numeric" variable="issued"/>
+      </group>
+    </group>
+  </macro>
   <macro name="biblio">
       <group delimiter=". ">
         <group delimiter=". ">
@@ -452,44 +496,7 @@
               <text macro="issued"/>
             </else-if>
             <else-if type="patent">
-              <text macro="title"/>
-              <group delimiter=", ">
-                <choose>
-                  <if jurisdiction="jp">
-                    <group>
-                      <text value="特開"/>
-                      <number variable="publication-number"/>
-                    </group>
-                  </if>
-                  <else-if variable="publication-number">
-                    <group delimiter=" ">
-                      <text variable="jurisdiction" form="short"/>
-                      <text value="Patent Pub."/>
-                      <number variable="publication-number"/>
-                    </group>
-                  </else-if>
-                </choose>
-              </group>
-              <date variable="publication-date" form="numeric" date-parts="year-month-day"/>
-              <group delimiter=", ">
-                <choose>
-                  <if jurisdiction="jp">
-                    <group>
-                      <text value="特許第"/>
-                      <text variable="number"/>
-                      <text value="号"/>
-                    </group>
-                  </if>
-                  <else>
-                    <group delimiter=" ">
-                      <text variable="jurisdiction" form="short"/>
-                      <text value="Patent"/>
-                      <text variable="number"/>
-                    </group>
-                  </else>
-                </choose>
-              </group>
-              <text macro="issued"/>
+              <text macro="sist02-patent"/>
             </else-if>
             <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
               <group delimiter=", ">
