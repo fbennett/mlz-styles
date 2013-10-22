@@ -1,4 +1,4 @@
-<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.1mlz1" year-range-format="expanded">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.1mlz1" year-range-format="expanded">
   <info>
     <title>MLZ 法律編集者懇話会</title>
     <id>http://citationstylist.org/styles/mlz-horitsu-henshu-sha-konwa-kai</id>
@@ -111,6 +111,8 @@
         <conditions match="any">
           <condition variable="container-title"/>
           <condition match="all" variable="volume-title collection-title"/>
+          <condition match="all" variable="collection-number collection-title"/>
+          <condition match="all" variable="volume collection-title"/>
           <condition type="legislation regulation gazette"/>
         </conditions>
         <text prefix="「" suffix="」" variable="title"/>
@@ -2870,7 +2872,7 @@
     </group>
   </macro>
   <citation disambiguate-add-names="true" et-al-min="3" et-al-use-first="1">
-    <layout delimiter="。" locale="zh ja kr" suffix="。">
+    <layout delimiter="。" locale="ja zh kr" suffix="。">
       <choose>
         <if position="ibid-with-locator">
           <group delimiter=" ">

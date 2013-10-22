@@ -1026,7 +1026,7 @@
           <choose>
             <if match="all" position="subsequent" type="periodical"/>
             <else>
-                <text macro="publisher"/>
+              <text macro="publisher"/>
             </else>
           </choose>
           <text variable="locator-revision"/>
@@ -1115,17 +1115,17 @@
       </choose>
       <choose>
         <if match="none" type="legal_case">
-		  <choose>
-			<if variable="URL">
-			  <group delimiter=" ">
-				<text variable="URL"/>
-				<group delimiter=" " prefix="(" suffix=")">
-				  <text term="accessed"/>
-				  <date date-parts="year-month-day" form="text" variable="accessed"/>
-				</group>
-			  </group>
-			</if>
-		  </choose>
+          <choose>
+            <if variable="URL">
+              <group delimiter=" ">
+                <text variable="URL"/>
+                <group delimiter=" " prefix="(" suffix=")">
+                  <text term="accessed"/>
+                  <date date-parts="year-month-day" form="text" variable="accessed"/>
+                </group>
+              </group>
+            </if>
+          </choose>
         </if>
       </choose>
     </group>
@@ -2999,29 +2999,6 @@
     </group>
   </macro>
 
-  <macro name="item-type-key">
-    <choose>
-      <if type="legislation regulation gazette">
-        <text value="1"/>
-      </if>
-      <else-if type="legal_case">
-        <text value="2"/>
-      </else-if>
-      <else-if type="report">
-        <text value="5"/>
-      </else-if>
-      <else-if type="book chapter">
-        <text value="3"/>
-      </else-if>
-      <else-if type="article-journal">
-        <text value="4"/>
-      </else-if>
-      <else>
-        <text value="6"/>        
-      </else>
-    </choose>
-  </macro>
-
   <citation disambiguate-add-names="true" et-al-min="4" et-al-use-first="1">
     <layout delimiter="; " suffix=".">
       <choose>
@@ -3049,7 +3026,6 @@
   </citation>
   <bibliography entry-spacing="0" et-al-min="11" et-al-use-first="7" hanging-indent="true" subsequent-author-substitute="&#8212;&#8212;&#8212;">
     <sort>
-      <key macro="item-type-key"/>
       <key macro="contributors-sort"/>
       <key variable="title"/>
       <key variable="genre"/>
