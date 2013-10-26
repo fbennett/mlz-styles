@@ -2667,7 +2667,7 @@
           <group delimiter=" ">
             <text variable="genre" form="short"/>
             <date variable="submitted" form="text" date-parts="year"/>
-            <number variable="call-number" prefix="(" suffix=")"/>
+            <text variable="call-number" prefix="(" suffix=")"/>
             <group delimiter=" ">
               <text value="no."/>
               <text variable="number"/>

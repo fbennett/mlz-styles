@@ -1391,7 +1391,7 @@
           <group delimiter=" ">
             <text form="short" variable="genre"/>
             <date date-parts="year" form="text" variable="submitted"/>
-            <number prefix="(" suffix=")" variable="call-number"/>
+            <text prefix="(" suffix=")" variable="call-number"/>
             <group delimiter=" ">
               <text value="no."/>
               <text variable="number"/>
