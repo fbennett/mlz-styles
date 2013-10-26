@@ -3370,7 +3370,7 @@
         </group>
         <choose>
           <if type="patent">
-            <text variable="number" prefix="中華民國專利第" suffix="號"/>
+            <number variable="number" prefix="中華民國專利第" suffix="號"/>
           </if>
         </choose>
         <text macro="std-locator-zh"/>
