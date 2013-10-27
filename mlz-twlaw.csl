@@ -3650,18 +3650,10 @@
 
   </macro>
 
-
-
-  <!-- macro for bibliography sorting -->
-  <!-- XXX Discrete keys for each element would be better -->
-  <!-- XXX Can use cs:substitute to render title in name slot when title is absent -->
-
-  <macro name="bib-sort-key">
-
+  <macro name="bib-sort-key-author">
     <choose>
       <if locale="zh">
         <text macro="tw-author"/>
-        <text macro="tw-default-title"/>
       </if>
       <else>
         <choose>
@@ -3672,12 +3664,19 @@
             <text macro="us-default-author-bib"/>
           </else>
         </choose>
+      </else>
+    </choose>
+  </macro>
+  <macro name="bib-sort-key-title">
+    <choose>
+      <if locale="zh">
+        <text macro="tw-default-title"/>
+      </if>
+      <else>
         <text variable="title"/>
       </else>
     </choose>
   </macro>
-
-
 
   <citation disambiguate-add-givenname="true" et-al-min="3" et-al-use-first="1" near-note-distance="5">
 
@@ -3725,7 +3724,8 @@
   </citation>
   <bibliography hanging-indent="true" et-al-min="5" et-al-use-first="4" subsequent-author-substitute="———">
     <sort>
-      <key macro="bib-sort-key"/>
+      <key macro="bib-sort-key-author"/>
+      <key macro="bib-sort-key-title"/>
       <key variable="issued"/>
     </sort>
 
