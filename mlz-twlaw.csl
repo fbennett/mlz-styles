@@ -3063,7 +3063,7 @@
           <text form="verb" term="interview"/>
         </group>
       </else-if>
-      <else-if type="letter">
+      <else-if type="personal_communication">
         <group delimiter="">
           <names variable="author">
             <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
@@ -3184,8 +3184,8 @@
               <else>
                 <text variable="title" prefix="《" suffix="》"/>
               </else>
-              <names variable="composer" prefix="【" suffix="】"/>
             </choose>
+            <names variable="composer" prefix="【" suffix="】"/>
           </else-if>
           <else-if type="article-journal article-newspaper article-magazine chapter entry-encyclopedia entry-dictionary post webpage" match="any">
             <text variable="title" prefix="〈" suffix="〉"/>
