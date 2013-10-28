@@ -25,7 +25,7 @@
     	probably need to tweak the style for best results.</summary>
     <category field="law"/>
     <category citation-format="note"/>
-    <updated>2013-10-23T01:23:00+08:00</updated>
+    <updated>2013-10-29T00:49:00+08:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
 
@@ -34,6 +34,7 @@
       <term name="et-al">等</term>
       <term name="retrieved">取自於</term>
       <term name="in">收錄於</term>
+      <term form="symbol" name="and">、</term>
       <term name="and">與</term>
       <term form="short" name="editor">編</term>
       <term form="short" name="translator">譯</term>
@@ -3011,39 +3012,106 @@
 
   <macro name="tw-author">
     <choose>
-      <if type="interview broadcast" match="none">
-        <choose>
-          <if variable="translator">
-            <group delimiter="，">
-              <names variable="author" suffix="著">
-                <name and="symbol" delimiter=", " delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-                <substitute>
-                  <names variable="container-author"/>
-                </substitute>
-              </names>
-              <names variable="translator" suffix="譯">
-                <name delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-              </names>
-            </group>
-          </if>
-          <else>
-            <group delimiter=" ">
-              <names variable="author">
-                <name delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-                <substitute>
-                  <names variable="container-author"/>
-                  <names variable="composer"/>
-                </substitute>
-              </names>
-              <choose>
-                <if type="video motion_picture">
-                  <text term="director" prefix="(" suffix=")"/>
-                </if>
-              </choose>
-            </group>
-          </else>
-        </choose>
+      <if type="patent">
+        <group delimiter="；">
+          <names variable="author" suffix=" (發明人)">
+            <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+          </names>
+          <choose>
+            <if context="bibliography">
+              <names variable="recipient" suffix=" (專利權人)"/>
+            </if>
+          </choose>
+        </group>
       </if>
+      <else-if match="all" type="bill" variable="author">
+        <names variable="author" suffix="版"/>
+        <text variable="title" prefix="「" suffix="」"/>
+      </else-if>
+      <else-if type="bill hearing legislation legal_case regulation treaty">
+          <text variable="title"/>
+      </else-if>
+      <else-if type="broadcast">
+          <text variable="genre"/>
+          <group delimiter="：">
+            <group>
+              <text variable="container-title" prefix="《" suffix="》"/>
+              <number variable="number" prefix="第" suffix="集"/>
+            </group>
+            <text variable="title"/>
+          </group>
+      </else-if>
+      <else-if type="motion_picture">
+          <group delimiter="：">
+            <text value="電影"/>
+            <text variable="title" prefix="《" suffix="》"/>
+          </group>
+      </else-if>
+      <else-if type="video">
+          <group delimiter="：">
+            <text variable="medium"/>
+            <text variable="title"/>
+          </group>
+      </else-if>
+      <else-if type="interview">
+        <group delimiter="">
+          <names variable="author">
+            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
+            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
+          </names>
+          <text variable="medium"/>
+          <text form="verb" term="interview"/>
+        </group>
+      </else-if>
+      <else-if type="letter">
+        <group delimiter="">
+          <names variable="author">
+            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
+            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
+          </names>
+          <names variable="recipient" prefix="致">
+            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
+            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
+          </names>
+          <text value="書信"/>
+        </group>
+      </else-if>
+      <else-if type="personal_communication">
+        <group delimiter="">
+          <names variable="author">
+            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
+            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
+          </names>
+          <names variable="recipient" prefix="致">
+            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
+            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
+          </names>
+          <text variable="genre"/>
+        </group>
+      </else-if>
+      <else-if variable="translator">
+        <group delimiter="，">
+          <names variable="author" suffix="著">
+            <name and="symbol" delimiter=", " delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+            <substitute>
+              <names variable="container-author"/>
+            </substitute>
+          </names>
+          <names variable="translator" suffix="譯">
+            <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+          </names>
+        </group>
+      </else-if>
+      <else>
+        <names variable="author">
+          <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+          <substitute>
+            <names variable="container-author"/>
+            <names variable="composer"/>
+            <text variable="title"/>
+          </substitute>
+        </names>
+      </else>
     </choose>
   </macro>
 
@@ -3064,69 +3132,68 @@
 
   <macro name="tw-default-title">
     <choose>
-      <if type="book song motion_picture report">
-        <choose>
-          <!-- version check for computer program (type book) only -->
-          <if match="all" variable="title version">
-            <group delimiter=", ">
-              <text variable="title" font-variant="small-caps" prefix="《" suffix="》"/>
-              <choose>
-                <if disambiguate="true">
-                  <text macro="tw-title-version"/>
-                </if>
-                <else-if position="subsequent"/>
-                <else>
-                  <text macro="tw-title-version"/>
-                </else>
-              </choose>
-            </group>
-          </if>
-          <else-if variable="container-title">
-            <group>
-              <text text-case="title" variable="title"/>
-              <names prefix="【" suffix="】" variable="composer"/>
-            </group>
-          </else-if>
-          <else>
-            <text variable="title" prefix="《" suffix="》"/>
-          </else>
-        </choose>
+      <!-- group 1, items having "used up" their "title" in "tw-author" -->
+      <if>
+        <conditions match="any">
+          <condition type="bill broadcast video motion_picture legislation legal_case regulation treaty" match="any"/>
+          <condition variable="author container-author composer translator" match="none"/>
+        </conditions>
       </if>
-      <else-if type="interview">
-        <group delimiter="">
-          <names variable="author">
-            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
-            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
-          </names>
-          <text variable="medium"/>
-          <text form="verb" term="interview"/>
-        </group>
-      </else-if>
-      <else-if match="any" type="broadcast video">
-        <choose>
-          <if match="all" variable="container-title publisher">
-            <group delimiter=": ">
-              <text variable="container-title"/>
-              <text variable="title"/>
-            </group>
-          </if>
-          <else>
-            <text variable="title"/>
-          </else>
-        </choose>
-      </else-if>
-      <else-if type="entry-encyclopedia entry-dictionary" match="any">
+      <else-if type="hearing">
         <choose>
           <if variable="author">
-            <text variable="title"/>
+            <names variable="author" suffix="發言紀錄">
+              <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+            </names>
           </if>
+          <else>
+            <text value="會議紀錄"/>
+          </else>
         </choose>
       </else-if>
-      <else-if type="article-journal article-newspaper article-magazine chapter post webpage" match="any">
-        <text variable="title" font-variant="small-caps" prefix="〈" suffix="〉"/>
-      </else-if>
+
+      <!-- group 2, others -->
       <else>
-        <text variable="title"/>
+        <choose>
+          <if type="patent">
+            <group delimiter="，">
+              <text variable="title"/>
+              <number variable="number" prefix="中華民國專利第" suffix="號"/>
+            </group>
+              </if>
+          <else-if type="book song report">
+            <choose>
+              <!-- version check for computer program (type book) only -->
+              <if match="all" variable="title version">
+                <group delimiter=", ">
+                  <text variable="title" prefix="《" suffix="》"/>
+                  <choose>
+                    <if disambiguate="true">
+                      <text macro="tw-title-version"/>
+                    </if>
+                    <else-if position="subsequent"/>
+                    <else>
+                      <text macro="tw-title-version"/>
+                    </else>
+                  </choose>
+                </group>
+              </if>
+              <else-if variable="container-title">
+                  <text variable="title" prefix="〈" suffix="〉"/>
+              </else-if>
+              <else>
+                <text variable="title" prefix="《" suffix="》"/>
+              </else>
+              <names variable="composer" prefix="【" suffix="】"/>
+            </choose>
+          </else-if>
+          <else-if type="article-journal article-newspaper article-magazine chapter entry-encyclopedia entry-dictionary post webpage" match="any">
+            <text variable="title" prefix="〈" suffix="〉"/>
+          </else-if>
+          <else>
+            <text variable="title"/>
+          </else>
+        </choose>
       </else>
     </choose>
   </macro>
@@ -3327,7 +3394,7 @@
   </macro>
 
   <macro name="tw-primary-subsequent">
-      <group delimiter=", ">
+      <group delimiter="，">
           <text macro="hereinafter-stub-zh"/>
           <text macro="tw-supra-stub"/>
       </group>
@@ -3337,42 +3404,8 @@
   <macro name="tw-primary-first">
     <group delimiter=" ">
       <group delimiter="，">
-        <choose>
-          <if type="patent">
-            <group delimiter="；">
-              <names variable="author" suffix=" (發明人)">
-                <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-              </names>
-              <choose>
-                <if context="bibliography">
-                  <names variable="recipient" suffix=" (專利權人)"/>
-                </if>
-              </choose>
-            </group>
-          </if>
-        </choose>
-        <group>
-          <text variable="title"/>
-          <choose>
-            <if type="hearing">
-              <choose>
-                <if variable="author">
-                  <names variable="author" prefix="，" suffix="發言紀錄">
-                    <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-                  </names>
-                </if>
-                <else>
-                  <text value="會議紀錄"/>
-                </else>
-              </choose>
-            </if>
-          </choose>
-        </group>
-        <choose>
-          <if type="patent">
-            <number variable="number" prefix="中華民國專利第" suffix="號"/>
-          </if>
-        </choose>
+        <text macro="tw-author"/>
+        <text macro="tw-default-title"/>
         <text macro="std-locator-zh"/>
       </group>
       <choose>
@@ -3653,6 +3686,15 @@
   <macro name="bib-sort-key-author">
     <choose>
       <if locale="zh">
+        <!-- a space leading off Chinese items so they'll be grouped at the front -->
+        <text value=" "/>
+        <choose>
+          <if match="all" variable="author translator">
+            <!-- another space for translated works (which start with English names) to make them sorted to the top. -->
+            <!-- this is to work around a "stroke-sorting" limitation that, at least on a Mac, always sorts English words below Chinese ones. -->
+            <text value=" "/>
+          </if>
+        </choose>
         <text macro="tw-author"/>
       </if>
       <else>
@@ -3667,10 +3709,20 @@
       </else>
     </choose>
   </macro>
+
   <macro name="bib-sort-key-title">
     <choose>
       <if locale="zh">
-        <text macro="tw-default-title"/>
+        <choose>
+          <if>
+            <!-- items matching either condition have "used up" their title -->
+            <conditions match="none">
+              <condition type="broadcast video motion_picture hearing legislation legal_case regulation treaty" match="any"/>
+              <condition variable="author container-author composer translator" match="none"/>
+            </conditions>
+            <text variable="title"/>
+          </if>
+        </choose>
       </if>
       <else>
         <text variable="title"/>
