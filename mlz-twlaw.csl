@@ -125,8 +125,8 @@
         <multiple>secs.</multiple>
       </term>
       <term form="symbol" name="section">
-        <single>&#167;</single>
-        <multiple>&#167;&#167;</multiple>
+        <single>§</single>
+        <multiple>§§</multiple>
       </term>
       <term form="short" name="sub verbo">s.v.</term>
       <term form="short" name="verse">vrs.</term>
@@ -2374,7 +2374,7 @@
         <if disambiguate="true">
           <names variable="author">
             <name/>
-            <institution and="none" delimiter="&#8211;" institution-parts="short"/>
+            <institution and="none" delimiter="–" institution-parts="short"/>
           </names>
         </if>
       </choose>
@@ -3796,3 +3796,4 @@
     </layout>
   </bibliography>
 </style>
+
