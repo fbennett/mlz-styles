@@ -522,102 +522,89 @@
           </names>
           <group delimiter=" ">
             <text value="with"/>
-            <text macro="us-author"/>
+            <names variable="author">
+              <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
+              <institution use-first="1" use-last="1"/>
+            </names>
           </group>
         </group>
       </if>
     </choose>
   </macro>
   
-  <macro name="us-default-author">
-    <group delimiter=" ">
-      <choose>
-        <if type="interview"/>
-        <else-if match="any" type="book song">
+  <macro name="amlaw-author">
+    <choose>
+      <if>
+        <conditions match="any">
+          <condition type="book" variable="version" match="all"/>
+          <condition type="song" variable="version" match="all"/>
+          <condition type="chapter" variable="author" match="all"/>
+          <condition type="video"/>
+        </conditions>
+        <text macro="amlaw-author-render"/>
+      </if>
+      <else-if>
+        <conditions match="any">
+          <condition type="book" match="all"/>
+          <condition type="song" match="all"/>
+          <condition type="chapter" match="all"/>
+        </conditions>
+        <text font-variant="small-caps" macro="amlaw-author-render"/>
+      </else-if>
+      <else-if type="personal_communication" match="all">
+        <group delimiter=" ">
           <choose>
-            <if variable="version">
-              <text macro="us-author"/>
+            <if variable="genre">
+              <text text-case="capitalize-first" variable="genre"/>
             </if>
             <else>
-              <text font-variant="small-caps" macro="us-author"/>
+              <text term="letter" text-case="capitalize-first"/>
             </else>
           </choose>
-        </else-if>
-        <else-if match="any" type="chapter">
-          <choose>
-            <if match="all" variable="author">
-              <text macro="us-author"/>
-            </if>
-            <else>
-              <text font-variant="small-caps" macro="us-author"/>
-            </else>
-          </choose>
-        </else-if>
-        <else-if type="video">
-          <text macro="us-author"/>
-        </else-if>
-        <else>
-          <choose>
-            <if type="personal_communication">
-              <group delimiter=" ">
-                <choose>
-                  <if variable="genre">
-                    <text text-case="capitalize-first" variable="genre"/>
-                  </if>
-                  <else>
-                    <text term="letter" text-case="capitalize-first"/>
-                  </else>
-                </choose>
-                <group delimiter=" ">
-                  <text term="from"/>
-                  <names variable="author">
-                    <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
-                    <institution institution-parts="short" use-first="1" use-last="1">
-                      <institution-part name="short" suffix=","/>
-                    </institution>
-                  </names>
-                </group>
-                <group delimiter=" ">
-                  <text value="to"/>
-                  <names variable="recipient">
-                    <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
-                    <institution use-first="1" use-last="1"/>
-                  </names>
-                </group>
-              </group>
-            </if>
-            <else>
-              <text macro="us-author"/>
-            </else>
-          </choose>
-        </else>
-      </choose>
-    </group>
+          <group delimiter=" ">
+            <group delimiter=" ">
+              <text term="from"/>
+              <names variable="author">
+                <name and="symbol" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+                <institution institution-parts="short" use-first="1" use-last="1">
+                  <institution-part name="short"/>
+                </institution>
+              </names>
+            </group>
+            <group delimiter=" ">
+              <text value="to"/>
+              <names variable="recipient">
+                <name and="symbol" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+                <institution institution-parts="short" use-first="1" use-last="1">
+                  <institution-part name="short"/>
+                </institution>
+              </names>
+            </group>
+          </group>
+        </group>
+      </else-if>
+      <else>
+        <text macro="amlaw-author-render"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="amlaw-author-render">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+      <institution institution-parts="short" use-first="1" use-last="1">
+        <institution-part name="short"/>
+      </institution>
+      <substitute>
+        <names variable="container-author"/>
+        <names variable="composer"/>
+      </substitute>
+    </names>
   </macro>
   <macro name="us-container-author">
     <names variable="container-author">
       <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
       <institution institution-parts="short" use-first="1" use-last="1"/>
     </names>
-  </macro>
-  <macro name="us-author">
-    <choose>
-      <if type="interview">
-        <names variable="author">
-          <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
-          <institution use-first="1" use-last="1"/>
-        </names>
-      </if>
-      <else-if type="broadcast" match="none">
-        <names variable="author">
-          <name and="symbol" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-          <substitute>
-            <names variable="container-author"/>
-            <names variable="composer"/>
-          </substitute>
-        </names>
-      </else-if>
-    </choose>
   </macro>
   <macro name="us-author-short">
     <choose>
@@ -1230,7 +1217,7 @@
           <number variable="number"/>
           <group delimiter=" ">
             <text variable="genre"/>
-            <text font-variant="small-caps" macro="us-author"/>
+            <text font-variant="small-caps" macro="amlaw-author-render"/>
           </group>
         </group>
       </else>
@@ -2400,7 +2387,11 @@
             </if>
           </choose>
           <group delimiter=", ">
-            <text macro="us-default-author"/>
+            <choose>
+              <if type="interview broadcast" match="none">
+                <text macro="amlaw-author"/>
+              </if>
+            </choose>
             <choose>
               <if>
                 <conditions match="any">
