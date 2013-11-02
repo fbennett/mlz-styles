@@ -854,6 +854,9 @@
           <if position="first" context="bibliography" match="any">
             <text form="short" variable="title"/>
           </if>
+          <else-if variable="hereinafter">
+            <text font-style="italic" form="short" variable="hereinafter"/>
+          </else-if>
           <else-if variable="title-short">
             <text form="short" font-style="italic" variable="title-short"/>
           </else-if>
