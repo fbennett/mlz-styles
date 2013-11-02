@@ -545,7 +545,7 @@
         </else-if>
         <else-if match="any" type="chapter">
           <choose>
-            <if match="all" variable="author container-author">
+            <if match="all" variable="author">
               <text macro="us-author"/>
             </if>
             <else>
