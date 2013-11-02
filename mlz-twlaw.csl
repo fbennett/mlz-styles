@@ -15,7 +15,7 @@
     	last name at the front as primary sorting key. The implementation for
     	English citation is based on the MLZ American Law Style by Frank Bennett
     	(with minor modifications if necessary) and will stay in sync with the latter.
-      The version of amlaw.csl referenced here is [2013-10-13T18:40:55.633435].
+      The version of amlaw.csl referenced here is [2013-11-02T09:52:06.018101].
 
     	The style should handle all Chinese--Traditional are Simplified--
     	material without issue, as long as the "language" field of an item is
@@ -25,7 +25,7 @@
     	probably need to tweak the style for best results.</summary>
     <category field="law"/>
     <category citation-format="note"/>
-    <updated>2013-10-30T00:08:00+08:00</updated>
+    <updated>2013-11-03T01:44:00+08:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
 
@@ -42,10 +42,6 @@
       <term form="short" name="no date">日期不明</term>
       <term name="presented at">發表於</term>
       <term name="director">導演</term>
-      <!-- producer is not a term in CSL or CSL-m.
-           It can be added if it proves necessary in
-           citations. -->
-      <!-- <term name="producer">製作</term> -->
       <term name="edition">版</term>
       <term name="ibid">同前註</term>
       <term form="verb" name="interview">訪談紀錄</term>
@@ -583,7 +579,6 @@
     </choose>
   </macro>
 
-  <!-- mod: chapter author small-cap issue fixed -->
   <macro name="us-default-author">
     <group delimiter=" ">
       <choose>
@@ -600,15 +595,11 @@
         </else-if>
         <else-if match="any" type="chapter">
           <choose>
-            <if>
-              <conditions match="all">
-                <condition variable="author" match="none"/>
-                <condition variable="container-author" match="all"/>
-              </conditions>
-              <text font-variant="small-caps" macro="us-author"/>
+            <if match="all" variable="author">
+              <text macro="us-author"/>
             </if>
             <else>
-              <text macro="us-author"/>
+              <text font-variant="small-caps" macro="us-author"/>
             </else>
           </choose>
         </else-if>
@@ -660,7 +651,7 @@
     </names>
   </macro>
 
-  <!-- mod: redundant interview part removed. -->
+  <!-- mod: the interview part has been made redundant by the interview-author macro; removed. -->
   <macro name="us-author">
     <choose>
       <if type="broadcast" match="none">
@@ -741,13 +732,14 @@
     </choose>
   </macro>
 
+  <!-- mod: disambiguate="true" removed to supress title in supra form; use hereinafter if necessary. -->
   <macro name="amlaw-title">
     <choose>
       <if>
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="all"/>
-          <condition disambiguate="true" position="first" context="bibliography" match="any"/>
+          <condition position="first" context="bibliography" match="any"/>
           <condition is-numeric="version" match="all"/>
         </conditions>
         <group delimiter=", ">
@@ -763,7 +755,7 @@
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="all"/>
-          <condition disambiguate="true" position="first" context="bibliography" match="any"/>
+          <condition position="first" context="bibliography" match="any"/>
           <condition is-numeric="version" match="none"/>
         </conditions>
         <group delimiter=", ">
@@ -780,7 +772,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" match="any"/>
               <condition variable="author container-author" match="none"/>
             </conditions>
             <text form="short" text-case="title" variable="title"/>
@@ -795,7 +787,7 @@
           <condition type="song" variable="collection-title" match="nand"/>
         </conditions>
         <choose>
-          <if position="subsequent" disambiguate="true" variable="title-short" match="all">
+          <if position="subsequent" variable="title-short" match="all">
             <text font-variant="small-caps" form="short" text-case="title" variable="title-short"/>
           </if>
           <else-if>
@@ -809,7 +801,6 @@
           <else-if>
             <conditions match="any">
               <condition position="first" context="bibliography" match="any"/>
-              <condition disambiguate="true" match="any"/>
               <condition variable="author composer" match="none"/>
             </conditions>
             <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
@@ -825,7 +816,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" match="any"/>
               <condition variable="author" match="none"/>
             </conditions>
             <group delimiter=" ">
@@ -841,7 +832,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" match="any"/>
             </conditions>
             <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
           </if>
@@ -866,7 +857,7 @@
           <condition type="interview"/>
         </conditions>
         <choose>
-          <if position="first" context="bibliography" disambiguate="true" match="any">
+          <if position="first" context="bibliography" match="any">
             <text font-style="italic" form="short" variable="title"/>
           </if>
         </choose>
@@ -887,7 +878,7 @@
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
+              <condition position="first" context="bibliography" match="any"/>
               <condition variable="author container-author" match="none"/>
             </conditions>
             <text font-style="italic" form="short" text-case="title" variable="title"/>
@@ -909,6 +900,9 @@
           <if position="first" context="bibliography" match="any">
             <text form="short" variable="title"/>
           </if>
+          <else-if variable="hereinafter">
+            <text font-style="italic" form="short" variable="hereinafter"/>
+          </else-if>
           <else-if variable="title-short">
             <text form="short" font-style="italic" variable="title-short"/>
           </else-if>
@@ -919,7 +913,7 @@
       </else-if>
       <else-if>
         <conditions match="any">
-          <condition position="first" context="bibliography" disambiguate="true" match="any"/>
+          <condition position="first" context="bibliography" match="any"/>
           <condition variable="author container-author" match="none"/>
         </conditions>
         <choose>
@@ -2682,7 +2676,7 @@
         </else-if>
         <else-if match="any" type="chapter">
           <choose>
-            <if match="all" variable="author container-author">
+            <if match="all" variable="author">
               <text macro="us-author-bib"/>
             </if>
             <else>
@@ -2708,7 +2702,7 @@
                 <group delimiter=" ">
                   <text term="from"/>
                   <names variable="author">
-                    <name and="symbol" name-as-sort-order="first" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
+                    <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
                     <institution institution-parts="short" use-first="1" use-last="1">
                       <institution-part name="short" suffix=","/>
                     </institution>
@@ -2717,7 +2711,7 @@
                 <group delimiter=" ">
                   <text value="to"/>
                   <names variable="recipient">
-                    <name and="symbol" name-as-sort-order="first" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
+                    <name and="symbol" delimiter-precedes-last="never" initialize="false" initialize-with="."/>
                     <institution use-first="1" use-last="1"/>
                   </names>
                 </group>
@@ -2732,7 +2726,7 @@
     </group>
   </macro>
 
-  <!-- ="us-author" - "interview" part taken out + name-as-sort-order="first" -->
+  <!-- = "us-author" mod above + name-as-sort-order="first" + substitute with title if no author -->
   <macro name="us-author-bib">
     <choose>
       <if type="broadcast" match="none">
@@ -2741,6 +2735,7 @@
           <substitute>
             <names variable="container-author"/>
             <names variable="composer"/>
+            <text variable="title"/>
           </substitute>
         </names>
       </if>
@@ -2749,7 +2744,7 @@
 
   <!-- = "wisconsin-secondary-first" +:
     1. "us-default-author-bib" moved to very start, with suffix;
-    2. "page" instead of "page-first". -->
+    2. "page" instead of "page-first" (except article-newspaper). -->
   <macro name="wisconsin-secondary-bib">
     <group delimiter=". ">
       <text macro="us-default-author-bib"/>
@@ -2851,7 +2846,7 @@
                       <text term="at"/>
                       <group delimiter=" ">
                         <group delimiter=", ">
-                          <number variable="page"/>
+                          <number variable="page-first"/>
                           <choose>
                             <if locator="page">
                               <number variable="locator"/>
@@ -2934,7 +2929,7 @@
             <if match="all" type="report" has-day="issued">
               <group delimiter=" ">
                 <text value="at"/>
-                <number variable="page-first"/>
+                <number variable="page"/>
               </group>
               <text macro="std-locator-non-page-label"/>
             </if>
@@ -3204,7 +3199,6 @@
         <conditions match="any">
           <condition match="none" variable="author composer editor container-author"/>
           <condition type="motion_picture broadcast"/>
-          <!-- condition disambiguate="true"/ -->
         </conditions>
         <choose>
           <if variable="hereinafter">
@@ -3683,18 +3677,14 @@
 
   </macro>
 
+
+  <!-- macros for bibliography sorting -->
+
   <macro name="bib-sort-key-author">
     <choose>
       <if locale="zh">
         <!-- a space leading off Chinese items so they'll be grouped at the front -->
         <text value=" "/>
-        <choose>
-          <if match="all" variable="author translator">
-            <!-- another space for translated works (which start with English names) to make them sorted to the top. -->
-            <!-- this is to work around a "stroke-sorting" limitation that, at least on a Mac, always sorts English words below Chinese ones. -->
-            <text value=" "/>
-          </if>
-        </choose>
         <text macro="tw-author"/>
       </if>
       <else>
@@ -3774,6 +3764,8 @@
     </layout>
 
   </citation>
+
+
   <bibliography hanging-indent="true" et-al-min="5" et-al-use-first="4" subsequent-author-substitute="———">
     <sort>
       <key macro="bib-sort-key-author"/>
