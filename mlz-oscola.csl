@@ -1648,15 +1648,21 @@
     <group delimiter=", ">
       <group delimiter=" ">
         <group delimiter=" ">
-          <names variable="author">
-            <name/>
+          <names variable="authority">
+            <name suppress-min="0"/>
             <institution institution-parts="short" use-first="1"/>
             <substitute>
               <text form="short" variable="title"/>
             </substitute>
           </names>
           <text value="Deb"/>
-          <text prefix="(" suffix=")" variable="genre"/>
+          <names variable="authority" prefix="(" suffix=")">
+            <name suppress-min="0"/>
+            <institution institution-parts="short" use-last="1"/>
+            <substitute>
+              <text form="short" variable="title"/>
+            </substitute>
+          </names>
         </group>
         <date date-parts="year-month-day" form="text" variable="issued"/>
       </group>
