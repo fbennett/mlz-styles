@@ -1052,8 +1052,7 @@
   <macro name="mcgill-issue-note">
     <group delimiter=", " prefix="(" suffix=")">
       <choose>
-        <if match="all" position="subsequent" type="periodical"/>
-        <else-if match="none" variable="URL">
+        <if match="none" variable="URL">
           <group delimiter=", ">
             <choose>
               <if type="entry-encyclopedia entry-dictionary" match="any">
@@ -1062,10 +1061,10 @@
             </choose>
             <text form="short" variable="publisher"/>
           </group>
-        </else-if>
+        </if>
       </choose>
       <choose>
-        <if match="all" type="periodical" variable="locator-date">
+        <if match="all" variable="locator-date">
           <date date-parts="year-month-day" form="text" variable="locator-date"/>
         </if>
         <else>
@@ -1085,7 +1084,7 @@
   <macro name="us-session-number">
     <group delimiter=" ">
       <!-- gender="masculine" ... ? -->
-      <number form="ordinal" variable="chapter-number"/>
+      <number form="ordinal" gender="masculine" variable="chapter-number"/>
       <choose>
         <if variable="genre">
           <text form="short" variable="genre"/>
@@ -1623,16 +1622,11 @@
   <macro name="oscola-non-paragraph-point-locators">
     <group delimiter=" ">
       <choose>
-        <if locator="paragraph" match="all" type="periodical"/>
-        <else>
-          <choose>
-            <if locator="page" match="none">
-              <label form="short" variable="locator"/>
-            </if>
-          </choose>
-          <number variable="locator"/>
-        </else>
+        <if locator="page" match="none">
+          <label form="short" variable="locator"/>
+        </if>
       </choose>
+      <number variable="locator"/>
     </group>
   </macro>
   <macro name="oscola-editor-translator-context">
