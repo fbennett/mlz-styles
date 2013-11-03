@@ -25,7 +25,7 @@
     	probably need to tweak the style for best results.</summary>
     <category field="law"/>
     <category citation-format="note"/>
-    <updated>2013-11-03T01:44:00+08:00</updated>
+    <updated>2013-11-03T20:42:00+08:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
 
@@ -45,6 +45,9 @@
       <term name="edition">版</term>
       <term name="ibid">同前註</term>
       <term form="verb" name="interview">訪談紀錄</term>
+      <term name="letter">書信</term>
+      <term name="email">電子郵件</term>
+      <term name="instant-message">即時訊息</term>
       <term form="short" name="page">頁</term>
       <term name="long-ordinal-01">第一</term>
       <term name="long-ordinal-02">第二</term>
@@ -2437,7 +2440,8 @@
     </choose>
   </macro>
 
-  <!-- mod: title case for video medium -->
+  <!-- mod: 1. title case for video medium
+            2. when "page" has value, add "available at" in front of url per bluebook r.18.2.3. -->
   <macro name="wisconsin-secondary-first">
     <group delimiter=": ">
       <choose>
@@ -2649,6 +2653,12 @@
             <text variable="URL"/>
           </else-if>
           <else-if type="article-newspaper">
+            <!-- "available at" for those with "page". -->
+            <choose>
+              <if variable="page">
+                <text font-style="italic" value="available at"/>
+              </if>
+            </choose>
             <text variable="URL"/>
           </else-if>
         </choose>
@@ -3008,18 +3018,11 @@
   <macro name="tw-author">
     <choose>
       <if type="patent">
-        <group delimiter="；">
-          <names variable="author" suffix=" (發明人)">
-            <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
-          </names>
-          <choose>
-            <if context="bibliography">
-              <names variable="recipient" suffix=" (專利權人)"/>
-            </if>
-          </choose>
-        </group>
+        <names variable="author" suffix=" (發明人)">
+          <name and="symbol" delimiter="、" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+        </names>
       </if>
-      <else-if match="all" type="bill" variable="author">
+      <else-if match="all" type="bill" variable="author title">
         <names variable="author" suffix="版"/>
         <text variable="title" prefix="「" suffix="」"/>
       </else-if>
@@ -3068,20 +3071,24 @@
             <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
             <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
           </names>
-          <text value="書信"/>
-        </group>
-      </else-if>
-      <else-if type="personal_communication">
-        <group delimiter="">
-          <names variable="author">
-            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
-            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
-          </names>
-          <names variable="recipient" prefix="致">
-            <name and="symbol" delimiter="" initialize="false" initialize-with="."/>
-            <institution delimiter="，" form="short" institution-parts="short" use-first="1" use-last="1"/>
-          </names>
-          <text variable="genre"/>
+          <choose>
+            <if variable="genre">
+              <choose>
+                <if genre="email">
+                  <text term="email"/>
+                </if>
+                <else-if genre="instant-message">
+                  <text term="instant-message"/>
+                </else-if>
+                <else>
+                  <text variable="genre"/>
+                </else>
+              </choose>
+            </if>
+            <else>
+              <text term="letter"/>
+            </else>
+          </choose>
         </group>
       </else-if>
       <else-if variable="translator">
@@ -3153,9 +3160,25 @@
           <if type="patent">
             <group delimiter="，">
               <text variable="title"/>
-              <number variable="number" prefix="中華民國專利第" suffix="號"/>
+              <group delimiter="">
+                <choose>
+                  <if jurisdiction="tw">
+                    <text value="中華民國"/>
+                  </if>
+                  <else-if jurisdiction="cn">
+                    <text value="中華人民共和國"/>
+                  </else-if>
+                  <else-if jurisdiction="sg">
+                    <text value="新加坡"/>
+                  </else-if>
+                  <else-if jurisdiction="hk">
+                    <text value="香港"/>
+                  </else-if>
+                </choose>
+                <number variable="number" prefix="專利第" suffix="號"/>
+              </group>
             </group>
-              </if>
+          </if>
           <else-if type="book song report">
             <choose>
               <!-- version check for computer program (type book) only -->
@@ -3234,7 +3257,7 @@
     </choose>
   </macro>
 
-  <macro name="zh-edition">
+  <macro name="tw-edition">
     <choose>
       <if is-numeric="edition">
         <number form="long-ordinal" variable="edition" suffix="版"/>
@@ -3311,7 +3334,7 @@
                     <text form="short" variable="publisher"/>
                   </if>
                 </choose>
-                <text macro="zh-edition"/>
+                <text macro="tw-edition"/>
               </group>
             </if>
           </choose>
@@ -3394,11 +3417,17 @@
       </group>
   </macro>
 
-  <!-- patent assignee not mapped to recipient -->
   <macro name="tw-primary-first">
+    <choose>
+      <if context="citation">
+        <text macro="tw-author" suffix="，"/>
+      </if>
+      <else>
+        <text macro="tw-author" suffix="。"/>
+      </else>
+    </choose>
     <group delimiter=" ">
       <group delimiter="，">
-        <text macro="tw-author"/>
         <text macro="tw-default-title"/>
         <text macro="std-locator-zh"/>
       </group>
@@ -3411,6 +3440,11 @@
                   <names variable="authority"/>
                 </group>
               </if>
+              <else-if match="all" context="bibliography" type="patent">
+                <group prefix="專利權人：">
+                  <names variable="recipient"/>
+                </group>
+              </else-if>
             </choose>
             <text macro="tw-issued-date"/>
           </group>
@@ -3472,19 +3506,19 @@
     <choose>
       <if type="legal_case bill legislation hearing treaty patent">
         <choose>
-          <if position="subsequent">
-            <text macro="tw-primary-subsequent"/>
+          <if match="any" position="first" context="bibliography">
+            <text macro="tw-primary-first"/>
           </if>
           <else>
-            <text macro="tw-primary-first"/>
+            <text macro="tw-primary-subsequent"/>
           </else>
         </choose>
       </if>
-      <else-if position="subsequent">
-        <text macro="tw-secondary-subsequent"/>
+      <else-if  match="any" position="first" context="bibliography">
+        <text macro="tw-secondary-first"/>
       </else-if>
       <else>
-        <text macro="tw-secondary-first"/>
+        <text macro="tw-secondary-subsequent"/>
       </else>
     </choose>
   </macro>
@@ -3555,7 +3589,7 @@
                         <choose>
                           <if match="any" variable="edition section">
                             <group delimiter="，" prefix="(" suffix=")">
-                              <text macro="zh-edition"/>
+                              <text macro="tw-edition"/>
                               <choose>
                                 <if is-numeric="section">
                                   <text variable="section" prefix="第" suffix="落"/>
@@ -3574,8 +3608,6 @@
               </else>
             </choose>
             <group>
-              <!-- don't substitute "text" with "number" below to avoid a bug in Word plugin. -->
-              <!-- XXX Interesting. Let's discuss. -->
               <number variable="volume" suffix="卷"/>
               <number variable="issue" suffix="期"/>
             </group>
