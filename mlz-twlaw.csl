@@ -25,7 +25,7 @@
     	probably need to tweak the style for best results.</summary>
     <category field="law"/>
     <category citation-format="note"/>
-    <updated>2013-11-07T17:45:00+08:00</updated>
+    <updated>2013-11-07T19:30:00+08:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
 
@@ -3630,10 +3630,18 @@
         <!-- a space leading off Chinese items so they'll be grouped at the front -->
         <text value=" "/>
         <choose>
-          <if type="bill">
-            <text macro="tw-author" suffix="版"/>
+          <if type="bill hearing legislation legal_case regulation treaty">
+            <choose>
+              <if match="none" jurisdiction="tw">
+                <text macro="jurisdiction-name-zh"/>
+              </if>
+            </choose>
+            <choose>
+              <if type="bill">
+                <text macro="tw-author" suffix="版"/>
+              </if>
+            </choose>
           </if>
-          <else-if type="hearing legislation legal_case regulation treaty"/>
           <else-if match="none" variable="author container-author composer">
             <text macro="tw-secondary-pretitle"/>
           </else-if>
