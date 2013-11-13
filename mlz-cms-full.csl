@@ -1023,12 +1023,7 @@
             </choose>
             <text macro="event"/>
           </group>
-          <choose>
-            <if match="all" position="subsequent" type="periodical"/>
-            <else>
-              <text macro="publisher"/>
-            </else>
-          </choose>
+          <text macro="publisher"/>
           <text variable="locator-revision"/>
           <text macro="issued"/>
         </group>
@@ -2080,16 +2075,11 @@
   <macro name="oscola-non-paragraph-point-locators">
     <group delimiter=" ">
       <choose>
-        <if locator="paragraph" match="all" type="periodical"/>
-        <else>
-          <choose>
-            <if locator="page" match="none">
-              <label form="short" variable="locator"/>
-            </if>
-          </choose>
-          <number variable="locator"/>
-        </else>
+        <if locator="page" match="none">
+          <label form="short" variable="locator"/>
+        </if>
       </choose>
+      <number variable="locator"/>
     </group>
   </macro>
   <macro name="oscola-editor-translator-context">
@@ -2635,7 +2625,7 @@
             <text value="case no."/>
           </else>
         </choose>
-        <text variable="number"/>
+        <number variable="number"/>
       </group>
       <date variable="issued" form="text" date-parts="year-month-day"/>
       <text macro="std-locator-label"/>
@@ -2670,7 +2660,7 @@
             <text variable="call-number" prefix="(" suffix=")"/>
             <group delimiter=" ">
               <text value="no."/>
-              <text variable="number"/>
+              <number variable="number"/>
             </group>
           </group>
         </group>
