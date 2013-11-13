@@ -25,11 +25,11 @@
     	probably need to tweak the style for best results.</summary>
     <category field="law"/>
     <category citation-format="note"/>
-    <updated>2013-11-07T19:30:00+08:00</updated>
+    <updated>2013-11-10T23:52:05.807099</updated>
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
 
-  <locale xml:lang="zh">
+  <locale xml:lang="zh-TW">
     <terms>
       <term name="et-al">等</term>
       <term name="retrieved">取自於</term>
@@ -3668,7 +3668,7 @@
 
   <citation disambiguate-add-givenname="true" et-al-min="3" et-al-use-first="1" near-note-distance="5">
 
-    <layout locale="zh" delimiter="；" suffix="。">
+    <layout locale="zh-TW zh" delimiter="；" suffix="。">
       <choose>
         <if position="ibid-with-locator">
           <text macro="ibid-with-locator-label-zh"/>
@@ -3718,7 +3718,7 @@
       <key variable="issued"/>
     </sort>
 
-    <layout locale="zh" suffix="。">
+    <layout locale="zh-TW zh" suffix="。">
       <choose>
         <if match="any" type="bill hearing legislation legal_case regulation treaty">
           <text macro="tw-primary-bib"/>
