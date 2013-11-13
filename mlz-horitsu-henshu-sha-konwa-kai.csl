@@ -93,6 +93,7 @@
       <term name="page">頁</term>
       <term name="et-al">ほか</term>
       <term name="editor">編</term>
+      <term name="translator">訳</term>
       <term name="volume">巻</term>
       <term name="issue">号</term>
     </terms>
@@ -104,10 +105,7 @@
   </locale>
   <macro name="hhkk-title">
     <choose>
-      <if match="all" type="article-journal" variable="jurisdiction">
-        <text prefix="「" suffix="」" value="判批"/>
-      </if>
-      <else-if>
+      <if>
         <conditions match="any">
           <condition variable="container-title"/>
           <condition match="all" variable="volume-title collection-title"/>
@@ -116,7 +114,7 @@
           <condition type="legislation regulation gazette"/>
         </conditions>
         <text prefix="「" suffix="」" variable="title"/>
-      </else-if>
+      </if>
       <else-if match="none" variable="container-title volume-title collection-title">
         <group delimiter=" " prefix="『" suffix="』">
           <text variable="title"/>
@@ -151,7 +149,34 @@
   </macro>
   <macro name="hhkk-author-first">
     <choose>
-      <if match="any" position="subsequent" variable="title">
+      <if match="all" type="legal_case" variable="commenter">
+        <names variable="dummy">
+          <name/>
+          <substitute>
+            <names variable="commenter"/>
+          </substitute>
+        </names>
+        <text macro="hhkk-translator-supp"/>
+      </if>
+      <else-if>
+        <conditions match="all">
+          <condition match="any" position="subsequent" variable="title"/>
+          <condition variable="author editor" match="all"/>
+        </conditions>
+        <names variable="dummy">
+          <name/>
+          <label/>
+          <substitute>
+            <names variable="editor"/>
+          </substitute>
+        </names>
+        <text macro="hhkk-translator-supp"/>
+      </else-if>
+      <else-if>
+        <conditions match="all">
+          <condition match="any" position="subsequent" variable="title"/>
+          <condition variable="author editor" match="nand"/>
+        </conditions>
         <names variable="dummy">
           <name/>
           <label/>
@@ -160,8 +185,21 @@
             <names variable="editor"/>
           </substitute>
         </names>
-      </if>
+        <text macro="hhkk-translator-supp"/>
+      </else-if>
+      <else>
+        <names variable="translator">
+          <name/>
+          <label/>
+        </names>
+      </else>
     </choose>
+  </macro>
+  <macro name="hhkk-translator-supp">
+    <names variable="translator" prefix="（" suffix="）">
+      <name/>
+      <label/>
+    </names>
   </macro>
   <macro name="sist02-patent">
     <group>
@@ -190,7 +228,7 @@
             <if jurisdiction="jp">
               <group>
                 <text value="特許第"/>
-                <text variable="number"/>
+                <number variable="number"/>
                 <text value="号"/>
               </group>
             </if>
@@ -198,7 +236,7 @@
               <group delimiter=" ">
                 <text form="short" variable="jurisdiction"/>
                 <text value="Patent"/>
-                <text variable="number"/>
+                <number variable="number"/>
               </group>
             </else>
           </choose>
@@ -206,6 +244,29 @@
         <date date-parts="year-month-day" form="text" variable="issued"/>
       </group>
     </group>
+  </macro>
+  <macro name="hhkk-court-short">
+    <choose>
+      <if subjurisdictions="1">
+        <text form="short" variable="jurisdiction"/>
+      </if>
+      <else>
+        <names variable="authority">
+          <name/>
+          <institution institution-parts="short"/>
+        </names>
+      </else>
+    </choose>
+  </macro>
+  <macro name="hhkk-court-date">
+    <choose>
+      <if jurisdiction="jp">
+        <date date-parts="year-month-day" form="imperial" variable="issued"/>
+      </if>
+      <else>
+        <date date-parts="year-month-day" form="text" variable="issued"/>
+      </else>
+    </choose>
   </macro>
   <macro name="hhkk-secondary-first">
     <text macro="hhkk-author-first"/>
@@ -217,22 +278,19 @@
     <choose>
       <if type="legal_case legislation regulation gazette">
         <choose>
-          <if subjurisdictions="1">
-            <text form="short" variable="jurisdiction"/>
+          <if variable="commenter">
+            <text macro="hhkk-author-first"/>
+            <group delimiter="：" prefix="「" suffix="」">
+              <text value="判批"/>
+              <group>
+                <text macro="hhkk-court-short"/>
+                <text macro="hhkk-court-date"/>
+              </group>
+            </group>
           </if>
           <else>
-            <names variable="authority">
-              <name/>
-              <institution/>
-            </names>
-          </else>
-        </choose>
-        <choose>
-          <if jurisdiction="jp">
-            <date date-parts="year-month-day" form="imperial" variable="issued"/>
-          </if>
-          <else>
-            <date date-parts="year-month-day" form="text" variable="issued"/>
+            <text macro="hhkk-court-short"/>
+            <text macro="hhkk-court-date"/>
           </else>
         </choose>
         <text macro="hhkk-volume-chain"/>
@@ -282,24 +340,6 @@
             </else-if>
           </choose>
         </group>
-        <group>
-          <text variable="locator"/>
-          <label variable="locator"/>
-        </group>
-        <choose>
-          <if match="none" variable="title">
-            <names prefix="〔" suffix="〕" variable="author editor">
-              <name form="short"/>
-              <label/>
-            </names>
-          </if>
-          <else-if match="none" variable="container-title volume-title collection-title">
-            <names prefix="〔" suffix="〕" variable="author editor">
-              <name/>
-              <label/>
-            </names>
-          </else-if>
-        </choose>
         <group delimiter="、" prefix="（" suffix="）">
           <text variable="publisher"/>
           <group>
@@ -313,6 +353,24 @@
           </group>
           <date date-parts="year" form="text" variable="issued"/>
         </group>
+        <group>
+          <text variable="locator"/>
+          <label variable="locator"/>
+        </group>
+        <choose>
+          <if match="none" variable="title">
+            <names prefix="〔" suffix="〕" variable="author">
+              <name form="short"/>
+              <label/>
+            </names>
+          </if>
+          <else-if match="none" variable="container-title volume-title collection-title">
+            <names prefix="〔" suffix="〕" variable="author">
+              <name/>
+              <label/>
+            </names>
+          </else-if>
+        </choose>
       </else-if>
       <else>
           <text macro="hhkk-title"/>
@@ -1109,16 +1167,11 @@
   <macro name="oscola-non-paragraph-point-locators">
     <group delimiter=" ">
       <choose>
-        <if locator="paragraph" match="all" type="periodical"/>
-        <else>
-          <choose>
-            <if locator="page" match="none">
-              <label form="short" variable="locator"/>
-            </if>
-          </choose>
-          <number variable="locator"/>
-        </else>
+        <if locator="page" match="none">
+          <label form="short" variable="locator"/>
+        </if>
       </choose>
+      <number variable="locator"/>
     </group>
   </macro>
   <macro name="oscola-editor-translator-context">
@@ -1213,7 +1266,7 @@
             <text value="case no."/>
           </else>
         </choose>
-        <text variable="number"/>
+        <number variable="number"/>
       </group>
       <date date-parts="year-month-day" form="text" variable="issued"/>
       <text macro="std-locator-label"/>
@@ -1394,7 +1447,7 @@
             <text prefix="(" suffix=")" variable="call-number"/>
             <group delimiter=" ">
               <text value="no."/>
-              <text variable="number"/>
+              <number variable="number"/>
             </group>
           </group>
         </group>
@@ -2638,12 +2691,7 @@
             </choose>
             <text macro="event"/>
           </group>
-          <choose>
-            <if match="all" position="subsequent" type="periodical"/>
-            <else>
-                <text macro="publisher"/>
-            </else>
-          </choose>
+          <text macro="publisher"/>
           <text variable="locator-revision"/>
           <text macro="issued"/>
         </group>
@@ -2922,9 +2970,4 @@
       </choose>
     </layout>
   </citation>
-  <bibliography>
-    <layout>
-      <text value="BOGUS BIB ENTRY"/>
-    </layout>
-  </bibliography>
 </style>
