@@ -28,6 +28,8 @@
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
   <locale xml:lang="en">
+    <style-options name-never-short="my kr zh ja hu"
+                   name-as-sort-order="kr zh ja hu my"/>
     <terms>
       <term name="rule" form="long">rule</term>
       <term name="rule" form="short">r.</term>
@@ -185,7 +187,7 @@
   <macro name="director">
     <group delimiter=" ">
       <text term="director" form="verb" text-case="capitalize-first"/>
-      <names variable="author">
+      <names variable="director">
         <name and="text" delimiter=", "/>
       </names>
     </group>
@@ -711,7 +713,14 @@
       </if>
       <else-if type="legal_case">
         <group delimiter=" ">
-          <number variable="volume"/>
+          <choose>
+            <if variable="volume" match="none">
+              <number variable="issue"/>
+            </if>
+            <else>
+              <number variable="volume"/>
+            </else>
+          </choose>
           <text variable="container-title"/>
           <number variable="page"/>
         </group>
@@ -2645,24 +2654,46 @@
         </choose>
       </if>
       <else-if jurisdiction="jp" match="any">
-        <group delimiter=", ">
-          <group delimiter=" ">
-            <text value="Decision of the"/>
+        <group delimiter=" ">
+          <group delimiter=", ">
             <names variable="authority">
               <name/>
-              <institution/>
+              <institution reverse-order="true"/>
             </names>
             <date variable="issued" form="text" date-parts="year-month-day"/>
+            <choose>
+              <if position="subsequent" match="none">
+                <group delimiter=" ">
+                  <choose>
+                    <if variable="genre submitted" match="all">
+                      <text variable="genre" form="short"/>
+                      <date variable="submitted" form="text" date-parts="year"/>
+                    </if>
+                    <else>
+                      <date variable="issued">
+                        <date-part name="year" form="imperial"/>
+                      </date>
+                    </else>
+                  </choose>
+                  <number variable="call-number" prefix="(" suffix=")"/>
+                  <group delimiter=" ">
+                    <text value="no."/>
+                    <number variable="number"/>
+                  </group>
+                </group>
+              </if>
+            </choose>
+            <text macro="locators"/>
+            <choose>
+              <if>
+                <conditions match="any">
+                  <condition variable="container-title page" match="all"/>
+                </conditions>
+                <text label-form="short" macro="std-locator-non-page-label"/>
+              </if>
+            </choose>
           </group>
-          <group delimiter=" ">
-            <text variable="genre" form="short"/>
-            <date variable="submitted" form="text" date-parts="year"/>
-            <text variable="call-number" prefix="(" suffix=")"/>
-            <group delimiter=" ">
-              <text value="no."/>
-              <number variable="number"/>
-            </group>
-          </group>
+          <text label-form="short" macro="std-locator-non-page-label-at"/>
         </group>
       </else-if>
       <else-if jurisdiction="kh">
