@@ -1818,7 +1818,7 @@
 
   <macro name="jurisdictions-hearing">
     <choose>
-      <if jurisdiction="us ca nz">
+      <if jurisdiction="us ca nz" match="any">
         <choose>
           <if position="near-note">
             <text macro="us-bill-subsequent"/>

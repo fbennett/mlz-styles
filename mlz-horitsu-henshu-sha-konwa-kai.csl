@@ -1,4 +1,4 @@
-<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.1mlz1" year-range-format="expanded">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.1mlz1" year-range-format="expanded">
   <info>
     <title>MLZ 法律編集者懇話会</title>
     <id>http://citationstylist.org/styles/mlz-horitsu-henshu-sha-konwa-kai</id>
@@ -1632,7 +1632,7 @@
             <date date-parts="year" form="text" variable="issued"/>
             <group delimiter=" " subgroup-delimiter=", " subgroup-delimiter-precedes-last="always">
               <text variable="publisher"/>
-              <text variable="publisher-place"/>
+              <text variable="publisher-place" form="short"/>
             </group>
           </else>
         </choose>
@@ -1693,7 +1693,7 @@
       </group>
       <group delimiter=", " prefix="(" suffix=")">
         <text macro="std-authority-full"/>
-        <text variable="publisher-place"/>
+        <text variable="publisher-place" form="short"/>
         <date date-parts="year-month-day" form="text" variable="issued"/>
       </group>
     </group>
@@ -2000,7 +2000,7 @@
   </macro>
   <macro name="ca-case-unreported-detail">
     <group delimiter=" ">
-      <text variable="publisher-place"/>
+      <text variable="publisher-place" form="short"/>
       <number variable="number"/>
     </group>
   </macro>
@@ -2507,7 +2507,7 @@
       </if>
       <else>
         <group delimiter=": ">
-          <text variable="publisher-place"/>
+          <text variable="publisher-place" form="short"/>
           <text form="short" variable="publisher"/>
         </group>
       </else>
@@ -2885,7 +2885,7 @@
           <text form="short" variable="archive-place"/>
           <choose>
             <if type="manuscript">
-              <text variable="publisher-place"/>
+              <text variable="publisher-place" form="short"/>
             </if>
           </choose>
         </group>
