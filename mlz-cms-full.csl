@@ -28,8 +28,8 @@
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
   <locale xml:lang="en">
-    <style-options name-never-short="my kr zh ja hu"
-                   name-as-sort-order="kr zh ja hu my"/>
+    <style-options name-never-short="my kr zh ja hu km"
+                   name-as-sort-order="kr zh ja hu my km"/>
     <terms>
       <term name="rule" form="long">rule</term>
       <term name="rule" form="short">r.</term>
