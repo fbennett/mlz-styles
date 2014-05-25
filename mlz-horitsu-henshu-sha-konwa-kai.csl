@@ -647,8 +647,8 @@
         <else-if type="personal_communication">
           <text macro="std-locator-non-page-label-at"/>
         </else-if>
-        <else-if match="all" position="subsequent" type="legal_case">
-          <text macro="std-locator-non-page-label"/>
+        <else-if match="all" position="subsequent" variable="locator" type="legal_case">
+          <text macro="std-locator-non-page-label-at"/>
         </else-if>
         <else>
           <number variable="locator"/>

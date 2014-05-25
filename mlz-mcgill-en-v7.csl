@@ -235,34 +235,35 @@
       </else>
     </choose>
   </macro>
+
   <macro name="us-pinpoint-action">
     <group delimiter=" ">
       <choose>
         <if locator="page" match="none" type="personal_communication">
-          <text label-form="short" macro="std-locator-non-page-label"/>
+          <text label-form="symbol" macro="std-locator-non-page-label"/>
         </if>
-        <else-if position="ibid-with-locator">
-          <text label-form="short" macro="std-locator-non-page-label-at"/>
-        </else-if>
-        <else-if is-numeric="title" match="all" type="book" variable="title">
-          <text label-form="short" macro="std-locator-non-page-label-at"/>
-        </else-if>
-        <else-if match="all" type="song" variable="section">
-          <text label-form="short" macro="std-locator-non-page-label-at"/>
-        </else-if>
-        <else-if is-numeric="title" match="all" type="song" variable="title locator">
-          <text label-form="short" macro="std-locator-non-page-label-at"/>
+        <else-if>
+          <conditions match="any">
+            <condition position="ibid-with-locator"/>
+            <condition is-numeric="title" match="all" type="book" variable="title"/>
+            <condition match="all" type="song" variable="section"/>
+            <condition is-numeric="title" match="all" type="song" variable="title locator"/>
+          </conditions>
+          <text label-form="symbol" macro="std-locator-non-page-label-at"/>
         </else-if>
         <else-if type="personal_communication">
-          <text label-form="short" macro="std-locator-non-page-label-at"/>
+          <text macro="std-locator-non-page-label-at"/>
+        </else-if>
+        <else-if type="legal_case" position="subsequent" variable="locator" match="all">
+          <text macro="std-locator-non-page-label-at"/>
         </else-if>
         <else>
-          <number label-form="short" variable="locator"/>
+          <number variable="locator"/>
         </else>
       </choose>
     </group>
   </macro>
-  
+    
   <macro name="us-slip-opinion-locator">
     <group delimiter=", ">
       <group delimiter=" ">
