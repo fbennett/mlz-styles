@@ -988,11 +988,6 @@
                     <name/>
                     <institution institution-parts="short" reverse-order="true"/>
                   </names>
-                  <choose>
-                    <if type="manuscript" match="none">
-                      <text variable="publisher-place"/>
-                    </if>
-                  </choose>
                   <text form="short" variable="publisher"/>
                 </group>
                 <text macro="us-edition"/>
