@@ -755,20 +755,16 @@
           <condition position="first" context="bibliography" match="none"/>
         </conditions>
         <choose>
-          <if>
+          <if variable="hereinafter">
+            <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
+          </if>
+          <else-if>
             <conditions match="any">
               <condition disambiguate="true"/>
-              <condition variable="author composer" match="none"/>
+              <condition variable="author" match="none"/>
             </conditions>
-            <choose>
-              <if variable="hereinafter">
-                <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
-              </if>
-              <else>
                 <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
-              </else>
-            </choose>
-          </if>
+          </else-if>
         </choose>
       </else-if>
       <else-if>
@@ -792,20 +788,16 @@
           <if position="first" context="bibliography" match="none">
             <!-- Subsequent -->
             <choose>
-              <if>
+              <if  variable="hereinafter" match="all">
+                <text font-style="italic" text-case="title" variable="hereinafter"/>
+              </if>
+              <else-if>
                 <conditions match="any">
                   <condition disambiguate="true"/>
                   <condition variable="author composer" match="none"/>
                 </conditions>
-                <choose>
-                  <if  variable="hereinafter" match="all">
-                    <text font-style="italic" text-case="title" variable="hereinafter"/>
-                  </if>
-                  <else>
-                    <text font-style="italic" text-case="title" variable="title-main" form="short"/>
-                  </else>
-                </choose>
-              </if>
+                <text font-style="italic" text-case="title" variable="title-main" form="short"/>
+              </else-if>
             </choose>
           </if>
           <else>
@@ -826,20 +818,16 @@
           <condition  position="first" context="bibliography" match="none"/>
         </conditions>
         <choose>
-          <if>
+          <if variable="hereinafter">
+            <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
+          </if>
+          <else-if>
             <conditions match="any">
               <condition disambiguate="true"/>
               <condition variable="author" match="none"/>
             </conditions>
-            <choose>
-              <if variable="hereinafter">
-                <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
-              </if>
-              <else>
-                <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
-              </else>
-            </choose>
-          </if>
+            <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
+          </else-if>
         </choose>
       </else-if>
       <else-if type="book song motion_picture" match="any">
@@ -847,7 +835,7 @@
         <text font-variant="small-caps" text-case="title" variable="title"/>
       </else-if>
       <else-if>
-        <!-- Subsequent and first-reference forms for broadcasts -->
+        <!-- Subsequent and first-reference forms for broadcasts (same for both) -->
         <conditions match="any">
           <condition type="broadcast" variable="container-title publisher" match="all"/>
           <condition type="video" variable="container-title publisher" match="all"/>
@@ -857,21 +845,39 @@
           <text form="short" text-case="title" variable="title"/>
         </group>
       </else-if>
-      <else-if>
-        <conditions match="any">
-          <condition type="video" variable="container-title URL" match="all"/>
-          <condition type="post" variable="container-title URL" match="all"/>
-          <condition type="post-weblog" variable="container-title URL" match="all"/>
-          <condition type="webpage" variable="container-title URL" match="all"/>
-          <condition type="interview"/>
-        </conditions>
-        <choose>
-          <if position="first" context="bibliography" disambiguate="true" match="any">
-            <text font-style="italic" form="short" variable="title"/>
-          </if>
-        </choose>
+       <else-if>
+         <!-- Subsequent and first-reference forms for mezzanine output -->
+         <conditions match="any">
+           <condition type="video" variable="container-title URL" match="all"/>
+           <condition type="post" variable="container-title URL" match="all"/>
+           <condition type="post-weblog" variable="container-title URL" match="all"/>
+           <condition type="webpage" variable="container-title URL" match="all"/>
+           <condition type="interview"/>
+         </conditions>
+         <choose>
+           <if position="first" context="bibliography" match="none">
+             <!-- Subsequent -->
+             <choose>
+               <if variable="hereinafter">
+                 <text font-style="italic" variable="hereinafter"/>
+               </if>
+               <else-if>
+                 <conditions match="any">
+                   <condition disambiguate="true"/>
+                   <condition variable="author" match="none"/>
+                 </conditions>
+                 <text font-style="italic" variable="title-main" form="short"/>
+               </else-if>
+             </choose>
+           </if>
+           <else>
+             <!-- First-reference -->
+             <text font-style="italic" variable="title"/>
+           </else>
+         </choose>
       </else-if>
       <else-if>
+        <!-- Subsequent and first-reference forms for articles and the like -->
         <conditions match="any">
           <condition type="song" variable="collection-title" match="all"/>
           <condition type="broadcast" variable="container-title" match="all"/>
@@ -883,20 +889,32 @@
           <condition type="article-magazine graphic article-journal article-newspaper chapter" match="any"/>
           <condition type="entry-encyclopedia"/>
           <condition type="entry-dictionary"/>
+          <condition type="report"/>
         </conditions>
-        <choose>
-          <if position="first" context="bibliography" match="any">
-            <text font-style="italic" text-case="title" variable="title"/>
-          </if>
-          <else-if variable="author container-author" match="none">
-            <text font-style="italic" text-case="title" variable="title-main" form="short"/>
-          </else-if>
-          <else-if disambiguate="true">
-            <text font-style="italic" text-case="title" variable="title-main" form="short"/>
-          </else-if>
-        </choose>
+         <choose>
+           <if position="first" context="bibliography" match="none">
+             <!-- Subsequent -->
+             <choose>
+               <if variable="hereinafter">
+                 <text font-style="italic" text-case="title" variable="hereinafter"/>
+               </if>
+               <else-if>
+                 <conditions match="any">
+                   <condition disambiguate="true"/>
+                   <condition variable="author" match="none"/>
+                 </conditions>
+                 <text font-style="italic" text-case="title" variable="title-main" form="short"/>
+               </else-if>
+             </choose>
+           </if>
+           <else>
+             <!-- First-reference -->
+             <text font-style="italic" text-case="title" variable="title"/>
+           </else>
+         </choose>
       </else-if>
       <else-if>
+        <!-- Subsequent and first-reference forms for ephemera -->
         <conditions match="any">
           <condition type="video" variable="URL" match="all"/>
           <condition type="post" match="all"/>
@@ -904,16 +922,39 @@
           <condition type="webpage" match="all"/>
           <condition type="personal_communication" match="all"/>
         </conditions>
-        <text form="short" variable="title"/>
+         <choose>
+           <if position="first" context="bibliography" match="none">
+             <!-- Subsequent -->
+             <choose>
+               <if variable="hereinafter">
+                 <text variable="hereinafter"/>
+               </if>
+               <else-if>
+                 <conditions match="any">
+                   <condition disambiguate="true"/>
+                   <condition variable="author" match="none"/>
+                 </conditions>
+                 <text variable="title-main" form="short"/>
+               </else-if>
+             </choose>
+           </if>
+           <else>
+             <!-- First-reference -->
+             <text variable="title"/>
+           </else>
+         </choose>
       </else-if>
-      <else-if type="legal_case">
+      <else-if>
+        <conditions match="all">
+          <condition type="legal_case"/>
+          <condition position="first" context="bibliography" match="none"/>
+        </conditions>
+        <!-- Subsequent forms for legal cases -->
+        <!-- Note that form="short" works differently for this type -->
         <choose>
-          <if position="first" context="bibliography" match="any">
-            <text form="short" variable="title"/>
+          <if variable="hereinafter">
+            <text font-style="italic" variable="hereinafter"/>
           </if>
-          <else-if variable="hereinafter">
-            <text font-style="italic" form="short" variable="hereinafter"/>
-          </else-if>
           <else-if variable="title-short">
             <text form="short" font-style="italic" variable="title-short"/>
           </else-if>
@@ -922,20 +963,29 @@
           </else>
         </choose>
       </else-if>
-      <else-if>
-        <conditions match="any">
-          <condition position="first" context="bibliography" disambiguate="true" match="any"/>
-          <condition variable="author container-author" match="none"/> 
-        </conditions>
+      <else-if type="legal_case">
+        <!-- First-reference form for legal cases -->
+        <text form="short" variable="title"/>
+      </else-if>
+      <else-if position="first" context="bibliography" match="none">
+        <!-- Subsequent forms for everything else -->
         <choose>
-          <if type="report" match="all">
-            <text form="short" text-case="title" variable="title" font-style="italic"/>
+          <if variable="hereinafter">
+            <text variable="hereinafter"/>
           </if>
-          <else>
-            <text form="short" text-case="title" variable="title"/>
-          </else>
+          <else-if>
+            <conditions match="any">
+              <condition disambiguate="true"/>
+              <condition variable="author" match="none"/>
+            </conditions>
+            <text variable="title-main" form="short"/>
+          </else-if>
         </choose>
       </else-if>
+      <else>
+        <!-- First-reference form for everything else -->
+        <text form="short" text-case="title" variable="title"/>
+      </else>
     </choose>
   </macro>
 
