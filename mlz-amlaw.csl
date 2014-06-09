@@ -704,6 +704,7 @@
   <macro name="amlaw-title">
     <choose>
       <if>
+        <!-- Subsequent form for versioned items -->
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="all"/>
@@ -718,120 +719,135 @@
               <condition disambiguate="true"/>
               <condition variable="author" match="none"/>
             </conditions>
-            <text text-case="title" form="short" variable="title"/>
+            <text text-case="title" variable="title-main" form="short"/>
           </else-if>
         </choose>
       </if>
       <else-if>
+        <!-- First-reference form for versioned items -->
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="all"/>
-          <condition is-numeric="version" match="all"/>
         </conditions>
         <group delimiter=", ">
           <text text-case="title" variable="title"/>
-          <group delimiter=" ">
-            <text value="ver."/>
-            <text variable="version"/>
-          </group>
+          <choose>
+            <if is-numeric="version">
+              <group delimiter=" ">
+                <text value="ver."/>
+                <text variable="version"/>
+              </group>
+            </if>
+            <else>
+              <text quotes="true" variable="version"/>
+            </else>
+          </choose>
           <text form="short" variable="medium"/>
         </group>
       </else-if>
       <else-if>
+        <!-- Subsequent form for untitled or unversioned standalone items -->
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
-          <condition variable="title version" match="all"/>
-          <condition is-numeric="version" match="none"/>
-        </conditions>
-        <group delimiter=", ">
-          <text text-case="title" variable="title"/>
-          <text quotes="true" variable="version"/>
-          <text form="short" variable="medium"/>
-        </group>
-      </else-if>
-      <else-if>
-        <conditions match="all">
-          <condition type="book song motion_picture" match="any"/>
-          <condition variable="title version" match="all"/>
+          <condition variable="title version" match="nand"/>
+          <condition variable="container-title" match="none"/>
+          <condition type="song" variable="collection-title" match="nand"/> 
+          <condition position="first" context="bibliography" match="none"/>
         </conditions>
         <choose>
           <if>
             <conditions match="any">
-              <condition position="first" context="bibliography" match="any"/>
-              <condition variable="author container-author" match="none"/>
+              <condition disambiguate="true"/>
+              <condition variable="author composer" match="none"/>
             </conditions>
-            <text text-case="title" variable="title"/>
+            <choose>
+              <if variable="hereinafter">
+                <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
+              </if>
+              <else>
+                <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
+              </else>
+            </choose>
           </if>
         </choose>
       </else-if>
       <else-if>
+        <!-- First-reference form for untitled or unversioned standalone items -->
         <conditions match="all">
           <condition type="book song motion_picture" match="any"/>
           <condition variable="title version" match="nand"/>
           <condition variable="container-title" match="none"/>
           <condition type="song" variable="collection-title" match="nand"/> 
         </conditions>
-        <choose>
-          <if>
-            <conditions match="all">
-              <condition position="subsequent"/>
-              <condition disambiguate="true"/>
-            </conditions>
-            <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
-          </if>
-          <else-if>
-            <conditions match="all">
-              <condition position="subsequent" match="any"/>
-              <condition variable="author composer" match="none"/>
-              <condition variable="title-short" match="all"/>
-            </conditions>
-            <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
-          </else-if>
-          <else-if>
-            <conditions match="any">
-              <condition position="first" context="bibliography" match="any"/>
-              <condition disambiguate="true" match="any"/>
-              <condition variable="author composer" match="none"/>
-            </conditions>
-            <text font-variant="small-caps" text-case="title" variable="title"/>
-          </else-if>
-        </choose>
-      </else-if>
+        <text font-variant="small-caps" text-case="title" variable="title"/>
+      </else-if>    
       <else-if>
+        <!-- Subsequent and first-reference forms for music albums and collections of scores -->
         <conditions match="any">
           <condition type="song" variable="collection-title" match="all"/>
           <condition type="song" variable="container-title composer" match="all"/>
           <condition type="song" variable="container-title author" match="all"/>
         </conditions>
         <choose>
-          <if>
-            <conditions match="any">
-              <condition position="first" context="bibliography" disambiguate="true" match="any"/>
-              <condition variable="author" match="none"/>
-            </conditions>
+          <if position="first" context="bibliography" match="none">
+            <!-- Subsequent -->
+            <choose>
+              <if>
+                <conditions match="any">
+                  <condition disambiguate="true"/>
+                  <condition variable="author composer" match="none"/>
+                </conditions>
+                <choose>
+                  <if  variable="hereinafter" match="all">
+                    <text font-style="italic" text-case="title" variable="hereinafter"/>
+                  </if>
+                  <else>
+                    <text font-style="italic" text-case="title" variable="title-main" form="short"/>
+                  </else>
+                </choose>
+              </if>
+            </choose>
+          </if>
+          <else>
+            <!-- First-reference-->
             <group delimiter=" ">
               <text font-style="italic" text-case="title" variable="title"/>
               <names prefix="[" suffix="]" variable="composer">
                 <name form="short" initialize-with="."/>
               </names>
             </group>
+          </else>
+        </choose>
+      </else-if>
+      <else-if>
+        <!-- Subsequent forms for the remainder of standalone items -->
+        <conditions match="all">
+          <condition type="book song motion_picture" match="any"/>
+          <condition  position="first" context="bibliography" match="none"/>
+        </conditions>
+        <choose>
+          <if>
+            <conditions match="any">
+              <condition disambiguate="true"/>
+              <condition variable="author" match="none"/>
+            </conditions>
+            <choose>
+              <if variable="hereinafter">
+                <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
+              </if>
+              <else>
+                <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
+              </else>
+            </choose>
           </if>
         </choose>
       </else-if>
       <else-if type="book song motion_picture" match="any">
-        <choose>
-          <if>
-            <conditions match="any">
-              <condition position="first" context="bibliography" match="any"/>
-            </conditions>
-            <text font-variant="small-caps" text-case="title" variable="title"/>
-          </if>
-          <else-if disambiguate="true">
-            <text font-variant="small-caps" text-case="title" variable="title-main" form="short"/>
-          </else-if>
-        </choose>
+        <!-- First-reference form for the remainder of standalone items -->
+        <text font-variant="small-caps" text-case="title" variable="title"/>
       </else-if>
       <else-if>
+        <!-- Subsequent and first-reference forms for broadcasts -->
         <conditions match="any">
           <condition type="broadcast" variable="container-title publisher" match="all"/>
           <condition type="video" variable="container-title publisher" match="all"/>
@@ -2658,7 +2674,7 @@
       </group>
     </group>
   </macro>
-  <citation disambiguate-add-givenname="true" et-al-min="3" et-al-use-first="1" near-note-distance="5">
+  <citation disambiguate-add-givenname="true" givenname-disambiguation-rule="by-cite" et-al-min="3" et-al-use-first="1" near-note-distance="5">
     <layout delimiter="; " suffix=".">
       <choose>
         <if match="any" type="treaty" variable="jurisdiction">
