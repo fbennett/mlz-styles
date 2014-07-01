@@ -540,7 +540,7 @@
       </choose>
       <choose>
         <if match="none" type="legal_case">
-          <text font-style="italic" variable="container-title" form="short"/>
+          <text font-style="italic" text-case="title" variable="container-title" form="short"/>
         </if>
       </choose>
     </group>
@@ -554,7 +554,7 @@
       </choose>
       <choose>
         <if match="none" type="legal_case">
-          <text font-style="italic" variable="container-title"/>
+          <text font-style="italic" text-case="title" variable="container-title"/>
         </if>
       </choose>
     </group>
