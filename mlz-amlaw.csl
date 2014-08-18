@@ -1702,25 +1702,12 @@
           <text macro="us-code-detail"/>
           <number variable="page"/>
           <choose>
-            <if locator="page" match="none">
+            <if locator="section paragraph" match="any">
               <text label-form="symbol" macro="std-locator-non-page-label"/>
             </if>
           </choose>
         </group>
         <text label-form="symbol" macro="std-locator-non-page-label"/>
-        <choose>
-          <if variable="number">
-            <text label-form="symbol" macro="std-locator-non-page-label"/>
-          </if>
-          <else-if locator="page" match="all" variable="page">
-            <text label-form="symbol" macro="std-locator-non-page-label"/>
-          </else-if>
-          <else-if variable="container-title"/>
-          <else-if locator="section paragraph"/>
-          <else-if match="none" variable="container-title">
-            <text label-form="symbol" macro="std-locator-non-page-label"/>
-          </else-if>
-        </choose>
       </group>
       <text label-form="symbol" macro="std-locator-non-page-label"/>
       <group delimiter=" " prefix="(" suffix=")">
@@ -2830,53 +2817,48 @@
                     </group>
                   </if>
                 </choose>
-                <date date-parts="year-month-day" form="text" variable="issued"/>
-                <choose>
-                  <if match="none" variable="URL">
+                <group delimiter=" ">
+                  <group delimiter=", ">
+                    <date date-parts="year-month-day" form="text" variable="issued"/>
                     <choose>
-                      <if is-numeric="edition">
+                      <if match="none" variable="URL">
+                        <choose>
+                          <if is-numeric="edition">
+                            <group delimiter=" ">
+                              <number form="ordinal" variable="edition"/>
+                              <label form="short" variable="edition"/>
+                            </group>
+                          </if>
+                          <else>
+                            <number variable="edition"/>
+                          </else>
+                        </choose>
                         <group delimiter=" ">
-                          <number form="ordinal" variable="edition"/>
-                          <label form="short" variable="edition"/>
+                          <choose>
+                            <if is-numeric="section">
+                              <text form="symbol" term="section"/>
+                            </if>
+                          </choose>
+                          <text variable="section"/>
                         </group>
                       </if>
-                      <else>
-                        <number variable="edition"/>
-                      </else>
                     </choose>
                     <group delimiter=" ">
-                      <choose>
-                        <if is-numeric="section">
-                          <text form="symbol" term="section"/>
-                        </if>
-                      </choose>
-                      <text variable="section"/>
-                    </group>
-                  </if>
-                </choose>
-                <group delimiter=" ">
-                  <group delimiter=" ">
-                    <text term="at"/>
-                    <group delimiter=" ">
-                      <group delimiter=", ">
-                        <number variable="page-first"/>
-                        <choose>
-                          <if locator="page">
-                            <number variable="locator"/>
-                          </if>
-                        </choose>
+                      <text term="at"/>
+                      <group delimiter=" ">
+                        <group delimiter=", ">
+                          <number variable="page-first"/>
+                          <choose>
+                            <if locator="page">
+                              <number variable="locator"/>
+                            </if>
+                          </choose>
+                        </group>
+                        <text macro="std-locator-label"/>
                       </group>
-                      <text macro="std-locator-label"/>
                     </group>
                   </group>
-                  <choose>
-                    <if variable="jurisdiction">
-                      <group delimiter=" " prefix="(" suffix=")">
-                        <text macro="std-authority-full"/>
-                        <date date-parts="year-month-day" form="text" variable="original-date"/>
-                      </group>
-                    </if>
-                  </choose>
+                  <text macro="us-newspaper-case-authority"/>
                 </group>
               </if>
               <else-if>
@@ -2975,6 +2957,16 @@
         </choose>
       </group>
     </group>
+  </macro>
+  <macro name="us-newspaper-case-authority">
+    <choose>
+      <if variable="jurisdiction">
+        <group delimiter=" " prefix="(" suffix=")">
+          <text macro="std-authority-full"/>
+          <date date-parts="year-month-day" form="text" variable="original-date"/>
+        </group>
+      </if>
+    </choose>
   </macro>
   <macro name="amlaw-hereinafter">
     <choose>
