@@ -1443,7 +1443,7 @@
             <condition type="legal_case" position="subsequent" variable="locator" match="all"/>
             <condition position="near-note" match="all"/>
           </conditions>
-          <text macro="std-locator-non-page-label"/>
+          <text macro="std-locator-non-page-label-at"/>
         </else-if>
         <else>
           <number variable="locator"/>
