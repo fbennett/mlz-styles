@@ -23,7 +23,7 @@
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
   <locale>
-    <style-options skip-words="but,or,yet,so,for,and,nor,a,an,the,at,by,from,in,into,of,on,to,with,as,via,onto,over,till,is,this,that,within,vs,v"/>
+    <style-options skip-words="but,or,yet,so,for,and,nor,a,an,the,at,by,from,in,into,of,on,to,with,as,via,onto,over,till,is,this,that,within,vs,v,vs.,v."/>
     <terms>
       <term name="article">article</term>
       <term name="director">director</term>
