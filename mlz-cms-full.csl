@@ -988,8 +988,8 @@
           <choose>
             <if>
               <conditions match="any">
-                <condition type="paper-conference" match="none"/>
-                <condition variable="publisher-place" match="none"/>
+                <condition type="paper-conference speech" match="none"/>
+                <condition variable="publisher-place event-place" match="none"/>
               </conditions>
               <text form="short" variable="archive-place"/>
             </if>
@@ -997,8 +997,8 @@
           <choose>
             <if>
               <conditions match="any">
-                <condition type="manuscript" match="none"/>
-                <condition variable="archive-place" match="none"/>
+                <condition type="manuscript speech paper-conference" match="none"/>
+                <condition variable="archive-place event-place" match="none"/>
               </conditions>
               <text variable="publisher-place"/>
             </if>
