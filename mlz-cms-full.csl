@@ -789,7 +789,11 @@
       <else>
         <group delimiter=": ">
           <choose>
-            <if type="manuscript" variable="archive-place" match="none">
+            <if>
+              <conditions match="any">
+                <condition type="manuscript" match="none"/>
+                <condition variable="archive-place" match="none"/>
+              </conditions>
               <text variable="publisher-place"/>
             </if>
           </choose>
@@ -957,7 +961,11 @@
           <text form="short" variable="archive"/>
           <text form="short" variable="archive-place"/>
           <choose>
-            <if type="manuscript" variable="archive-place" match="none">
+            <if>
+              <conditions match="any">
+                <condition type="manuscript" match="none"/>
+                <condition variable="archive-place" match="none"/>
+              </conditions>
               <text variable="publisher-place"/>
             </if>
           </choose>
@@ -978,12 +986,20 @@
           <text variable="archive_location"/>
           <text form="short" variable="archive"/>
           <choose>
-            <if type="paper-conference" variable="publisher-place" match="none">
+            <if>
+              <conditions match="any">
+                <condition type="paper-conference" match="none"/>
+                <condition variable="publisher-place" match="none"/>
+              </conditions>
               <text form="short" variable="archive-place"/>
             </if>
           </choose>
           <choose>
-            <if type="manuscript" variable="archive-place" match="none">
+            <if>
+              <conditions match="any">
+                <condition type="manuscript" match="none"/>
+                <condition variable="archive-place" match="none"/>
+              </conditions>
               <text variable="publisher-place"/>
             </if>
           </choose>
