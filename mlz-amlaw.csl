@@ -1737,6 +1737,9 @@
       </choose>
      </group>
   </macro>
+  <macro name="us-hearing-first">
+    <text macro="us-bill-first"/>
+  </macro>
   <macro name="us-bill-first">
     <group delimiter=" ">
       <group delimiter=", ">
@@ -1824,6 +1827,9 @@
         </else>
       </choose>
     </group>
+  </macro>
+  <macro name="us-hearing-subsequent">
+    <text macro="us-bill-subsequent"/>
   </macro>
   <macro name="us-bill-subsequent">
     <group delimiter=" ">
@@ -2166,10 +2172,10 @@
       <if jurisdiction="us ca nz" match="any">
         <choose>
           <if position="near-note">
-            <text macro="us-bill-subsequent"/>
+            <text macro="us-hearing-subsequent"/>
           </if>
           <else>
-            <text macro="us-bill-first"/>
+            <text macro="us-hearing-first"/>
           </else>
         </choose>
       </if>
