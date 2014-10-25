@@ -79,13 +79,14 @@
         <multiple>trans. and ed.</multiple>
       </term>
 
+      <term form="verb" name="collection-editor">edited by</term>
+      <term form="short" name="collection-editor">ed.</term>
       <term name="director" form="verb-short">dir.</term>
       <term name="editor" form="verb-short">ed.</term>
       <term name="editorial-director" form="verb-short">ed.</term>
       <term name="illustrator" form="verb-short">illus.</term>
       <term name="translator" form="verb-short">trans.</term>
       <term name="editortranslator" form="verb-short">ed. &amp; trans.</term>
-
       <term form="verb" name="editortranslator">
         <single> Translated and edited by</single>
         <multiple> Translated and edited by</multiple>
@@ -168,7 +169,6 @@
   <macro name="secondary-contributors">
     <choose>
       <if match="none" type="broadcast chapter paper-conference">
-        <group delimiter=". ">
           <choose>
             <if variable="author">
               <names delimiter=". " variable="editor translator">
@@ -177,11 +177,34 @@
               </names>
             </if>
           </choose>
-        </group>
       </if>
       <else-if type="broadcast">
         <text macro="director"/>
       </else-if>
+    </choose>
+  </macro>
+  <macro name="set-editor">
+    <choose>
+      <if>
+        <conditions match="all">
+          <condition match="any" type="book graphic motion_picture report"/>
+          <condition match="all" variable="volume volume-title title"/>
+        </conditions>
+        <choose>
+          <if context="bibliography">
+            <names variable="collection-editor">
+              <label form="verb" suffix=" "/>
+              <name and="text" delimiter=", "/>
+            </names>
+          </if>
+          <else>
+            <names variable="collection-editor">
+              <label form="short" suffix=" "/>
+              <name and="text" delimiter=", "/>
+            </names>
+          </else>
+        </choose>
+      </if>
     </choose>
   </macro>
   <macro name="director">
@@ -373,46 +396,29 @@
       <name and="text" delimiter=", "/>
     </names>
   </macro>
-  <macro name="title-note">
-    <choose>
-      <if match="none" type="personal_communication" variable="title">
-        <text variable="genre"/>
-      </if>
-      <else-if match="any" type="bill legal_case" variable="jurisdiction">
-        <text font-style="italic" variable="title"/>
-      </else-if>
-      <else-if match="any" type="book graphic motion_picture report">
-        <text font-style="italic" text-case="title" variable="title"/>
-      </else-if>
-      <else-if match="any" type="broadcast song">
-        <choose>
-          <if match="any" variable="container-title collection-title">
-            <text quotes="true" variable="title"/>
-          </if>
-          <else>
-            <text font-style="italic" variable="title"/>
-          </else>
-        </choose>
-      </else-if>
-      <else>
-        <text quotes="true" text-case="title" variable="title"/>
-      </else>
-    </choose>
-  </macro>
   <macro name="title">
     <choose>
-      <if match="none" variable="title">
-        <choose>
-          <if match="none" type="personal_communication">
-            <text text-case="capitalize-first" variable="genre"/>
-          </if>
-        </choose>
+      <if match="none" variable="title" type="personal_communication">
+        <text text-case="capitalize-first" variable="genre"/>
       </if>
       <else-if match="any" type="bill legal_case" variable="jurisdiction">
         <text font-style="italic" variable="title"/>
       </else-if>
-      <else-if match="any" type="book graphic motion_picture report">
-        <text font-style="italic" text-case="title" variable="title"/>
+      <else-if>
+        <conditions match="all">
+          <condition match="any" type="book graphic motion_picture report"/>
+        </conditions>
+        <choose>
+          <if match="all" variable="volume volume-title title">
+            <text font-style="italic" text-case="title" variable="volume-title"/>
+          </if>
+          <else-if match="any" variable="title volume-title">
+            <group>
+              <text font-style="italic" text-case="title" variable="title"/>
+              <text font-style="italic" text-case="title" variable="volume-title"/>
+            </group>
+          </else-if>
+        </choose>
       </else-if>
       <else-if match="any" type="broadcast song">
         <choose>
@@ -447,12 +453,26 @@
       <else-if match="any" type="bill legal_case" variable="jurisdiction">
         <text font-style="italic" form="short" variable="title"/>
       </else-if>
-      <else-if match="any" type="book graphic motion_picture report">
-        <text font-style="italic" form="short" text-case="title" variable="title"/>
+      <else-if>
+        <conditions match="all">
+          <condition match="any" type="book graphic motion_picture report"/>
+          <condition match="all" variable="volume volume-title title"/>
+        </conditions>
+        <text font-style="italic" text-case="title" variable="volume-title" form="short"/>
+      </else-if>
+      <else-if>
+        <conditions match="all">
+          <condition match="any" type="book graphic motion_picture report"/>
+          <condition match="any" variable="volume-title title"/>
+        </conditions>
+        <group>
+          <text font-style="italic" text-case="title" variable="title" form="short"/>
+          <text font-style="italic" text-case="title" variable="volume-title" form="short"/>
+        </group>
       </else-if>
       <else-if match="any" type="broadcast song">
         <choose>
-          <if variable="container-title collection-title">
+          <if variable="container-title collection-title" match="any">
             <text form="short" quotes="true" variable="title"/>
           </if>
           <else>
@@ -658,14 +678,24 @@
       </else-if>
       <else-if match="any" type="bill book graphic legal_case motion_picture report song chapter">
         <group delimiter=", ">
-          <group delimiter=" ">
-            <choose>
-              <if is-numeric="volume">
-                <text form="short" term="volume"/>
-              </if>
-            </choose>
-            <number form="numeric" variable="volume"/>
-          </group>
+          <choose>
+            <if>
+              <conditions match="any">
+                <condition match="none" type="book graphic motion_picture report"/>
+                <condition match="none" variable="volume"/>
+                <condition match="none" variable="volume-title"/>
+                <condition match="none" variable="title"/>
+              </conditions>
+              <group delimiter=" ">
+                <choose>
+                  <if is-numeric="volume">
+                    <text form="short" term="volume"/>
+                  </if>
+                </choose>
+                <number form="numeric" variable="volume"/>
+              </group>
+            </if>
+          </choose>
           <choose>
             <if match="none" variable="locator">
               <group delimiter=" ">
@@ -727,10 +757,24 @@
       </else-if>
       <else-if match="any" type="bill book graphic legal_case motion_picture report song">
         <group delimiter=". ">
-          <group delimiter=" ">
-            <text form="short" term="volume" text-case="capitalize-first"/>
-            <number form="numeric" variable="volume"/>
-          </group>
+          <choose>
+            <if>
+              <conditions match="any">
+                <condition match="none" type="book graphic motion_picture report"/>
+                <condition match="none" variable="volume"/>
+                <condition match="none" variable="volume-title"/>
+                <condition match="none" variable="title"/>
+              </conditions>
+              <group delimiter=" ">
+                <choose>
+                  <if is-numeric="volume">
+                    <text form="short" term="volume" text-case="capitalize-first"/>
+                  </if>
+                </choose>
+                <number form="numeric" variable="volume" text-case="capitalize-first"/>
+              </group>
+            </if>
+          </choose>
           <group delimiter=" ">
             <number form="numeric" variable="number-of-volumes"/>
             <text form="short" plural="true" term="volume"/>
@@ -2207,6 +2251,29 @@
       <text macro="point-locators-subsequent"/>
     </group>
   </macro>
+  <macro name="title-of-set">
+    <choose>
+      <if>
+        <conditions match="all">
+          <condition match="any" type="book graphic motion_picture report"/>
+          <condition match="all" variable="volume volume-title title"/>
+        </conditions>
+        <group delimiter=" ">
+          <choose>
+            <if context="bibliography" match="all">
+              <label variable="volume" form="short" text-case="capitalize-first"/>
+          </if>
+          <else>
+            <label variable="volume" form="short"/>
+          </else>
+          </choose>
+          <number variable="volume"/>
+          <text value="of"/>
+          <text variable="title" font-style="italic" text-case="title"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
   <macro name="cms-secondary-first">
     <group delimiter=", ">
       <group delimiter=": ">
@@ -2215,14 +2282,14 @@
             <group delimiter=", ">
               <group delimiter=" ">
                 <group delimiter=", ">
-                  <group delimiter=", ">
-                    <group delimiter=", ">
-                      <text macro="contributors-note"/>
-                      <text macro="title-note"/>
-                    </group>
-                    <text macro="description-note"/>
-                  </group>
+                  <text macro="contributors-note"/>
+                  <text macro="title"/>
+                  <text macro="description-note"/>
                   <text macro="secondary-contributors-note"/>
+                  <group delimiter=", ">
+                    <text macro="title-of-set"/>
+                    <text macro="set-editor"/>
+                  </group>
                   <text macro="container-title-note"/>
                   <text macro="container-contributors-note"/>
                 </group>
@@ -3110,6 +3177,10 @@
                             <text macro="description"/>
                           </group>
                           <text macro="secondary-contributors"/>
+                          <group delimiter=", ">
+                            <text macro="title-of-set"/>
+                            <text macro="set-editor"/>
+                          </group>
                           <group delimiter=", ">
                             <text macro="container-title"/>
                             <text macro="container-contributors"/>
