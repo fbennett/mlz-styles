@@ -187,7 +187,7 @@
   </macro>
   <macro name="editor-bib">
     <names variable="editor">
-      <name and="text" delimiter-precedes-last="never" initialize="false" initialize-with="" name-as-sort-order="all" sort-separator=", "/>
+      <name and="text" delimiter-precedes-last="never" initialize="false" initialize-with="" sort-separator=", "/>
       <et-al term="et-al"/>
       <label form="short" prefix=" "/>
     </names>  	
@@ -200,7 +200,7 @@
   </macro>
   <macro name="translator-bib">
     <names variable="translator">
-      <name and="text" delimiter-precedes-last="never" initialize="false" initialize-with="" name-as-sort-order="all" sort-separator=", "/>
+      <name and="text" delimiter-precedes-last="never" initialize="false" initialize-with="" sort-separator=", "/>
       <et-al term="et-al"/>
       <label form="long" prefix=" (" suffix=")"/>
     </names>		
@@ -226,7 +226,7 @@
   </macro>
   <macro name="author-bib">
     <names variable="author">
-      <name and="text" delimiter-precedes-last="never" initialize="false" initialize-with="" name-as-sort-order="all" sort-separator=", "/>
+      <name and="text" delimiter-precedes-last="never" initialize="false" initialize-with="" sort-separator=", "/>
       <et-al term="et-al"/>
       <institution delimiter=", " substitute-use-first="1" use-last="1"/>
       <substitute>
@@ -2079,7 +2079,7 @@
       <text macro="nzl-citation" strip-periods="true"/>
     </layout>
   </citation>
-  <bibliography et-al-min="4" et-al-use-first="1">
+  <bibliography et-al-min="21" et-al-use-first="20">
     <sort>
       <key macro="sort-by-type"/>
       <key macro="author-bib"/>
