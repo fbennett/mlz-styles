@@ -28,11 +28,13 @@
     <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
   <locale xml:lang="en">
-    <style-options name-never-short="my kr zh ja hu km"
-                   name-as-sort-order="kr zh ja hu my km"/>
+    <style-options 
+        name-as-sort-order="kr zh ja hu my km" 
+        name-never-short="my kr zh ja hu km"
+        skip-words="about,above,across,afore,after,against,along,alongside,amid,amidst,among,amongst,anenst,apropos,apud,around,as,aside,astride,at,athwart,atop,barring,before,behind,below,beneath,beside,besides,between,beyond,but,by,circa,despite,down,during,except,for,forenenst,from,given,in,inside,into,lest,like,modulo,near,next,notwithstanding,of,off,on,onto,out,over,per,plus,pro,qua,sans,since,than,through,thru,throughout,thruout,till,to,toward,towards,under,underneath,until,unto,up,upon,versus,vs.,v.,vs,v,via,vis-à-vis,with,within,without,according to,ahead of,apart from,as for,as of,as per,as regards,aside from,back to,because of,close to,due to,except for,far from,inside of,instead of,near to,next to,on to,out from,out of,outside of,prior to,pursuant to,rather than,regardless of,such as,that of,up to,where as,or,yet,so,for,and,nor,a,an,the,de,d',von,van,c,et,ca,is,this,that,etc."/>
     <terms>
-      <term name="rule" form="long">rule</term>
-      <term name="rule" form="short">r.</term>
+      <term form="long" name="rule">rule</term>
+      <term form="short" name="rule">r.</term>
       <term name="presented at">presented at</term>
       <term name="article">article</term>
       <term name="director">director</term>
@@ -71,8 +73,8 @@
       <term form="short" name="title">tit.</term>
       <term form="short" name="section">sec.</term>
       <term form="symbol" name="section">
-        <single>&#167;</single>
-        <multiple>&#167;&#167;</multiple>
+        <single>§</single>
+        <multiple>§§</multiple>
       </term>
       <term form="verb-short" name="editortranslator">
         <single>trans. and ed.</single>
@@ -81,12 +83,12 @@
 
       <term form="verb" name="collection-editor">edited by</term>
       <term form="short" name="collection-editor">ed.</term>
-      <term name="director" form="verb-short">dir.</term>
-      <term name="editor" form="verb-short">ed.</term>
-      <term name="editorial-director" form="verb-short">ed.</term>
-      <term name="illustrator" form="verb-short">illus.</term>
-      <term name="translator" form="verb-short">trans.</term>
-      <term name="editortranslator" form="verb-short">ed. &amp; trans.</term>
+      <term form="verb-short" name="director">dir.</term>
+      <term form="verb-short" name="editor">ed.</term>
+      <term form="verb-short" name="editorial-director">ed.</term>
+      <term form="verb-short" name="illustrator">illus.</term>
+      <term form="verb-short" name="translator">trans.</term>
+      <term form="verb-short" name="editortranslator">ed. &amp; trans.</term>
       <term form="verb" name="editortranslator">
         <single> Translated and edited by</single>
         <multiple> Translated and edited by</multiple>
@@ -209,7 +211,7 @@
   </macro>
   <macro name="director">
     <group delimiter=" ">
-      <text term="director" form="verb" text-case="capitalize-first"/>
+      <text form="verb" term="director" text-case="capitalize-first"/>
       <names variable="director">
         <name and="text" delimiter=", "/>
       </names>
@@ -217,7 +219,7 @@
   </macro>
   <macro name="director-note">
     <group delimiter=" ">
-      <text term="director" form="verb-short" text-case="lowercase"/>
+      <text form="verb-short" term="director" text-case="lowercase"/>
       <names variable="author">
         <name and="text" delimiter=", "/>
       </names>
@@ -270,7 +272,7 @@
   <macro name="contributors-note">
     <group delimiter=" ">
       <choose>
-        <if type="broadcast" match="none">
+        <if match="none" type="broadcast">
           <names variable="author">
             <name and="text" delimiter=", " sort-separator=", "/>
             <label form="short" prefix=", "/>
@@ -286,18 +288,6 @@
       </choose>
       <text macro="recipient"/>
     </group>
-  </macro>
-  <macro name="editor">
-    <names variable="editor">
-      <name and="text" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="first" sort-separator=", "/>
-      <label form="short" prefix=", "/>
-    </names>
-  </macro>
-  <macro name="translator">
-    <names variable="translator">
-      <name and="text" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="first" sort-separator=", "/>
-      <label form="verb-short" prefix=", "/>
-    </names>
   </macro>
   <macro name="recipient">
     <group delimiter=", ">
@@ -329,7 +319,7 @@
   <macro name="contributors">
     <group delimiter=". ">
       <choose>
-        <if type="broadcast" match="none">
+        <if match="none" type="broadcast">
           <names variable="author">
             <name and="text" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="first" sort-separator=", "/>
             <label form="short" prefix=", "/>
@@ -355,7 +345,7 @@
   <macro name="contributors-short">
     <group delimiter=" ">
       <choose>
-        <if type="broadcast" match="none">
+        <if match="none" type="broadcast">
           <names variable="author">
             <name and="text" delimiter=", " form="short"/>
             <substitute>
@@ -398,7 +388,7 @@
   </macro>
   <macro name="title">
     <choose>
-      <if match="none" variable="title" type="personal_communication">
+      <if match="none" type="personal_communication" variable="title">
         <text text-case="capitalize-first" variable="genre"/>
       </if>
       <else-if match="any" type="bill legal_case" variable="jurisdiction">
@@ -458,7 +448,7 @@
           <condition match="any" type="book graphic motion_picture report"/>
           <condition match="all" variable="volume volume-title title"/>
         </conditions>
-        <text font-style="italic" text-case="title" variable="volume-title" form="short"/>
+        <text font-style="italic" form="short" text-case="title" variable="volume-title"/>
       </else-if>
       <else-if>
         <conditions match="all">
@@ -466,13 +456,13 @@
           <condition match="any" variable="volume-title title"/>
         </conditions>
         <group>
-          <text font-style="italic" text-case="title" variable="title" form="short"/>
-          <text font-style="italic" text-case="title" variable="volume-title" form="short"/>
+          <text font-style="italic" form="short" text-case="title" variable="title"/>
+          <text font-style="italic" form="short" text-case="title" variable="volume-title"/>
         </group>
       </else-if>
       <else-if match="any" type="broadcast song">
         <choose>
-          <if variable="container-title collection-title" match="any">
+          <if match="any" variable="container-title collection-title">
             <text form="short" quotes="true" variable="title"/>
           </if>
           <else>
@@ -560,7 +550,7 @@
       </choose>
       <choose>
         <if match="none" type="legal_case">
-          <text font-style="italic" text-case="title" variable="container-title" form="short"/>
+          <text font-style="italic" form="short" text-case="title" variable="container-title"/>
         </if>
       </choose>
     </group>
@@ -744,7 +734,7 @@
       <else-if type="legal_case">
         <group delimiter=" ">
           <choose>
-            <if variable="volume" match="none">
+            <if match="none" variable="volume">
               <number variable="issue"/>
             </if>
             <else>
@@ -771,7 +761,7 @@
                     <text form="short" term="volume" text-case="capitalize-first"/>
                   </if>
                 </choose>
-                <number form="numeric" variable="volume" text-case="capitalize-first"/>
+                <number form="numeric" text-case="capitalize-first" variable="volume"/>
               </group>
             </if>
           </choose>
@@ -835,10 +825,15 @@
           <choose>
             <if>
               <conditions match="any">
-                <condition type="manuscript" match="none"/>
-                <condition variable="archive-place" match="none"/>
+                <condition match="none" type="manuscript"/>
+                <condition match="none" variable="archive-place"/>
               </conditions>
-              <text variable="publisher-place"/>
+              <names variable="dummy">
+                <name/>
+                <substitute>
+                  <text variable="publisher-place"/>
+                </substitute>
+              </names>
             </if>
           </choose>
           <text form="short" variable="publisher"/>
@@ -999,15 +994,15 @@
           <text prefix="(" suffix=")" variable="archive_location"/>
         </group>
       </if>
-      <else-if variable="jurisdiction" type="report" match="none">
+      <else-if match="none" type="report" variable="jurisdiction">
         <group delimiter=", ">
           <text variable="archive_location"/>
           <text form="short" variable="archive"/>
           <choose>
             <if>
               <conditions match="any">
-                <condition type="paper-conference speech" match="none"/>
-                <condition variable="publisher-place event-place" match="none"/>
+                <condition match="none" type="paper-conference speech"/>
+                <condition match="none" variable="publisher-place event-place"/>
               </conditions>
               <text form="short" variable="archive-place"/>
             </if>
@@ -1015,8 +1010,8 @@
           <choose>
             <if>
               <conditions match="any">
-                <condition type="manuscript speech paper-conference" match="none"/>
-                <condition variable="archive-place event-place" match="none"/>
+                <condition match="none" type="manuscript map speech paper-conference"/>
+                <condition match="none" variable="archive-place event-place"/>
               </conditions>
               <text variable="publisher-place"/>
             </if>
@@ -1033,15 +1028,15 @@
           <text prefix="(" suffix=")" variable="archive_location"/>
         </group>
       </if>
-      <else-if variable="jurisdiction" type="report" match="none">
+      <else-if match="none" type="report" variable="jurisdiction">
         <group delimiter=". ">
           <text variable="archive_location"/>
           <text form="short" variable="archive"/>
           <choose>
             <if>
               <conditions match="any">
-                <condition type="paper-conference speech" match="none"/>
-                <condition variable="publisher-place event-place" match="none"/>
+                <condition match="none" type="paper-conference speech"/>
+                <condition match="none" variable="publisher-place event-place"/>
               </conditions>
               <text form="short" variable="archive-place"/>
             </if>
@@ -1049,8 +1044,8 @@
           <choose>
             <if>
               <conditions match="any">
-                <condition type="manuscript speech paper-conference" match="none"/>
-                <condition variable="archive-place event-place" match="none"/>
+                <condition match="none" type="manuscript speech paper-conference"/>
+                <condition match="none" variable="archive-place event-place"/>
               </conditions>
               <text variable="publisher-place"/>
             </if>
@@ -1234,7 +1229,7 @@
         <number text-case="normal" variable="number"/>
       </group>
       <group delimiter=" ">
-        <text form="short" variable="archive"/>
+        <text variable="archive"/>
         <text variable="archive_location"/>
       </group>
       <group delimiter=" ">
@@ -1268,8 +1263,8 @@
         </else-if>
         <else-if>
           <conditions match="all">
-            <condition type="legal_case" position="subsequent" variable="locator" match="all"/>
-            <condition position="near-note" match="all"/>
+            <condition match="all" position="subsequent" type="legal_case" variable="locator"/>
+            <condition match="all" position="near-note"/>
           </conditions>
           <text macro="std-locator-non-page-label-at"/>
         </else-if>
@@ -1286,12 +1281,15 @@
         <if variable="event">
           <text form="short" variable="event"/>
         </if>
-        <else-if type="hearing"/>
-        <else>
+        <else-if match="none" type="hearing">
           <text macro="std-authority-child"/>
-        </else>
+        </else-if>
       </choose>
-      <number variable="number"/>
+      <choose>
+        <if match="none" type="hearing">
+          <number variable="number"/>
+        </if>
+      </choose>
     </group>
   </macro>
   <macro name="us-session-number">
@@ -1307,38 +1305,6 @@
       </choose>
     </group>
   </macro>
-
-  <macro name="us-title-short">
-    <choose>
-      <if>
-        <conditions match="any">
-          <condition variable="author composer editor" match="none"/>
-          <condition type="motion_picture" disambiguate="true" match="any"/>
-        </conditions>
-        <choose>
-          <if type="bill gazette legislation" variable="hereinafter" match="all">
-            <text form="short" variable="hereinafter"/>
-          </if>
-          <else-if type="legal_case" variable="hereinafter" match="all">
-            <text font-style="italic" form="short" variable="hereinafter"/>
-          </else-if>
-          <else-if type="legal_case" variable="title-short" match="all">
-            <text font-style="italic" form="short" variable="title-short"/>
-          </else-if>
-          <else-if type="legal_case" match="all">
-            <text font-style="italic" form="short" variable="title"/>
-          </else-if>
-          <else-if type="bill gazette legislation" match="all">
-            <text form="short" variable="title"/>
-          </else-if>
-          <else>
-            <text macro="us-default-title"/>
-          </else>
-        </choose>
-      </if>
-    </choose>
-  </macro>
-
   <macro name="us-legislation-subsequent">
     <choose>
       <if match="any" variable="title container-title">
@@ -1357,11 +1323,10 @@
       </else>
     </choose>
   </macro>
-
   <macro name="us-legislation-first">
     <group delimiter=" ">
       <group delimiter=", ">
-        <text variable="title"/>
+        <text form="short" variable="title"/>
         <choose>
           <if type="gazette">
             <group delimiter=" ">
@@ -1378,25 +1343,12 @@
           <text macro="us-code-detail"/>
           <number variable="page"/>
           <choose>
-            <if locator="page" match="none">
+            <if locator="section paragraph" match="any">
               <text label-form="symbol" macro="std-locator-non-page-label"/>
             </if>
           </choose>
         </group>
         <text label-form="symbol" macro="std-locator-non-page-label"/>
-        <choose>
-          <if variable="number">
-            <text label-form="symbol" macro="std-locator-non-page-label"/>
-          </if>
-          <else-if locator="page" match="all" variable="page">
-            <text label-form="symbol" macro="std-locator-non-page-label"/>
-          </else-if>
-          <else-if variable="container-title"/>
-          <else-if locator="section paragraph"/>
-          <else-if match="none" variable="container-title">
-            <text label-form="symbol" macro="std-locator-non-page-label"/>
-          </else-if>
-        </choose>
       </group>
       <text label-form="symbol" macro="std-locator-non-page-label"/>
       <group delimiter=" " prefix="(" suffix=")">
@@ -1428,7 +1380,7 @@
   </macro>
   <macro name="us-case-subsequent">
     <group delimiter=", ">
-      <text macro="us-title-short"/>
+      <text macro="amlaw-title"/>
       <group delimiter=" ">
         <group delimiter=", ">
           <choose>
@@ -1445,7 +1397,7 @@
                 </if>
               </choose>
               <group delimiter=" ">
-                <text form="short" variable="archive"/>
+                <text variable="archive"/>
                 <text variable="archive_location"/>
               </group>
               <text label-form="symbol" macro="std-locator-non-page-label-at"/>
@@ -1550,6 +1502,21 @@
                 </else>
               </choose>
             </group>
+            <group delimiter=" " prefix="[" suffix="]"> 
+              <choose>
+                <if variable="hereinafter">
+                  <choose>
+                    <if match="all" position="first">
+                      <text value="hereinafter"/>
+                    </if>
+                    <else>
+                      <text value="hereinbefore"/>
+                    </else>
+                  </choose>
+                  <text font-style="italic" form="short" variable="hereinafter"/>
+                </if>
+              </choose>
+            </group>
           </group>
         </group>
       </if>
@@ -1568,53 +1535,12 @@
           <number variable="number"/>
           <group delimiter=" ">
             <text variable="genre"/>
-            <text font-variant="small-caps" macro="us-author"/>
+            <text font-variant="small-caps" macro="amlaw-author-render"/>
           </group>
         </group>
       </else>
     </choose>
   </macro>
-  <macro name="us-author">
-    <choose>
-      <if type="interview">
-        <names variable="author">
-          <name and="text" delimiter-precedes-last="always"/>
-          <institution use-first="1" use-last="1"/>
-        </names>
-      </if>
-      <else>
-        <names variable="author">
-          <name and="text" delimiter-precedes-last="never" form="long"/>
-          <substitute>
-            <names variable="container-author"/>
-            <names variable="composer"/>
-          </substitute>
-        </names>
-      </else>
-    </choose>
-  </macro>
-  <macro name="coe-case">
-    <group delimiter=" ">
-      <group delimiter=", ">
-        <choose>
-          <if match="none" position="near-note">
-            <text variable="title"/>
-          </if>
-          <else>
-            <text font-style="italic" variable="title"/>
-          </else>
-        </choose>
-        <text macro="coe-case-detail"/>
-        <choose>
-          <if locator="page">
-            <number variable="locator"/>
-          </if>
-        </choose>
-      </group>
-      <text macro="std-locator-paragraph-bracket"/>
-    </group>
-  </macro>
-
   <macro name="std-locator-label">
     <group delimiter=" ">
       <label form="short" variable="locator"/>
@@ -1659,7 +1585,7 @@
           </else>
         </choose>
       </if>
-      <else-if jurisdiction="un.org au.int">
+      <else-if jurisdiction="un.org au.int" match="any">
         <choose>
           <if position="subsequent">
             <text macro="un-resolution-subsequent"/>
@@ -1699,7 +1625,7 @@
   </macro>
   <macro name="un-resolution-first">
     <group delimiter=", ">
-      <text variable="title"/>
+      <text form="short" variable="title"/>
       <group delimiter=" ">
         <text macro="std-authority-parent"/>
         <text form="short" variable="event"/>
@@ -1708,8 +1634,10 @@
       <text form="short" variable="container-title"/>
       <choose>
         <if is-numeric="collection-number">
-          <number form="ordinal" variable="collection-number"/>
-          <text value="Sess."/>
+          <group delimiter=" ">
+            <number form="ordinal" variable="collection-number"/>
+            <text value="Sess."/>
+          </group>
         </if>
         <else>
           <number variable="collection-number"/>
@@ -1721,15 +1649,11 @@
       </group>
       <group delimiter=" ">
         <group delimiter=", ">
-          <choose>
-            <if jurisdiction="un.org">
-              <group delimiter=" ">
-                <text value="U.N. Doc."/>
-                <text variable="archive_location"/>
-              </group>
-            </if>
-          </choose>
-          <text label-form="symbol" macro="std-locator-non-page-label-at"/>
+          <group delimiter=" ">
+            <text value="U.N. Doc."/>
+            <text variable="archive_location"/>
+          </group>
+          <text macro="std-locator-non-page-label-at"/>
         </group>
         <date date-parts="year-month-day" form="text" prefix="(" suffix=")" variable="issued"/>
       </group>
@@ -1755,14 +1679,7 @@
   </macro>
   <macro name="us-hearing-front">
     <group delimiter="" quotes="true">
-      <choose>
-        <if position="near-note">
-          <text variable="title" form="short"/>
-        </if>
-        <else>
-          <text variable="title"/>
-        </else>
-      </choose>
+      <text variable="title"/>
       <group delimiter=" ">
         <text value=": Hearing"/>
         <group delimiter=" ">
@@ -1771,11 +1688,15 @@
         </group>
         <group delimiter=" ">
           <text value="Before the"/>
-          <text macro="std-authority-child"/>
+          <names variable="authority">
+            <name delimiter=" of the "/>
+            <institution institution-parts="short" stop-last="1"/>
+          </names>
         </group>
       </group>
     </group>
   </macro>
+
   <macro name="us-bill-front">
     <choose>
       <if variable="title">
@@ -1808,25 +1729,17 @@
   </macro>
   <macro name="us-bill-subsequent">
     <group delimiter=" ">
-      <text macro="us-bill-front"/>
+      <group delimiter=", ">
+        <text macro="us-bill-front"/>
+        <choose>
+          <if type="hearing">
+            <text label-form="symbol" macro="wisconsin-supra-stub"/>
+          </if>
+        </choose>
+      </group>
       <group delimiter=" ">
         <label form="symbol" variable="locator"/>
         <number label-form="symbol" variable="locator"/>
-      </group>
-    </group>
-  </macro>
-  <macro name="jp-legislation-first">
-    <group delimiter=", ">
-      <text variable="title"/>
-      <group delimiter=" ">
-        <text value="Law no."/>
-        <number variable="number"/>
-        <text value="of"/>
-        <date form="text" date-parts="year" variable="issued"/>
-      </group>
-      <group delimiter=" ">
-        <text label-form="symbol" macro="std-locator-non-page-label"/>
-        <text variable="jurisdiction" form="short" prefix="(" suffix=")"/>
       </group>
     </group>
   </macro>
@@ -1836,14 +1749,7 @@
         <text macro="us-bill-front"/>
         <text macro="us-bill-middle"/>
       </group>
-      <choose>
-        <if type="hearing">
-          <text label-form="short" macro="std-locator-label"/>
-        </if>
-        <else>
-          <text label-form="symbol" macro="std-locator-label"/>
-        </else>
-      </choose>
+      <text label-form="symbol" macro="std-locator-non-page-label"/>
       <text macro="us-bill-end"/>
     </group>
   </macro>
@@ -1859,16 +1765,6 @@
           </else>
         </choose>
       </if>
-      <else-if jurisdiction="jp" match="any">
-        <choose>
-          <if position="near-note">
-            <text macro="amlaw-nz-legislation-subsequent"/>
-          </if>
-          <else>
-            <text macro="jp-legislation-first"/>
-          </else>
-        </choose>
-      </else-if>
       <else>
         <choose>
           <if position="near-note">
@@ -1893,7 +1789,7 @@
   </macro>
   <macro name="nz-legislation-first">
     <group delimiter=" ">
-      <text variable="title"/>
+      <text form="short" variable="title"/>
       <group delimiter=", ">
         <group delimiter=" ">
           <date date-parts="year" form="text" variable="issued"/>
@@ -1915,13 +1811,13 @@
 
   <macro name="jurisdictions-hearing">
     <choose>
-      <if jurisdiction="us ca nz">
+      <if jurisdiction="us ca nz" match="any">
         <choose>
           <if position="near-note">
-            <text macro="us-bill-subsequent"/>
+            <text macro="us-hearing-subsequent"/>
           </if>
           <else>
-            <text macro="us-bill-first"/>
+            <text macro="us-hearing-first"/>
           </else>
         </choose>
       </if>
@@ -1935,7 +1831,26 @@
           </else>
         </choose>
       </else-if>
+      <else>
+        <choose>
+          <if position="near-note">
+            <text macro="gb-bill-subsequent"/>
+          </if>
+          <else>
+            <text macro="gb-bill-first"/>
+          </else>
+        </choose>
+      </else>
     </choose>
+  </macro>
+  <macro name="us-hearing-subsequent">
+    <text macro="us-bill-subsequent"/>
+  </macro>
+  <macro name="us-hearing-first">
+    <text macro="us-bill-first"/>
+  </macro>
+  <macro name="gb-bill-subsequent">
+    <text value="[gb-bill-subsequent]"/>
   </macro>
   <macro name="wisconsin-supra-stub">
     <group delimiter=", ">
@@ -1987,7 +1902,7 @@
             <name/>
             <institution institution-parts="short" use-first="1"/>
             <substitute>
-              <text variable="title"/>
+              <text form="short" variable="title"/>
             </substitute>
           </names>
           <text value="Deb"/>
@@ -1999,7 +1914,7 @@
         <label form="short" variable="volume"/>
         <number variable="volume"/>
       </group>
-      <text label-form="short" macro="std-locator-non-page-label"/>
+      <text macro="std-locator-non-page-label"/>
     </group>
   </macro>
 
@@ -2035,16 +1950,6 @@
           </else>
         </choose>
       </else-if>
-      <else>
-        <choose>
-          <if position="near-note">
-            <text macro="cms-secondary-subsequent"/>
-          </if>
-          <else>
-            <text macro="cms-secondary-first"/>
-          </else>
-        </choose>
-      </else>
     </choose>
   </macro>
 
@@ -2061,7 +1966,7 @@
       <group delimiter=" ">
         <group delimiter=", ">
           <names variable="author">
-            <name and="text" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="first" sort-separator=", "/>
+            <name name-as-sort-order="all" sort-separator=" "/>
             <institution use-first="1"/>
             <label form="short" prefix=" (" suffix=")"/>      
             <substitute>
@@ -2076,7 +1981,7 @@
       <text macro="wisconsin-supra-stub"/>
     </group>
   </macro>
-  
+
   <macro name="gb-report-first">
     <group delimiter=" ">
       <group delimiter=", ">
@@ -2164,11 +2069,16 @@
   <macro name="oscola-non-paragraph-point-locators">
     <group delimiter=" ">
       <choose>
-        <if locator="page" match="none">
-          <label form="short" variable="locator"/>
-        </if>
+        <if locator="paragraph" match="all" type="book"/>
+        <else>
+          <choose>
+            <if locator="page" match="none">
+              <label form="short" variable="locator"/>
+            </if>
+          </choose>
+          <number variable="locator"/>
+        </else>
       </choose>
-      <number variable="locator"/>
     </group>
   </macro>
   <macro name="oscola-editor-translator-context">
@@ -2261,15 +2171,15 @@
         <group delimiter=" ">
           <choose>
             <if context="bibliography" match="all">
-              <label variable="volume" form="short" text-case="capitalize-first"/>
+              <label form="short" text-case="capitalize-first" variable="volume"/>
           </if>
           <else>
-            <label variable="volume" form="short"/>
+            <label form="short" variable="volume"/>
           </else>
           </choose>
           <number variable="volume"/>
           <text value="of"/>
-          <text variable="title" font-style="italic" text-case="title"/>
+          <text font-style="italic" text-case="title" variable="title"/>
         </group>
       </if>
     </choose>
@@ -2297,15 +2207,15 @@
               </group>
               <choose>
                 <if type="manuscript">
-                  <date variable="issued" form="text" date-parts="year-month-day"/>
+                  <date date-parts="year-month-day" form="text" variable="issued"/>
                 </if>
               </choose>
               <text macro="locators-note-join-with-comma"/>
               <text macro="collection-title"/>
                 <choose>
-                  <if variable="jurisdiction" type="report" match="all">
+                  <if match="all" type="report" variable="jurisdiction">
                     <group delimiter=" ">
-                      <text variable="jurisdiction" form="short"/>
+                      <text form="short" variable="jurisdiction"/>
                       <text value="Doc."/>
                       <text variable="archive_location"/>
                     </group>
@@ -2341,7 +2251,7 @@
             </group>
           </else-if>
           <else>
-            <!-- condition type="legislation gazette regulation treaty" match="any"/ -->
+            
             <group delimiter=", ">
               <text term="ibid"/>
               <text label-form="symbol" macro="std-locator-non-page-label"/>
@@ -2409,11 +2319,14 @@
         <if disambiguate="true">
           <names variable="author">
             <name/>
-            <institution and="none" delimiter="&#8211;" institution-parts="short"/>
+            <institution and="none" delimiter="–" institution-parts="short"/>
           </names>
         </if>
       </choose>
-      <text label-form="symbol" macro="std-locator-non-page-label"/>
+      <group delimiter=" ">
+        <label form="short" variable="locator"/>
+        <number label-form="symbol" variable="locator"/>
+      </group>
       <group delimiter=" ">
         <text font-style="italic" value="supra"/>
         <text value="note"/>
@@ -2431,36 +2344,18 @@
     </group>
   </macro>
   <macro name="wisconsin-treaty-first">
-    <group delimiter=" ">
-      <group delimiter=", ">
-        <text form="short" variable="title"/>
-        <names variable="author">
-          <name/>
-          <institution delimiter="-" institution-parts="short"/>
-        </names>
-        <text label-form="symbol" macro="std-locator-non-page-label"/>
-        <choose>
-          <if variable="event-date">
-            <!-- Signing date if poss -->
-            <date date-parts="year-month-day" form="text" variable="event-date"/>
-          </if>
-          <else>
-            <!-- Otherwise date opened for signature -->
-            <group delimiter=" ">
-              <text value="opened for signature" font-style="italic"/>
-              <date date-parts="year-month-day" form="text" variable="available-date"/>
-            </group>
-          </else>
-        </choose>
-        <group delimiter=" ">
-          <number variable="volume"/>
-          <text form="short" variable="container-title"/>
-          <number variable="page-first"/>
-        </group>
-      </group>
-      <group delimiter=" " prefix="(" suffix=")">
-        <text value="entered into force"/>
-        <date date-parts="year-month-day" form="text" variable="issued"/>
+    <group delimiter=", ">
+      <text form="short" variable="title"/>
+      <names variable="author">
+        <name/>
+        <institution delimiter="-" institution-parts="short"/>
+      </names>
+      <text label-form="symbol" macro="std-locator-non-page-label"/>
+      <date date-parts="year-month-day" form="text" variable="event-date"/>
+      <group delimiter=" ">
+        <number variable="volume"/>
+        <text form="short" variable="container-title"/>
+        <number variable="page-first"/>
       </group>
     </group>
   </macro>
@@ -2636,117 +2531,9 @@
       </choose>
     </group>
   </macro>
-
-  <macro name="us-default-title">
-    <choose>
-      <if>
-        <conditions match="any">
-          <condition match="all" type="song" variable="collection-title"/>
-          <condition match="all" type="paper-conference post post-weblog webpage" variable="container-title"/>
-          <condition match="any" type="article-magazine graphic article-journal article-newspaper"/>
-          <condition match="all" type="chapter entry-encyclopedia entry-dictionary" variable="author"/>
-        </conditions>
-        <!-- italic short title in title case -->
-        <text font-style="italic" form="short" text-case="title" variable="title"/>
-      </if>
-      <else-if match="any" type="paper-conference">
-        <!-- XXX roman short title in title case -->
-        <text form="short" text-case="title" variable="title"/>
-      </else-if>
-      <else-if type="personal_communication">
-        <!-- XXX roman short title -->
-        <text form="short" variable="title"/>
-      </else-if>
-      <else-if match="any" type="broadcast video" variable="container-title">
-        <text font-style="italic" form="short" variable="title"/>
-      </else-if>
-      <else-if match="all" type="broadcast video" variable="container-title publisher">
-        <!-- XXX roman short container title and title -->
-        <group delimiter=": " font-style="italic">
-          <text form="short" text-case="title" variable="container-title"/>
-          <text form="short" text-case="title" variable="title"/>
-        </group>
-      </else-if>
-      <else-if match="any"  type="post post-weblog webpage broadcast">
-        <!-- XXX small caps short title in title case -->
-        <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
-      </else-if>
-      <else-if type="song" variable="container-title" match="all">
-        <!-- XXX title + composer -->
-        <group delimiter=" ">
-          <text font-style="italic" form="short" text-case="title" variable="title"/>
-          <names prefix="[" suffix="]" variable="composer">
-            <name form="short" initialize-with="."/>
-          </names>
-        </group>
-      </else-if>
-      <else-if>
-        <conditions match="any">
-          <condition type="book song motion_picture" variable="title version" disambiguate="true" match="all"/>
-          <condition type="book song motion_picture" variable="title version" position="first" match="all"/>
-        </conditions>
-        <group delimiter=", ">
-          <choose>
-            <if is-numeric="version">
-              <group delimiter=" ">
-                <text value="ver."/>
-                <text variable="version"/>
-              </group>
-              <text form="short" variable="medium"/>
-            </if>
-            <else>
-              <text quotes="true" variable="version"/>
-              <text form="short" variable="medium"/>
-            </else>
-          </choose>
-        </group>
-      </else-if>
-      <else-if type="book song motion_picture">
-        <!-- small caps short title in title case -->
-        <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
-      </else-if>
-      <else>
-        <!-- XXX roman short title in title case -->
-        <text form="short" text-case="title" variable="title"/>
-      </else>
-    </choose>
-  </macro>
-
-
-  <macro name="kh-case-first">
-    <group delimiter=", ">
-      <group delimiter=" ">
-        <names variable="authority">
-          <name/>
-          <institution/>
-        </names>
-        <text variable="jurisdiction" form="short" prefix="(" suffix=")"/>
-      </group>
-      <text macro="kh-case-subsequent"/>
-    </group>
-  </macro>
-
-  <macro name="kh-case-subsequent">
-    <group delimiter=", ">
-      <group delimiter=" ">
-        <choose>
-          <if position="subsequent">
-            <text value="Case no."/>
-          </if>
-          <else>
-            <text value="case no."/>
-          </else>
-        </choose>
-        <number variable="number"/>
-      </group>
-      <date variable="issued" form="text" date-parts="year-month-day"/>
-      <text macro="std-locator-label"/>
-    </group>
-  </macro>
-
   <macro name="jurisdictions-case">
     <choose>
-      <if jurisdiction="us" match="any">
+      <if jurisdiction="us">
         <choose>
           <if position="near-note">
             <text macro="us-case-subsequent"/>
@@ -2756,61 +2543,15 @@
           </else>
         </choose>
       </if>
-      <else-if jurisdiction="jp" match="any">
-        <group delimiter=" ">
-          <group delimiter=", ">
-            <names variable="authority">
-              <name/>
-              <institution reverse-order="true"/>
-            </names>
-            <date variable="issued" form="text" date-parts="year-month-day"/>
-            <choose>
-              <if position="subsequent" match="none">
-                <group delimiter=" ">
-                  <choose>
-                    <if variable="genre submitted" match="all">
-                      <text variable="genre" form="short"/>
-                      <date variable="submitted" form="text" date-parts="year"/>
-                    </if>
-                    <else>
-                      <date variable="issued">
-                        <date-part name="year" form="imperial"/>
-                      </date>
-                    </else>
-                  </choose>
-                  <number variable="call-number" prefix="(" suffix=")"/>
-                  <group delimiter=" ">
-                    <text value="no."/>
-                    <number variable="number"/>
-                  </group>
-                </group>
-              </if>
-            </choose>
-            <text macro="locators"/>
-            <choose>
-              <if>
-                <conditions match="any">
-                  <condition variable="container-title page" match="all"/>
-                </conditions>
-                <text label-form="short" macro="std-locator-non-page-label"/>
-              </if>
-            </choose>
-          </group>
-          <text label-form="short" macro="std-locator-non-page-label-at"/>
-        </group>
-      </else-if>
-      <else-if jurisdiction="kh">
+      <else-if jurisdiction="coe.int">
         <choose>
           <if position="near-note">
-            <text macro="kh-case-subsequent"/>
+            <text label-form="short" macro="coe-case-first"/>
           </if>
           <else>
-            <text macro="kh-case-first"/>
+            <text label-form="short" macro="coe-case-first"/>
           </else>
         </choose>
-      </else-if>
-      <else-if jurisdiction="coe.int un;icj un.org;icj icc-cpi.int">
-        <text label-form="short" macro="coe-case"/>
       </else-if>
       <else-if jurisdiction="ca">
         <choose>
@@ -2874,6 +2615,326 @@
       </else>
     </choose>
   </macro>
+  <macro name="coe-case-first">
+    <group delimiter=" ">
+      <group delimiter=", ">
+        <choose>
+          <if match="none" position="near-note">
+            <text variable="title"/>
+          </if>
+          <else>
+            <text font-style="italic" variable="title"/>
+          </else>
+        </choose>
+        <text macro="coe-case-detail"/>
+        <choose>
+          <if locator="page">
+            <number variable="locator"/>
+          </if>
+        </choose>
+      </group>
+      <text macro="std-locator-paragraph-bracket"/>
+    </group>
+  </macro>
+
+  <macro name="amlaw-title">
+    <choose>
+      <if>
+        
+        <conditions match="all">
+          <condition match="any" type="book song motion_picture"/>
+          <condition match="all" variable="title version"/>
+          <condition context="bibliography" match="none" position="first"/>
+        </conditions>
+        <choose>
+          <if variable="hereinafter">
+            <text text-case="title" variable="hereinafter"/>
+          </if>
+          <else-if>
+            <conditions match="any">
+              <condition disambiguate="true"/>
+              <condition match="none" variable="author"/>
+            </conditions>
+            <text form="short" text-case="title" variable="title"/>
+          </else-if>
+        </choose>
+      </if>
+      <else-if>
+        
+        <conditions match="all">
+          <condition match="any" type="book song motion_picture"/>
+          <condition match="all" variable="title version"/>
+        </conditions>
+        <group delimiter=", ">
+          <text text-case="title" variable="title"/>
+          <choose>
+            <if is-numeric="version">
+              <group delimiter=" ">
+                <text value="ver."/>
+                <text variable="version"/>
+              </group>
+            </if>
+            <else>
+              <text quotes="true" variable="version"/>
+            </else>
+          </choose>
+          <text form="short" variable="medium"/>
+        </group>
+      </else-if>
+      <else-if>
+        
+        <conditions match="all">
+          <condition match="any" type="book song motion_picture"/>
+          <condition match="nand" variable="title version"/>
+          <condition match="none" variable="container-title"/>
+          <condition match="nand" type="song" variable="collection-title"/> 
+          <condition context="bibliography" match="none" position="first"/>
+        </conditions>
+        <choose>
+          <if variable="hereinafter">
+            <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
+          </if>
+          <else-if>
+            <conditions match="any">
+              <condition disambiguate="true"/>
+              <condition match="none" variable="author"/>
+            </conditions>
+            <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
+          </else-if>
+        </choose>
+      </else-if>
+      <else-if>
+        
+        <conditions match="all">
+          <condition match="any" type="book song motion_picture"/>
+          <condition match="nand" variable="title version"/>
+          <condition match="none" variable="container-title"/>
+          <condition match="nand" type="song" variable="collection-title"/> 
+        </conditions>
+        <text font-variant="small-caps" text-case="title" variable="title"/>
+      </else-if>    
+      <else-if>
+        
+        <conditions match="any">
+          <condition match="all" type="song" variable="collection-title"/>
+          <condition match="all" type="song" variable="container-title composer"/>
+          <condition match="all" type="song" variable="container-title author"/>
+        </conditions>
+        <choose>
+          <if context="bibliography" match="none" position="first">
+            
+            <choose>
+              <if match="all" variable="hereinafter">
+                <text font-style="italic" text-case="title" variable="hereinafter"/>
+              </if>
+              <else-if>
+                <conditions match="any">
+                  <condition disambiguate="true"/>
+                  <condition match="none" variable="author composer"/>
+                </conditions>
+                <text font-style="italic" form="short" text-case="title" variable="title"/>
+              </else-if>
+            </choose>
+          </if>
+          <else>
+            
+            <group delimiter=" ">
+              <text font-style="italic" text-case="title" variable="title"/>
+              <names prefix="[" suffix="]" variable="composer">
+                <name form="short" initialize-with="."/>
+              </names>
+            </group>
+          </else>
+        </choose>
+      </else-if>
+      <else-if>
+        
+        <conditions match="all">
+          <condition match="any" type="book song motion_picture"/>
+          <condition context="bibliography" match="none" position="first"/>
+        </conditions>
+        <choose>
+          <if variable="hereinafter">
+            <text font-variant="small-caps" text-case="title" variable="hereinafter"/>
+          </if>
+          <else-if>
+            <conditions match="any">
+              <condition disambiguate="true"/>
+              <condition match="none" variable="author"/>
+            </conditions>
+            <text font-variant="small-caps" form="short" text-case="title" variable="title"/>
+          </else-if>
+        </choose>
+      </else-if>
+      <else-if match="any" type="book song motion_picture">
+        
+        <text font-variant="small-caps" text-case="title" variable="title"/>
+      </else-if>
+      <else-if>
+        
+        <conditions match="any">
+          <condition match="all" type="broadcast" variable="container-title publisher"/>
+          <condition match="all" type="video" variable="container-title publisher"/>
+        </conditions>
+        <group delimiter=": " font-style="italic">
+          <text form="short" text-case="title" variable="container-title"/>
+          <text form="short" text-case="title" variable="title"/>
+        </group>
+      </else-if>
+       <else-if>
+         
+         <conditions match="any">
+           <condition match="all" type="video" variable="container-title URL"/>
+           <condition match="all" type="post" variable="container-title URL"/>
+           <condition match="all" type="post-weblog" variable="container-title URL"/>
+           <condition match="all" type="webpage" variable="container-title URL"/>
+           <condition type="interview"/>
+         </conditions>
+         <choose>
+           <if context="bibliography" match="none" position="first">
+             
+             <choose>
+               <if variable="hereinafter">
+                 <text font-style="italic" variable="hereinafter"/>
+               </if>
+               <else-if>
+                 <conditions match="any">
+                   <condition disambiguate="true"/>
+                   <condition match="none" variable="author"/>
+                 </conditions>
+                 <text font-style="italic" form="short" variable="title"/>
+               </else-if>
+             </choose>
+           </if>
+           <else>
+             
+             <text font-style="italic" variable="title"/>
+           </else>
+         </choose>
+      </else-if>
+      <else-if>
+        
+        <conditions match="any">
+          <condition match="all" type="song" variable="collection-title"/>
+          <condition match="all" type="broadcast" variable="container-title"/>
+          <condition match="all" type="video" variable="container-title"/>
+          <condition match="all" type="post" variable="container-title"/>
+          <condition match="all" type="post-weblog" variable="container-title"/>
+          <condition match="all" type="webpage" variable="container-title"/>
+          <condition match="all" type="paper-conference" variable="container-title"/>
+          <condition match="any" type="article-magazine graphic article-journal article-newspaper chapter"/>
+          <condition type="entry-encyclopedia"/>
+          <condition type="entry-dictionary"/>
+          <condition type="report"/>
+        </conditions>
+         <choose>
+           <if context="bibliography" match="none" position="first">
+             
+             <choose>
+               <if variable="hereinafter">
+                 <text font-style="italic" text-case="title" variable="hereinafter"/>
+               </if>
+               <else-if>
+                 <conditions match="any">
+                   <condition disambiguate="true"/>
+                   <condition match="none" variable="author"/>
+                 </conditions>
+                 <text font-style="italic" form="short" text-case="title" variable="title"/>
+               </else-if>
+             </choose>
+           </if>
+           <else>
+             
+             <text font-style="italic" text-case="title" variable="title"/>
+           </else>
+         </choose>
+      </else-if>
+      <else-if>
+        
+        <conditions match="any">
+          <condition match="all" type="video" variable="URL"/>
+          <condition match="all" type="post"/>
+          <condition match="all" type="post-weblog"/>
+          <condition match="all" type="webpage"/>
+          <condition match="all" type="personal_communication"/>
+        </conditions>
+         <choose>
+           <if context="bibliography" match="none" position="first">
+             
+             <choose>
+               <if variable="hereinafter">
+                 <text variable="hereinafter"/>
+               </if>
+               <else-if>
+                 <conditions match="any">
+                   <condition disambiguate="true"/>
+                   <condition match="none" variable="author"/>
+                 </conditions>
+                 <text form="short" variable="title"/>
+               </else-if>
+             </choose>
+           </if>
+           <else>
+             
+             <text variable="title"/>
+           </else>
+         </choose>
+      </else-if>
+      <else-if>
+        <conditions match="all">
+          <condition type="legal_case"/>
+          <condition context="bibliography" match="none" position="first"/>
+        </conditions>
+        
+        
+        <choose>
+          <if variable="hereinafter">
+            <text font-style="italic" variable="hereinafter"/>
+          </if>
+          <else-if variable="title-short">
+            <text font-style="italic" form="short" variable="title-short"/>
+          </else-if>
+          <else>
+            <text font-style="italic" form="short" variable="title"/>
+          </else>
+        </choose>
+      </else-if>
+      <else-if type="legal_case">
+        
+        <text form="short" variable="title"/>
+      </else-if>
+      <else-if context="bibliography" match="none" position="first">
+        
+        <choose>
+          <if variable="hereinafter">
+            <text variable="hereinafter"/>
+          </if>
+          <else-if>
+            <conditions match="any">
+              <condition disambiguate="true"/>
+              <condition match="none" variable="author"/>
+            </conditions>
+            <text form="short" variable="title"/>
+          </else-if>
+        </choose>
+      </else-if>
+      <else>
+        
+        <text form="short" text-case="title" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="amlaw-author-render">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" form="long" initialize="false" initialize-with="."/>
+      <institution institution-parts="short" use-first="1" use-last="1"/>
+      <substitute>
+        <names variable="container-author"/>
+        <names variable="composer"/>
+      </substitute>
+    </names>
+  </macro>
   <macro name="ca-case-detail-stub">
     <choose>
       <if match="none" variable="container-title">
@@ -2917,35 +2978,18 @@
       <text macro="ca-case-detail"/>
     </group>
   </macro>
-  <macro name="coe-format-app-number">
-    <group delimiter=" ">
-      <choose>
-        <if jurisdiction="coe.int">
-          <text value="App. No."/>
-        </if>
-        <else>
-          <text value="Case No."/>
-        </else>
-      </choose>
-      <number variable="number"/>
-    </group>
-  </macro>
   <macro name="coe-case-detail-ordinary">
     <group delimiter=", ">
       <choose>
         <if match="none" position="near-note" variable="collection-number">
-            <text macro="coe-format-app-number"/>
+          <group delimiter=" ">
+            <text value="App. No."/>
+            <number variable="number"/>
+          </group>
         </if>
       </choose>
       <group delimiter=" ">
-        <choose>
-          <if variable="volume">
-            <number variable="volume"/>
-          </if>
-          <else-if jurisdiction="coe.int" match="none">
-            <number variable="collection-number" prefix="[" suffix="]"/>
-          </else-if>
-        </choose>
+        <number variable="volume"/>
         <text form="short" variable="container-title"/>
         <group delimiter=", ">
           <group delimiter=" ">
@@ -2966,36 +3010,18 @@
           </group>
           <number variable="locator"/>
         </group>
-        <group delimiter=", " prefix="(" suffix=")">
-          <choose>
-            <if match="none" position="near-note">
-              <choose>
-                <if>
-                  <conditions match="all">
-                    <condition variable="publication-date collection-number" match="all"/>
-                    <condition jurisdiction="coe.int" variable="volume" match="none"/>
-                  </conditions>
-                  <text variable="genre"/>
-                  <date date-parts="year-month-day" form="text" variable="publication-date"/>
-                </if>
-                <else-if>
-                  <conditions match="all">
-                    <condition variable="issued collection-number" match="all"/>
-                    <condition jurisdiction="coe.int" variable="volume" match="none"/>
-                  </conditions>
-                  <text variable="genre"/>
-                  <date date-parts="year-month-day" form="text" variable="issued"/>
-                </else-if>
-                <else-if variable="publication-date">
-                  <date date-parts="year" form="text" variable="publication-date"/>
-                </else-if>
-                <else>
-                  <date date-parts="year" form="text" variable="issued"/>
-                </else>
-              </choose>
-            </if>
-          </choose>
-        </group>
+        <choose>
+          <if match="none" position="near-note">
+            <choose>
+              <if variable="publication-date">
+                <date date-parts="year" form="text" prefix="(" suffix=")" variable="publication-date"/>
+              </if>
+              <else>
+                <date date-parts="year" form="text" prefix="(" suffix=")" variable="issued"/>
+              </else>
+            </choose>
+          </if>
+        </choose>
       </group>
     </group>
   </macro>
@@ -3004,19 +3030,22 @@
     <choose>
       <if variable="container-title">
         <choose>
-          <if>
-            <conditions match="all">
-              <condition match="all" variable="volume collection-number"/>
-              <condition match="none" is-numeric="volume"/>
-            </conditions>
-            <group delimiter=" ">
-              <group delimiter="-">
-                <number variable="collection-number"/>
-                <number variable="volume"/>
-              </group>
-              <text macro="std-authority-key"/>
-              <number variable="page"/>
-            </group>
+          <if match="all" variable="volume collection-number">
+            <choose>
+              <if is-numeric="volume" match="none">
+                <group delimiter=" ">
+                  <group delimiter="-">
+                    <number variable="collection-number"/>
+                    <number variable="volume"/>
+                  </group>
+                  <text macro="std-authority-key"/>
+                  <number variable="page"/>
+                </group>
+              </if>
+              <else>
+                <text macro="coe-case-detail-ordinary"/>
+              </else>
+            </choose>
           </if>
           <else>
             <text macro="coe-case-detail-ordinary"/>
@@ -3027,7 +3056,10 @@
         <choose>
           <if match="none" position="near-note">
             <group delimiter=" ">
-              <text macro="coe-format-app-number"/>
+              <group delimiter=" ">
+                <text value="App. No."/>
+                <number variable="number"/>
+              </group>
               <group delimiter=", " prefix="(" suffix=")">
                 <text macro="std-authority-parent"/>
                 <date date-parts="year-month-day" form="text" variable="issued"/>
@@ -3044,7 +3076,7 @@
         <if locator="page paragraph" match="none">
           <label form="short" variable="locator"/>
         </if>
-        <else-if locator="page paragraph">
+        <else-if locator="page paragraph" match="any">
           <text term="at"/>
         </else-if>
       </choose>
@@ -3066,7 +3098,7 @@
             <text font-style="italic" variable="hereinafter"/>
           </if>
           <else>
-            <text font-style="italic" form="short" variable="title"/>
+            <text macro="amlaw-title"/>
           </else>
         </choose>
         <choose>
@@ -3148,7 +3180,7 @@
       </choose>
     </layout>
   </citation>
-  <bibliography entry-spacing="0" et-al-min="11" et-al-use-first="7" hanging-indent="true" subsequent-author-substitute="&#8212;&#8212;&#8212;">
+  <bibliography entry-spacing="0" et-al-min="11" et-al-use-first="7" hanging-indent="true" subsequent-author-substitute="———">
     <sort>
       <key macro="contributors-sort"/>
       <key variable="title"/>
@@ -3157,7 +3189,7 @@
     </sort>
     <layout suffix=".">
       <choose>
-        <if type="treaty legal_case regulation legislation bill hearing gazette patent" match="any">
+        <if match="any" type="treaty legal_case regulation legislation bill hearing gazette patent">
           <text macro="legal-types-filter"/>
         </if>
         <else>
