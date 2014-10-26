@@ -2670,7 +2670,7 @@
         <institution delimiter="-" institution-parts="short"/>
       </names>
       <text label-form="short" macro="std-locator-non-page-label"/>
-      <date date-parts="year-month-day" form="text" variable="original-date"/>
+      <date date-parts="year-month-day" form="text" variable="event-date"/>
       <group delimiter=" ">
         <number variable="volume"/>
         <text form="short" variable="container-title"/>
