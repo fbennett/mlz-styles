@@ -2264,7 +2264,7 @@
   </macro>
 
   <citation and="text" et-al-min="3" et-al-use-first="1" initialize="false" initialize-with="" name-delimiter=", " names-delimiter=", ">
-    <layout delimiter="; ">
+    <layout delimiter="; " suffix=".">
       <choose>
         <if match="any" type="treaty" variable="jurisdiction">
           <text macro="jurisdiction-filter" strip-periods="true"/>
