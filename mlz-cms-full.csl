@@ -440,7 +440,11 @@
           </else-if>
         </choose>
       </if>
-      <else-if match="any" type="bill legal_case" variable="jurisdiction">
+      <else-if>
+        <conditions match="all">
+          <condition match="any" type="bill legal_case" variable="jurisdiction"/>
+          <condition match="none" type="hearing"/>
+        </conditions>
         <text font-style="italic" form="short" variable="title"/>
       </else-if>
       <else-if>
@@ -2251,7 +2255,6 @@
             </group>
           </else-if>
           <else>
-            
             <group delimiter=", ">
               <text term="ibid"/>
               <text label-form="symbol" macro="std-locator-non-page-label"/>
