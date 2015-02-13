@@ -397,6 +397,7 @@
             <name/>
             <institution institution-parts="short" use-first="1"/>
             <substitute>
+              <names variable="authority"/>
               <text form="short" variable="title"/>
             </substitute>
           </names>
@@ -881,7 +882,6 @@
               <condition disambiguate="true"/>
               <condition variable="author" match="none"/>
             </conditions>
-            <group><text value="XX"/></group>
             <text font-variant="small-caps" text-case="title" variable="title" form="short"/>
           </else-if>
         </choose>
@@ -2091,7 +2091,7 @@
   </macro>
   <macro name="jurisdictions-bill">
     <choose>
-      <if jurisdiction="gb ca nz">
+      <if jurisdiction="gb ca nz ie">
         <choose>
           <if position="near-note">
             <text macro="gb-bill-first"/>
@@ -2127,6 +2127,7 @@
   <macro name="gb-bill-first">
     <text value="[gb-bill-first]"/>
   </macro>
+
   <macro name="ca-case-first">
     <group delimiter=", ">
       <text macro="ca-case-title"/>
@@ -2179,7 +2180,7 @@
           </else>
         </choose>
       </if>
-      <else-if jurisdiction="gb">
+      <else-if jurisdiction="gb ie" match="any">
         <choose>
           <if position="near-note">
             <text macro="gb-hearing-subsequent"/>
@@ -2190,6 +2191,7 @@
         </choose>
       </else-if>
       <else>
+      <group><text value="XX"/></group>
         <choose>
           <if position="near-note">
             <text macro="gb-bill-subsequent"/>
