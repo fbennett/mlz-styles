@@ -1657,17 +1657,12 @@
             <name suppress-min="0"/>
             <institution institution-parts="short" use-first="1"/>
             <substitute>
+              <names variable="authority"/>
               <text form="short" variable="title"/>
             </substitute>
           </names>
           <text value="Deb"/>
-          <names variable="authority" prefix="(" suffix=")">
-            <name suppress-min="0"/>
-            <institution institution-parts="short" use-last="1"/>
-            <substitute>
-              <text form="short" variable="title"/>
-            </substitute>
-          </names>
+          <text variable="jurisdiction" form="short" prefix="(" suffix=")"/>
         </group>
         <date date-parts="year-month-day" form="text" variable="issued"/>
       </group>
@@ -2201,7 +2196,7 @@
       <else-if jurisdiction="us">
         <text macro="oscola-us-bill-first"/>
       </else-if>
-      <else-if jurisdiction="nz">
+      <else-if jurisdiction="nz ie">
         <text macro="nz-bill-first"/>
       </else-if>
       <else>
