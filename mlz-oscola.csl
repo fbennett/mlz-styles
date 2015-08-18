@@ -3,7 +3,7 @@
   <info>
     <title>MLZ OSCOLA - Oxford Standard for Citation of Legal Authorities</title>
     <id>http://citationstylist.org/styles/mlz-oscola</id>
-    <link href="http://citationstylist.org/uploads/mlz-oscola" rel="self"/>
+    <link href="http://citationstylist.org/styles/mlz-oscola" rel="self"/>
     <link href="http://www.law.ox.ac.uk/publications/oscola.php" rel="documentation"/>
     <author>
       <name>Virgilio Afonso da Silva (University of Sao Paulo); www.law.usp.br/afonso</name>

@@ -4,6 +4,7 @@
     <title>MLZ Japan Science and Technology Agency, Standards for Information Science and Technology Citation Style</title>
     <title-short>MLZ SIST02</title-short>
     <id>http://citationstylist.org/styles/mlz-sist02</id>
+    <link href="http://citationstylist.org/styles/mlz-sist02" rel="self"/>
     <link href="http://sti.jst.go.jp/sist/handbook/sist02_2007/main.htm" rel="documentation"/>
     <author>
       <name>Frank Bennett</name>
