@@ -20,6 +20,11 @@
     <category citation-format="note"/>
   </info>
   <locale xml:lang="en">
+    <terms>
+      <term name="and" form="symbol">&amp;</term>
+    </terms>
+  </locale>
+  <locale xml:lang="en">
     <style-options punctuation-in-quote="false"/>
     <date form="text">
       <date-part name="day" suffix=" "/>

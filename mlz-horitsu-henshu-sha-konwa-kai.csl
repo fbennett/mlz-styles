@@ -24,6 +24,9 @@
       <date-part form="numeric" name="month" suffix="月"/>
       <date-part form="numeric" name="day" suffix="日"/>
     </date>
+    <terms>
+      <term name="and" form="symbol">&amp;</term>
+    </terms>
   </locale>
   <locale xml:lang="en">
     <terms>

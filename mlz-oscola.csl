@@ -36,6 +36,7 @@
       <date-part name="year"/>
     </date>
     <terms>
+      <term name="and" form="symbol">&amp;</term>
       <term name="article">article</term>
       <term form="short" name="article">art.</term>
       <term name="director">director</term>

@@ -24,6 +24,7 @@
       <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
     </date>
     <terms>
+      <term name="and" form="symbol">&amp;</term>
       <term name="page" form="short">p.</term>
       <term name="open-quote">“</term>
       <term name="close-quote">”</term>
